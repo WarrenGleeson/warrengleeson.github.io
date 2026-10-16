@@ -5,13 +5,13 @@ title: Warren Gleeson
 
 # Projects
 
-This site is the new documentation and portfolio index. Project repositories are the source of truth.
+This site is the public documentation and portfolio index. Project repositories remain the source of truth.
 
-- [General_Director](https://github.com/warrengleeson/General_Director) — AI operating layer, standards, and migration records.
-- [eirepolitic-data-pipeline](https://github.com/warrengleeson/eirepolitic-data-pipeline) — data ingestion, AWS transformation/storage, and Instagram publishing pipeline.
-- [Overlord](https://github.com/warrengleeson/Overlord) — active development and production automation/orchestration project.
-- [bb-comp-prices](https://github.com/warrengleeson/bb-comp-prices) — competitor-price matching/scraping project.
-- [degenerate_investigator](https://github.com/warrengleeson/degenerate_investigator) — MMA analysis/investigation project.
+- [General Director](/projects/general-director/) — AI operating layer, standards, and migration records.
+- [Eirepolitic Data Pipeline](/projects/eirepolitic-data-pipeline/) — data ingestion, AWS transformation/storage, and Instagram publishing pipeline.
+- [Overlord](/projects/overlord/) — active development and production automation/orchestration project.
+- [BB Competitor Prices](/projects/bb-comp-prices/) — competitor-price matching/scraping project.
+- [Degenerate Investigator](/projects/degenerate-investigator/) — MMA analysis/investigation project.
 
 # Migration status
 
