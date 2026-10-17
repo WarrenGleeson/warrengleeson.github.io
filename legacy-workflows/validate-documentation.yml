@@ -1,0 +1,67 @@
+name: Validate documentation
+
+on:
+  pull_request:
+    paths:
+      - "_docs/**"
+      - "docs/**"
+      - "assets/**"
+      - "_layouts/**"
+      - "_includes/**"
+      - "_data/**"
+      - "_templates/**"
+      - "scripts/validate_docs.py"
+      - "scripts/test_sly_lambda_lifecycle.py"
+      - ".github/workflows/validate-documentation.yml"
+      - "DOCUMENTATION_STANDARD.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install validator dependency
+        run: python -m pip install --disable-pip-version-check PyYAML==6.0.2
+
+      - name: Validate documentation
+        run: python scripts/validate_docs.py
+
+      - name: Install Sly Director GitHub MCP dependencies
+        run: python -m pip install --disable-pip-version-check -r assets/sly-director/github-mcp-source/requirements.txt
+
+      - name: Import-check Sly Director GitHub MCP dependencies
+        run: python -c "import mcp, mangum, httpx, jwt, nacl, pydantic"
+
+      - name: Import-check Sly Director GitHub MCP application
+        env:
+          GITHUB_OWNER: example-owner
+          GITHUB_TOKEN: github_pat_example
+          PUBLIC_MCP_URL: https://example.lambda-url.us-east-2.on.aws/mcp
+          AUTHKIT_ISSUER: https://example.authkit.app
+          DEFAULT_BASE_BRANCH: main
+          BRANCH_PREFIX: sly/
+        run: PYTHONPATH=assets/sly-director/github-mcp-source python -c "from src import app; from src import lambda_entry"
+
+      - name: Test Sly Director Lambda MCP lifecycle
+        env:
+          GITHUB_OWNER: example-owner
+          GITHUB_TOKEN: github_pat_example
+          PUBLIC_MCP_URL: https://example.lambda-url.us-east-2.on.aws/mcp
+          AUTHKIT_ISSUER: https://example.authkit.app
+          DEFAULT_BASE_BRANCH: main
+          BRANCH_PREFIX: sly/
+        run: PYTHONPATH=assets/sly-director/github-mcp-source python scripts/test_sly_lambda_lifecycle.py
+
+      - name: Syntax-check Sly Director GitHub MCP source
+        run: python -m compileall -q assets/sly-director/github-mcp-source/src

@@ -1,4 +1,21 @@
-title: Warren Gleeson
- description: Project documentation and portfolio
- theme: minima
- repository: warrengleeson/warrengleeson.github.io
+title: Eire Politic
+theme: jekyll-theme-cayman
+description: Technical documentation for Eire Politic repositories, systems, data, infrastructure, and High Director-assisted development
+
+collections:
+  docs:
+    output: true
+    permalink: /docs/:path/
+
+defaults:
+  - scope:
+      path: ""
+      type: docs
+    values:
+      layout: docs
+      visibility: public
+
+header_pages:
+  - docs/index.md
+  - articles.md
+  - content.md
