@@ -1,0 +1,72 @@
+---
+layout: default
+---
+
+<div class="docs-shell">
+  <aside class="docs-sidebar" aria-label="Documentation navigation">
+    {% include docs-nav.html %}
+  </aside>
+
+  <article class="docs-content">
+    {% assign current_section = site.data.docs_sections | where: 'id', page.section | first %}
+    <nav class="docs-breadcrumb" aria-label="Breadcrumb">
+      <a href="{{ '/docs/' | relative_url }}">Documentation</a>
+      {% if current_section %}<span aria-hidden="true">/</span><a href="{{ '/docs/' | append: current_section.id | append: '/' | relative_url }}">{{ current_section.title }}</a>{% endif %}
+      {% if page.collection == 'docs' %}<span aria-hidden="true">/</span><span aria-current="page">{{ page.title }}</span>{% endif %}
+    </nav>
+
+    <header class="docs-page-header">
+      <div>
+        <h1>{{ page.title }}</h1>
+        {% if page.summary %}<p class="docs-summary">{{ page.summary }}</p>{% endif %}
+      </div>
+      {% if page.status %}<span class="status-badge status-{{ page.status }}">{{ page.status }}</span>{% endif %}
+    </header>
+
+    {% if page.collection == 'docs' %}
+    <dl class="docs-metadata">
+      {% if page.repository %}<div><dt>Repository</dt><dd><code>{{ page.repository }}</code></dd></div>{% endif %}
+      {% if page.doc_type %}<div><dt>Type</dt><dd>{{ page.doc_type }}</dd></div>{% endif %}
+      {% if page.updated %}<div><dt>Updated</dt><dd>{{ page.updated | date: '%Y-%m-%d' }}</dd></div>{% endif %}
+      {% if page.last_verified %}<div><dt>Verified</dt><dd>{{ page.last_verified | date: '%Y-%m-%d' }}</dd></div>{% endif %}
+    </dl>
+    {% endif %}
+
+    {% if page.status == 'archived' %}
+    <aside class="callout callout-warning" aria-label="Archive notice">
+      <strong>Archived documentation.</strong>
+      {% if page.archive_reason %} {{ page.archive_reason }}{% endif %}
+      {% if page.superseded_by %} Replaced by <a href="{{ page.superseded_by | relative_url }}">newer documentation</a>.{% endif %}
+    </aside>
+    {% endif %}
+
+    <div class="docs-body">{{ content }}</div>
+
+    {% if page.collection == 'docs' %}
+      {% assign related_repository_docs = site.docs | where: 'repository', page.repository | where_exp: 'doc', 'doc.url != page.url' | where_exp: 'doc', "doc.visibility != 'private'" | sort: 'title' %}
+      {% if page.related or page.repository and related_repository_docs.size > 0 %}
+      <section class="related-docs" aria-labelledby="related-docs-title">
+        <h2 id="related-docs-title">Related documentation</h2>
+        <ul>
+          {% if page.related %}
+            {% for related_url in page.related %}
+              {% assign related_doc = site.docs | where: 'url', related_url | first %}
+              <li><a href="{{ related_url | relative_url }}">{% if related_doc %}{{ related_doc.title }}{% else %}{{ related_url }}{% endif %}</a></li>
+            {% endfor %}
+          {% endif %}
+          {% if page.repository %}
+            {% for doc in related_repository_docs limit: 6 %}
+              <li><a href="{{ doc.url | relative_url }}">{{ doc.title }}</a></li>
+            {% endfor %}
+          {% endif %}
+        </ul>
+      </section>
+      {% endif %}
+    {% endif %}
+  </article>
+
+  <aside class="docs-toc" aria-label="On this page">
+    <strong>On this page</strong>
+    <nav id="page-toc"></nav>
+  </aside>
+</div>
