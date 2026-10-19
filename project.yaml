@@ -1,0 +1,7 @@
+schema_version: 1
+name: warrengleeson.github.io
+status: active
+visibility: public
+summary: Public documentation and portfolio presentation layer for WarrenGleeson repositories and projects.
+docs_publish: true
+portfolio_publish: false
