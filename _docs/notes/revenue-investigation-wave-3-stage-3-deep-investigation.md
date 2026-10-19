@@ -1,6 +1,6 @@
 ---
 title: Revenue Investigation — Wave 3 Stage 3 Deep Investigation
-summary: Deep investigation of the two Wave 3 survivors: recurring mystery-enquiry monitoring and EDI-lite order translation.
+summary: "Deep investigation of the two Wave 3 survivors: recurring mystery-enquiry monitoring and EDI-lite order translation."
 section: notes
 doc_type: note
 status: active
