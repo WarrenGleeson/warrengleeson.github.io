@@ -1,5 +1,1 @@
-Documentation validation failed with 1 error(s):
-- _docs/notes/revenue-investigation-wave-3-stage-3-deep-investigation.md: mapping values are not allowed here
-  in "<unicode string>", line 3, column 56:
-     ... tion of the two Wave 3 survivors: recurring mystery-enquiry moni ... 
-                                         ^
+Documentation validation passed for 196 document(s).
