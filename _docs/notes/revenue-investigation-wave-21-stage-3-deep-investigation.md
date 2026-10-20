@@ -18,7 +18,7 @@ tags: [revenue-investigation, research, wave-21, deep-investigation, automotive]
 ## 1. Ontario estimate / authorization / final-invoice QA preflight
 
 ### Problem
-Ontario repair shops have deterministic consumer-protection obligations around estimates, customer authorization and final invoices. The shop generally needs a written estimate or an authorized maximum, must preserve authorization evidence, and cannot exceed a written estimate by more than 10% without appropriate authorization. Final invoices also require specific information.
+Ontario repair shops have deterministic consumer-protection obligations around estimates, customer authorization and final invoices. Shops generally need a written estimate or an authorized maximum, must preserve authorization evidence, and cannot exceed a written estimate by more than 10% without appropriate authorization. Final invoices also require specific information.
 
 ### Product
 A preflight/audit utility for shops that already create estimates and invoices elsewhere:
@@ -28,115 +28,112 @@ A preflight/audit utility for shops that already create estimates and invoices e
 - identify invoice lines not clearly present in the authorized work set;
 - check recorded phone/non-written authorization fields;
 - flag missing odometer/vehicle/business information;
-- produce a review-only compliance checklist with source references.
+- produce a review-only checklist with source references.
 
 The tool does not give legal advice or determine whether a customer dispute will succeed.
 
 ### Distribution
-Ontario repair-shop search, bookkeeping/shop consultants, independent garages and body shops that use generic invoicing/accounting or older shop systems.
+Ontario repair-shop search, automotive bookkeepers/shop consultants, independent garages and body shops using generic invoicing/accounting or older shop systems.
 
 ### Monetization hypothesis
-Free sample/single-document check; CA$5–10 per completed preflight; CA$15–30/month for recurring small-shop usage.
+Free sample/single-document check; CA$5–10 per preflight; CA$15–30/month recurring small-shop usage.
 
 ### Competition
-Current shop-management platforms connect estimates, authorization, repair orders and invoices, but the current review did not identify a focused independent Ontario-specific checker for shops that want to audit existing documents without replacing their workflow.
+Current shop-management platforms connect estimates, authorizations and invoices, but the current review did not identify a focused independent Ontario-specific checker for shops that want to audit existing documents without replacing their workflow.
 
 ### Risk
-Legal sensitivity and document variability. The product must use official rule references and conservative deterministic checks only.
+Legal sensitivity and document variability. Only deterministic checks against official requirements should be presented as definite findings.
 
 ### Verdict
 **Advance.** Strongest Wave 21 concept.
 
 ---
 
-## 2. Small-shop warranty claim evidence preflight
+## 2. Technician clocked-time vs billed-labor audit
 
 ### Problem
-Warranty recovery is mature in fleets/dealers, but small independent shops can still lose recoverable money because a failed part, purchase date, mileage, serial/part number, labor record, supplier invoice or return/core evidence is missing when the warranty claim is prepared.
+Payroll clock time, job-clock time and customer-billed/flat-rate hours are different datasets. Shops using separate time-clock, shop-management and accounting systems can struggle to explain weak labor recovery, overtime, missing technician attribution or jobs with unusual billed-vs-worked variance.
 
 ### Product
-A supplier/manufacturer-neutral evidence preflight:
-- repair order/work order;
-- supplier invoice/part purchase date;
-- failed-part number/serial where applicable;
-- vehicle/equipment VIN/serial and mileage/hours;
-- removal/replacement date;
-- labor evidence;
-- photos/test result where user's warranty process expects them;
-- return/core/reference number;
-- reimbursement/status tracking.
-
-The user configures the expected evidence for each supplier/warranty program; the tool does not decide eligibility.
-
-### Distribution
-Independent repair shops, heavy-equipment service companies, parts distributors and shop bookkeepers.
-
-### Monetization hypothesis
-CA$5–15 per claim preflight or CA$15–35/month recurring small-shop plan.
-
-### Competition
-Enterprise fleet warranty products automate full recovery, but they target integrated maintenance fleets. The surviving wedge is a lightweight evidence-readiness layer for smaller repair operations that do not have enterprise warranty software.
-
-### Risk
-Manufacturer/supplier rules vary widely, which limits automation unless users maintain their own program checklists.
-
-### Verdict
-**Advance cautiously.** Clear money-recovery pain with moderate rule-maintenance burden.
-
----
-
-## 3. Technician clocked-time vs billed-labor audit
-
-### Problem
-A technician's payroll clock time, job-clock time and customer-billed/flat-rate hours are different concepts. Shops using separate time-clock, shop-management and accounting systems can struggle to see where labor profitability or payroll anomalies are coming from.
-
-### Product
-Upload technician time-clock export plus repair-order/invoice labor export. Normalize by technician/date/job and report:
+Upload technician time-clock export plus repair-order/invoice labor export, optionally job-clock data. Normalize by technician/date/job and report:
 - paid/clocked hours with unusually low billed hours;
-- billed hours with no matching job-time record where one is expected;
+- billed hours with no matching job-time record where expected;
 - overtime-heavy periods with weak billed-hour recovery;
 - job-clock vs customer-billed variance;
 - missing technician attribution;
-- recurring non-billable gap categories supplied by the user.
+- user-defined non-billable categories.
 
-The product does not calculate legal payroll entitlement or recommend wage changes.
+The product does not calculate legal payroll entitlement or recommend compensation changes.
 
 ### Distribution
-Independent repair shops, automotive bookkeepers/controllers and search around technician efficiency/productivity reconciliation.
+Independent repair shops, automotive bookkeepers/controllers and search around flagged vs clocked vs billed technician hours.
 
 ### Monetization hypothesis
 CA$15–30 per month-end audit or CA$20–40/month recurring shop plan.
 
 ### Competition
-Modern shop systems can already separate clocked, assigned and billed hours internally. The niche is an independent reconciliation layer for shops with disconnected systems or outsourced payroll/accounting.
+Modern shop systems report these metrics internally, but the niche remains for disconnected shops and outsourced bookkeeping/accounting workflows.
 
 ### Risk
-Small market once shops consolidate onto modern integrated systems. Labor/payroll interpretation must stay out of scope.
+Transitional market as more shops move to integrated systems; payroll/labor-law interpretation must remain out of scope.
 
 ### Verdict
-**Advance cautiously.** Useful financial-control tool, but transitional rather than durable.
+**Advance cautiously.** Clear financial-control pain, moderate durability.
+
+---
+
+## 3. Outsourced / sublet invoice vs customer billing audit
+
+### Problem
+Independent repair shops frequently outsource specialist work such as machining, alignment, glass, towing, programming, sublet body/mechanical work or mobile diagnostics. The vendor invoice, customer authorization, markup policy and final customer invoice may live in different systems. Margin can leak when the vendor cost is not passed through, markup is wrong, or a sublet charge appears without matching authorization.
+
+### Product
+Upload sublet/vendor invoices plus repair-order/customer invoice exports and optionally authorization evidence. The checker links by RO/job/date/vendor and flags:
+- vendor invoice not billed to customer;
+- billed sublet line with no vendor cost;
+- cost/markup outside configured policy;
+- vendor amount changed after estimate;
+- duplicate vendor charge;
+- customer sublet line not clearly linked to authorized work.
+
+It does not determine whether a markup is legally permissible or commercially appropriate.
+
+### Distribution
+Independent automotive/body/heavy-equipment shops, shop bookkeepers and fractional controllers.
+
+### Monetization hypothesis
+CA$10–25 per monthly audit or CA$15–35/month recurring small-shop plan.
+
+### Competition
+Shop-management systems can record sublet work, but the current review did not surface a strong independent upload-and-audit product specifically for reconciling outside-work cost, authorization and customer billing across disconnected systems.
+
+### Risk
+Matching vendor invoices to repair-order lines can be messy. The opportunity shrinks for shops already operating a tightly integrated management/accounting stack.
+
+### Verdict
+**Advance cautiously.** Narrow but directly tied to gross-margin leakage.
 
 ---
 
 ## Dropped after deeper review
 
-### Parts/core/credit leakage audit
-Purpose-built auto-body parts-return tools and automotive AP products already track returns, credits and vendor invoice mismatches.
+### Small-shop warranty claim evidence preflight
+Canadian mechanic-shop software now exists with warranty-claim submission as a core workflow, while fleet warranty-recovery services independently identify historical reimbursement opportunities. The gap is no longer clean enough for the top three.
 
-### Repair-order vs supplier-invoice parts variance
-Current collision/shop systems increasingly provide three-way matching of PO, receipt and vendor invoice.
+### Parts/core/credit leakage audit
+Current purpose-built tools already track open cores, return windows, vendor credits and missing money trails.
 
 ### Rental damage/condition reconciliation
-Current rental platforms and standalone condition-report products already capture timestamped photos, customer signatures and return damage.
+Current rental platforms and standalone condition-report products already capture before/after evidence, signatures and damage charges.
 
 ### Calibration certificate / serialized equipment tracking
-Current NDT/equipment platforms already manage calibration certificates, serial numbers, status and dispatch conflicts.
+Current equipment-maintenance and calibration systems already cover asset serials, certificates, maintenance status and dispatch conflicts.
 
 ## Stage 3 ranking
 
 1. Ontario estimate / authorization / final-invoice QA preflight
-2. Small-shop warranty claim evidence preflight
-3. Technician clocked-time vs billed-labor audit
+2. Technician clocked-time vs billed-labor audit
+3. Outsourced / sublet invoice vs customer billing audit
 
 ## Advance to Stage 4
 
