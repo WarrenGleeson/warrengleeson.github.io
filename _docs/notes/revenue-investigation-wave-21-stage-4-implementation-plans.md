@@ -1,6 +1,6 @@
 ---
 title: Revenue Investigation — Wave 21 Stage 4 Implementation Plans
-summary: Stage 4 implementation, validation and acquisition plans for the three strongest automotive/equipment-repair concepts. No Stage 5 development or testing is authorized here.
+summary: Stage 4 implementation, validation and acquisition plans for the three strongest automotive/fleet/equipment concepts. No Stage 5 development or testing is authorized here.
 section: notes
 doc_type: note
 status: active
@@ -17,149 +17,141 @@ tags: [revenue-investigation, research, wave-21, stage-4, automotive]
 
 Planning only. No customer testing, ads, payments, outreach campaigns or product development should be executed from this chat.
 
-## Rank 1 — Ontario estimate / authorization / final-invoice QA preflight
+## Rank 1 — Parts/labor warranty reimbursement evidence preflight
 
 ### Core promise
-Before a repair invoice goes to the customer, check whether the shop's estimate, authorization evidence and final invoice are internally consistent with Ontario's administrative repair requirements.
+Before an independent repair shop submits a supplier/manufacturer warranty claim, check whether the reimbursement packet contains the evidence that program expects.
 
 ### MVP plan
-- Upload estimate/work authorization/final invoice PDFs or structured exports.
-- Extract customer, shop, vehicle, VIN/licence, odometer, estimate amount, line items, authorization data and final total.
-- Check required estimate/invoice fields.
-- Compare final amount with written estimate or authorized maximum.
-- Flag charges/work not visibly linked to the authorized work set.
-- Check non-written authorization records for name/contact/date/time where present.
-- Flag missing required invoice statements/fields against a versioned Ontario ruleset.
-- Produce a review-only evidence checklist with exact source references.
-- Never provide legal advice or claim the documents are legally compliant.
+- User selects or creates warranty-program template.
+- Upload original supplier invoice, repair order, replacement invoice, photos/testing evidence and RMA/authorization where applicable.
+- Extract part number, serial/date code, vehicle/unit reference, dates, labour hours/rate and claim/reference identifiers.
+- Flag missing source invoice, mismatched part number, missing failed-part evidence, missing authorization, inconsistent vehicle/job reference, incomplete labour evidence and approaching submission deadline.
+- User-confirmed checklist for supplier-specific requirements.
+- Export a clean claim-evidence index.
+- Never determine warranty entitlement or submit claims automatically.
 
 ### Likely stack
 - Browser upload utility.
-- Python/PDF extraction and deterministic rule engine.
-- Manual-entry fallback for low-confidence fields.
-- Versioned Ontario repair-rule pack.
+- Python document extraction + deterministic rules.
+- Saved supplier/program templates for repeat users.
 
 ### Pricing hypothesis
-- Free: one sample/simple preflight.
-- CA$5–10: per repair-document preflight.
-- CA$15–30/month: recurring independent-shop plan.
+- Free: one simple claim preflight.
+- CA$5–15 per completed claim pack.
+- CA$15–30/month for recurring repair shops.
 
 ### Semi-automated acquisition pipeline
-1. Monitor Ontario's official repair-business guidance and regulations.
-2. Publish exact-intent pages around estimate, authorization and invoice requirements.
-3. Free checklist/sample checker drives inbound traffic.
-4. Demonstrate with synthetic repair documents only.
-5. Partner channel: automotive bookkeepers, shop consultants and independent-shop associations.
-6. Track opt-in recurring missing-field/error categories to improve deterministic rules.
-7. Any future outreach remains low-volume/manual-approved; search/referrals are preferred.
-8. Route multi-location/consultant demand to the owner.
+1. Publish search pages around parts warranty claim documentation, labour reimbursement and denied claims.
+2. Free claim checklist/preflight drives inbound acquisition.
+3. Partner channel: automotive bookkeepers, shop consultants and parts distributors willing to publish their evidence checklist.
+4. Use synthetic claim packets for demos.
+5. Track opt-in denial/missing-document categories to prioritize supplier templates.
+6. Future validation should focus on independent auto, diesel, RV, marine and equipment-repair shops rather than franchise dealers with OEM systems.
+7. Any outreach remains low-volume/manual-approved and secondary to search/partner referrals.
+8. Route multi-supplier/high-volume warranty users to the owner.
 
 ### Main risks
-- Legal sensitivity and rule maintenance.
-- Modern shop platforms already connect these records well.
-- Document extraction variability.
+- Supplier warranty requirements vary widely.
+- Parts distributors may improve native claim workflows.
+- Document extraction must stay confidence-scored.
 
 ### Stage 4 verdict
 **Highest-priority Wave 21 candidate.**
 
 ---
 
-## Rank 2 — Technician clocked-time vs billed-labor audit
+## Rank 2 — Small-fleet downtime / repair-cost reconciliation audit
 
 ### Core promise
-At month-end, reconcile actual technician time with job-clock and customer-billed labor so an independent shop can see where labor recovery is leaking across disconnected systems.
+Help small commercial fleets tie repair, towing and replacement-rental costs back to the same breakdown event and find mismatched or unnecessary charges without adopting a full fleet platform.
 
 ### MVP plan
-- Import payroll/time-clock export.
-- Import repair-order/invoice labor export.
-- Optional job-clock export.
-- Map technicians/jobs/dates.
-- Report paid hours, job hours and billed hours side by side.
-- Flag missing technician attribution, unusually low labor recovery, billed-without-job-time candidates and high overtime/low-recovery periods.
-- Allow user-defined non-billable categories.
-- Export a controller/bookkeeper review worksheet.
-- Do not calculate payroll compliance or recommend compensation plans.
+- Import fleet unit list plus repair invoices, tow bills and rental/replacement-vehicle invoices.
+- Normalize VIN/unit number/date/odometer references.
+- Create breakdown/repair event groups.
+- Flag rental days outside downtime period, wrong-unit invoices, duplicate charge candidates, mismatched repair/rental completion dates, missing authorization/reference and possible reimbursement/warranty follow-up.
+- Export monthly review worksheet with source references.
+- No automated dispute submission.
 
 ### Likely stack
-- Local/browser CSV/XLSX utility.
-- Deterministic matching and variance rules.
-- Saved mappings for repeat monthly audits.
+- Browser/CSV/PDF audit tool.
+- Python matching/reconciliation engine.
+- Manual-review queue for ambiguous event matches.
 
 ### Pricing hypothesis
-- CA$15–30 per month-end audit.
-- CA$20–40/month recurring plan.
+- CA$15–30 per monthly audit.
+- CA$20–40/month recurring small-fleet plan.
 
 ### Semi-automated acquisition pipeline
-1. Publish content around clocked vs flagged vs billed technician hours.
-2. Free sample reconciliation template/checker drives inbound discovery.
-3. Partner with automotive bookkeepers/fractional controllers.
-4. Target shops running separate payroll/time-clock and shop systems.
-5. Demonstrate with synthetic time and repair-order exports.
-6. Track opt-in mismatch categories to improve mappings.
-7. Keep future outreach manual and partner-led.
-8. Route multi-shop/controller demand to the owner.
+1. Publish search content around fleet downtime cost, rental replacement charges and outsourced repair reconciliation.
+2. Sample synthetic monthly audit serves as the education funnel.
+3. Partner channel: fleet bookkeepers, fractional controllers, trades-business accountants and vehicle-leasing brokers.
+4. Focus on 5–100 vehicle fleets using external shops and accounting exports.
+5. Track opt-in mismatch categories to prioritize supported document formats.
+6. Future validation uses customer-supplied redacted files only with explicit handling rules.
+7. Keep outreach partner/referral-led and manually approved.
+8. Route recurring multi-fleet/bookkeeper demand to the owner.
 
 ### Main risks
-- Modern integrated shop systems already report these metrics.
-- Payroll/labor-law boundaries require explicit scope limits.
-- Transitional opportunity as shops consolidate systems.
+- Messy source documents and event matching.
+- Mature fleet platforms can substitute for larger fleets.
+- Value depends on finding enough dollars, not merely admin errors.
 
 ### Stage 4 verdict
-**Useful financial-control utility with moderate durability.**
+**Strong financial-audit niche for small outsourced fleets.**
 
 ---
 
-## Rank 3 — Outsourced / sublet invoice vs customer billing audit
+## Rank 3 — Serialized replacement-component consistency audit
 
 ### Core promise
-Show whether outsourced repair work was fully and correctly passed through from vendor invoice to customer billing without losing authorized margin.
+Give specialty repair shops and small equipment fleets a clean history of which serialized/high-value component was installed on which asset, without forcing adoption of a full MRO system.
 
 ### MVP plan
-- Import vendor/sublet invoices.
-- Import repair-order/customer invoice export.
-- Optional authorization/estimate export.
-- Match by RO/job/date/vendor with manual confirmation for low-confidence links.
-- Flag vendor cost not billed to customer, customer charge with no vendor cost, configured markup variance, changed vendor cost after estimate, duplicate vendor charge and unclear authorization linkage.
-- Export a month-end sublet reconciliation worksheet.
-- Do not determine lawful markup or contract terms.
+- Import asset/unit register and repair-order/invoice history.
+- Extract component part/model/serial where present.
+- Link removal/replacement events to asset/unit/date/odometer or meter.
+- Flag duplicate serials, component assigned to multiple assets, missing removal history, mismatched part/model, missing warranty-start date and missing calibration/coding evidence where the user's own procedure requires it.
+- Export component-history record per asset.
+- Avoid regulated aviation/medical-device contexts initially.
 
 ### Likely stack
-- Browser/local CSV/PDF utility.
-- Python extraction and matching engine.
-- Configurable markup/reference rules.
-- Saved vendor/job mappings for repeat use.
+- CSV/PDF import utility.
+- Python record-linkage engine.
+- Spreadsheet-style review interface.
 
 ### Pricing hypothesis
 - CA$10–25 per audit.
-- CA$15–35/month recurring shop plan.
+- CA$15–35/month recurring specialty-shop/fleet plan.
 
 ### Semi-automated acquisition pipeline
-1. Publish search content around sublet repair markup leakage and outsourced-work reconciliation.
-2. Offer a synthetic sample audit as the acquisition funnel.
-3. Partner channel: automotive/body-shop bookkeepers and fractional controllers.
-4. Focus on shops using disconnected accounting/shop/vendor workflows.
-5. Track opt-in matching problems to prioritize supported export formats.
-6. Future validation uses customer-supplied redacted documents only with explicit handling rules.
-7. Outreach remains low-volume/manual-approved; bookkeeping referrals/search are preferred.
-8. Route recurring multi-shop/controller demand to the owner.
+1. Publish content around serialized engines/transmissions/modules/equipment-component records.
+2. Free sample audit/template demonstrates duplicate/missing serial problems.
+3. Target marine, RV, commercial equipment and specialty repair consultants via search/referrals.
+4. Keep initial imports simple: CSV plus invoice PDFs.
+5. Track opt-in component categories to decide which verticals deserve dedicated templates.
+6. Future validation should avoid heavily regulated MRO sectors until domain-specific obligations are researched separately.
+7. Any outreach remains manual/partner-led.
+8. Route recurring asset-history users to the owner.
 
 ### Main risks
-- Document matching complexity.
-- Integrated shop systems can reduce the problem.
-- Pricing power may be limited unless audits consistently recover measurable margin.
+- Narrow market.
+- Serial/model extraction can be unreliable.
+- Asset-management/MRO platforms already solve this for larger operators.
 
 ### Stage 4 verdict
-**Narrow but financially legible opportunity; best positioned as a month-end audit utility.**
+**Viable specialty-repair utility, but narrower than ranks 1–2.**
 
 ## Wave 21 conclusion
 
 Top three:
 
-1. Ontario estimate / authorization / final-invoice QA preflight
-2. Technician clocked-time vs billed-labor audit
-3. Outsourced / sublet invoice vs customer billing audit
+1. Parts/labor warranty reimbursement evidence preflight
+2. Small-fleet downtime / repair-cost reconciliation audit
+3. Serialized replacement-component consistency audit
 
-Wave 21 confirms that automotive and equipment-rental operations are heavily software-served. The surviving opportunities are independent compliance/evidence and financial-reconciliation layers that work beside existing shop systems rather than replacing them.
+Wave 21 confirms that automotive/rental software is crowded at the shop-management, returns, inspection and service-history layers, but narrower evidence and reconciliation gaps remain around warranty reimbursement and outsourced fleet costs.
 
 ## Verification record
 
