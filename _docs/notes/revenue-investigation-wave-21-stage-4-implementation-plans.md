@@ -28,16 +28,16 @@ Before a repair invoice goes to the customer, check whether the shop's estimate,
 - Check required estimate/invoice fields.
 - Compare final amount with written estimate or authorized maximum.
 - Flag charges/work not visibly linked to the authorized work set.
-- Check non-written authorization record for name/contact/date/time where present.
-- Flag missing required statement/invoice fields based on a versioned Ontario ruleset.
+- Check non-written authorization records for name/contact/date/time where present.
+- Flag missing required invoice statements/fields against a versioned Ontario ruleset.
 - Produce a review-only evidence checklist with exact source references.
 - Never provide legal advice or claim the documents are legally compliant.
 
 ### Likely stack
 - Browser upload utility.
 - Python/PDF extraction and deterministic rule engine.
-- Local/manual-entry fallback for low-confidence fields.
-- Versioned Ontario Consumer Protection Act / regulation rule pack.
+- Manual-entry fallback for low-confidence fields.
+- Versioned Ontario repair-rule pack.
 
 ### Pricing hypothesis
 - Free: one sample/simple preflight.
@@ -45,12 +45,12 @@ Before a repair invoice goes to the customer, check whether the shop's estimate,
 - CA$15–30/month: recurring independent-shop plan.
 
 ### Semi-automated acquisition pipeline
-1. Monitor Ontario's official repair-business guidance and regulations for changes.
+1. Monitor Ontario's official repair-business guidance and regulations.
 2. Publish exact-intent pages around estimate, authorization and invoice requirements.
 3. Free checklist/sample checker drives inbound traffic.
 4. Demonstrate with synthetic repair documents only.
 5. Partner channel: automotive bookkeepers, shop consultants and independent-shop associations.
-6. Track opt-in recurring missing-field/error categories to improve rules.
+6. Track opt-in recurring missing-field/error categories to improve deterministic rules.
 7. Any future outreach remains low-volume/manual-approved; search/referrals are preferred.
 8. Route multi-location/consultant demand to the owner.
 
@@ -64,52 +64,7 @@ Before a repair invoice goes to the customer, check whether the shop's estimate,
 
 ---
 
-## Rank 2 — Small-shop warranty claim evidence preflight
-
-### Core promise
-Help independent automotive/heavy-equipment repair shops catch missing warranty evidence before submitting a supplier/manufacturer claim.
-
-### MVP plan
-- User creates/configures warranty-program checklist.
-- Upload repair order, supplier invoice and supporting documents.
-- Record failed/replacement part numbers and serials where applicable.
-- Record VIN/equipment serial, mileage/hours, purchase/install/remove dates and labor evidence.
-- Track core/failed-part return requirements/reference numbers.
-- Flag missing documents, date/serial mismatches and incomplete return evidence.
-- Record reimbursement/status after submission.
-- No warranty-eligibility determination.
-
-### Likely stack
-- Browser/file utility.
-- Configurable checklist/rules engine.
-- PDF/image metadata extraction.
-- Simple recurring claim workspace.
-
-### Pricing hypothesis
-- CA$5–15 per claim preflight.
-- CA$15–35/month recurring shop plan.
-
-### Semi-automated acquisition pipeline
-1. Publish practical content around failed warranty claims and missing evidence.
-2. Free generic claim checklist is the inbound funnel.
-3. Focus initial validation on parts distributors/repair shops with repeat supplier warranties rather than OEM dealer warranty departments.
-4. Demonstrate using synthetic claim packs.
-5. Partner channel: automotive/heavy-equipment bookkeepers and parts distributors.
-6. Track opt-in missing-evidence categories to determine which warranty programs justify templates.
-7. Any direct outreach remains manual and secondary to search/partner referrals.
-8. Route recurring/multi-program users to the owner.
-
-### Main risks
-- Warranty requirements vary by supplier/manufacturer.
-- Enterprise/fleet tools already automate recovery.
-- Users must maintain program-specific checklists.
-
-### Stage 4 verdict
-**Good money-recovery niche if targeted at smaller disconnected shops.**
-
----
-
-## Rank 3 — Technician clocked-time vs billed-labor audit
+## Rank 2 — Technician clocked-time vs billed-labor audit
 
 ### Core promise
 At month-end, reconcile actual technician time with job-clock and customer-billed labor so an independent shop can see where labor recovery is leaking across disconnected systems.
@@ -121,6 +76,7 @@ At month-end, reconcile actual technician time with job-clock and customer-bille
 - Map technicians/jobs/dates.
 - Report paid hours, job hours and billed hours side by side.
 - Flag missing technician attribution, unusually low labor recovery, billed-without-job-time candidates and high overtime/low-recovery periods.
+- Allow user-defined non-billable categories.
 - Export a controller/bookkeeper review worksheet.
 - Do not calculate payroll compliance or recommend compensation plans.
 
@@ -149,17 +105,61 @@ At month-end, reconcile actual technician time with job-clock and customer-bille
 - Transitional opportunity as shops consolidate systems.
 
 ### Stage 4 verdict
-**Useful financial-control utility, but less durable than ranks 1–2.**
+**Useful financial-control utility with moderate durability.**
+
+---
+
+## Rank 3 — Outsourced / sublet invoice vs customer billing audit
+
+### Core promise
+Show whether outsourced repair work was fully and correctly passed through from vendor invoice to customer billing without losing authorized margin.
+
+### MVP plan
+- Import vendor/sublet invoices.
+- Import repair-order/customer invoice export.
+- Optional authorization/estimate export.
+- Match by RO/job/date/vendor with manual confirmation for low-confidence links.
+- Flag vendor cost not billed to customer, customer charge with no vendor cost, configured markup variance, changed vendor cost after estimate, duplicate vendor charge and unclear authorization linkage.
+- Export a month-end sublet reconciliation worksheet.
+- Do not determine lawful markup or contract terms.
+
+### Likely stack
+- Browser/local CSV/PDF utility.
+- Python extraction and matching engine.
+- Configurable markup/reference rules.
+- Saved vendor/job mappings for repeat use.
+
+### Pricing hypothesis
+- CA$10–25 per audit.
+- CA$15–35/month recurring shop plan.
+
+### Semi-automated acquisition pipeline
+1. Publish search content around sublet repair markup leakage and outsourced-work reconciliation.
+2. Offer a synthetic sample audit as the acquisition funnel.
+3. Partner channel: automotive/body-shop bookkeepers and fractional controllers.
+4. Focus on shops using disconnected accounting/shop/vendor workflows.
+5. Track opt-in matching problems to prioritize supported export formats.
+6. Future validation uses customer-supplied redacted documents only with explicit handling rules.
+7. Outreach remains low-volume/manual-approved; bookkeeping referrals/search are preferred.
+8. Route recurring multi-shop/controller demand to the owner.
+
+### Main risks
+- Document matching complexity.
+- Integrated shop systems can reduce the problem.
+- Pricing power may be limited unless audits consistently recover measurable margin.
+
+### Stage 4 verdict
+**Narrow but financially legible opportunity; best positioned as a month-end audit utility.**
 
 ## Wave 21 conclusion
 
 Top three:
 
 1. Ontario estimate / authorization / final-invoice QA preflight
-2. Small-shop warranty claim evidence preflight
-3. Technician clocked-time vs billed-labor audit
+2. Technician clocked-time vs billed-labor audit
+3. Outsourced / sublet invoice vs customer billing audit
 
-Wave 21 confirms that automotive/rental operations are heavily software-served, but smaller opportunities remain in independent compliance/evidence and financial-reconciliation layers that work alongside existing shop systems.
+Wave 21 confirms that automotive and equipment-rental operations are heavily software-served. The surviving opportunities are independent compliance/evidence and financial-reconciliation layers that work beside existing shop systems rather than replacing them.
 
 ## Verification record
 
