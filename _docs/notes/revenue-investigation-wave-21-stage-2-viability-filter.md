@@ -1,6 +1,6 @@
 ---
 title: Revenue Investigation — Wave 21 Stage 2 Viability Filter
-summary: Evidence-based filtering of automotive and equipment repair/rental ideas, emphasizing independent audit/reconciliation workflows rather than full shop or rental platforms.
+summary: Evidence-based filtering of automotive, fleet and equipment ideas, emphasizing warranty evidence, serialized-component consistency and small-fleet reconciliation rather than full shop/rental systems.
 section: notes
 doc_type: note
 status: active
@@ -17,40 +17,39 @@ tags: [revenue-investigation, research, wave-21, viability, automotive]
 
 ## Evidence that changed scoring
 
-- Full Canadian auto-repair software already connects estimates, authorization, repair orders, parts, labor, invoices and payments. Generic shop workflow products are crowded.
-- Ontario repair rules create a deterministic QA niche: shops generally need a compliant written estimate or authorized maximum, authorization records, and a final invoice that does not exceed the estimate by more than 10% without appropriate authorization.
-- Equipment-rental condition/damage evidence is already served by dedicated standalone and platform-integrated products.
-- Core-charge/parts-credit tracking now has exact lightweight products, while automotive AP tools increasingly reconcile repair orders, vendor invoices, statements and credits.
-- Small-shop warranty claims are no longer a clean gap: current Canadian repair software already supports warranty-claim submission, and fleet warranty-recovery services independently audit historical repairs.
-- Technician payroll time, job-clock time and customer-billed labor remain distinct datasets; disconnected shops can still have a month-end reconciliation gap.
-- Outsourced/sublet work creates another narrow reconciliation problem: the shop receives a vendor invoice, passes work through to the customer, and can lose margin when cost, markup, authorization or invoice lines do not reconcile.
+- Full automotive shop-management is mature, with Canadian products already connecting booking, estimates, repair orders, invoices, approvals and payments.
+- Collision estimate scrubbing is also directly served in BC by the Automotive Retailers Association's EstimateScrubber.
+- Core-return/vendor-credit tracking now has multiple dedicated products, including tools aimed specifically at small independent shops.
+- Equipment rental inspection/damage workflows are standard features in current rental-management software.
+- Consumer vehicle service-history/resale-pack apps are also current and competitive.
+- The stronger gaps are independent evidence/reconciliation tools that sit beside existing shop systems: warranty reimbursement, serialized component history, and fleet downtime/repair-cost handoff.
 
 ## Candidate ranking
 
 | Rank | Idea | Score /100 | Decision |
 |---|---|---:|---|
-| 1 | Ontario estimate/authorization/final-invoice QA preflight | 82 | Advance |
-| 2 | Technician clocked-time vs billed-labor audit | 77 | Advance |
-| 3 | Outsourced/sublet invoice vs customer billing audit | 75 | Advance |
-| 4 | Customer-authorized work vs final invoice consistency checker | 74 | Merge into #1 |
-| 5 | Unbilled diagnostic/inspection line inventory | 70 | Hold |
-| 6 | Repair-order vs supplier invoice parts-cost variance | 68 | Hold; current AP tools overlap |
-| 7 | Small-shop warranty claim evidence preflight | 65 | Drop/hold; direct current competition |
-| 8 | Parts/core/credit leakage audit | 63 | Drop; exact current products |
-| 9 | Calibration certificate-to-asset matcher | 61 | Hold; mature asset/calibration systems |
-| 10 | Loaner fuel/mileage return audit | 60 | Hold |
-| 11 | Rental damage evidence reconciliation | 55 | Drop; direct current competition |
-| 12 | Rental off-rent vs billed-through checker | 54 | Drop; rental platforms cover it |
-| 13 | Generic digital vehicle inspection | 48 | Drop; crowded |
-| 14 | Full repair-shop workflow software | 45 | Drop; mature market |
+| 1 | Parts/labor warranty reimbursement evidence preflight | 80 | Advance |
+| 2 | Serialized replacement component history / consistency audit | 78 | Advance |
+| 3 | Fleet downtime vs replacement-rental / repair-cost reconciliation | 76 | Advance |
+| 4 | Sublet invoice vs customer invoice reconciliation | 72 | Advance cautiously |
+| 5 | Fleet repair invoice vs unit/odometer consistency checker | 71 | Advance cautiously |
+| 6 | Warranty denial reason normalizer | 69 | Merge into #1 |
+| 7 | Service-interval proof pack for warranty disputes | 68 | Merge into #1 |
+| 8 | Calibration/coding evidence vs installed module matcher | 67 | Merge into #2 |
+| 9 | Maintenance-history handoff pack | 63 | Hold; consumer apps crowded |
+| 10 | Core return/credit tracker | 55 | Drop; direct competitors |
+| 11 | Parts-return credit audit | 53 | Drop; direct competitors |
+| 12 | Rental damage inspection | 50 | Drop; standard rental feature |
+| 13 | Estimate authorization vs invoice delta | 49 | Drop/hold; shop systems cover it |
+| 14 | Generic auto shop invoicing/management | 42 | Drop; mature market |
 
 ## Stage 3 shortlist
 
-1. Ontario estimate/authorization/final-invoice QA preflight
-2. Technician clocked-time vs billed-labor audit
-3. Outsourced/sublet invoice vs customer billing audit
-4. Unbilled diagnostic/inspection line inventory
-5. Loaner fuel/mileage return audit
+1. Parts/labor warranty reimbursement evidence preflight
+2. Serialized replacement component history / consistency audit
+3. Fleet downtime vs replacement-rental / repair-cost reconciliation
+4. Sublet invoice vs customer invoice reconciliation
+5. Fleet repair invoice vs unit/odometer consistency checker
 
 ## Verification record
 
