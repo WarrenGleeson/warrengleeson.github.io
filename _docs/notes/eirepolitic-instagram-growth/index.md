@@ -74,33 +74,46 @@ Start with measurement, discovery packaging, and profile conversion. Those three
 
 Then investigate low-effort distribution expansion through Reels/repurposing, shares/reposts, topical formats, caption/search optimisation, collaborations, and external traffic.
 
-The 30/60/90-day plan should be updated as evidence accumulates rather than fixed in advance.
+Use the 30/60/90-day programme as the operating layer that decides which experiment runs next, when a treatment should be promoted, and when a tactic should be stopped.
 
 ## How future LLM chats should use this programme
 
 Before proposing implementation in any workstream:
 
 1. Read this page and the relevant workstream page.
-2. Inspect the current repository documentation and live configuration relevant to that workstream.
-3. Prefer repository documentation as the source of truth.
-4. Verify current platform behaviour where Instagram or Meta features may have changed.
-5. Identify missing information that materially affects the plan.
-6. Ask the user only for information that cannot be obtained from connected systems or public sources.
-7. Separate investigation, recommendation, and implementation.
-8. Do not change production systems without explicit approval.
-9. Record conclusions, rejected options, dependencies, and next actions back into the relevant workstream page.
+2. Read the experiment programme if the task affects sequencing or prioritisation.
+3. Inspect the current repository documentation and live configuration relevant to that workstream.
+4. Prefer repository documentation as the source of truth.
+5. Verify current platform behaviour where Instagram or Meta features may have changed.
+6. Identify missing information that materially affects the plan.
+7. Ask the user only for information that cannot be obtained from connected systems or public sources.
+8. Separate investigation, recommendation, and implementation.
+9. Do not change production systems without explicit approval.
+10. Record conclusions, rejected options, dependencies, and next actions back into the relevant workstream page.
 
 ## Programme status
 
+All ten workstreams now contain detailed investigation, experiment, implementation, safeguard, and future-LLM handoff guidance. The next phase is execution, beginning with the foundation items in the 30/60/90-day programme.
+
 | Workstream | Status | Priority |
 |---|---|---|
-| Insights and measurement | Template created | Highest |
-| Profile conversion | Template created | Highest |
-| Discovery hooks and carousel packaging | Template created | Highest |
-| Reels and content repurposing | Template created | High |
-| Captions/search/hashtags/CTA | Template created | Medium |
-| Topical and evergreen content | Template created | High |
-| Sharing/saves/reposts | Template created | High |
-| Distribution/collaborations/ecosystem | Template created | Medium |
-| Cross-platform/external traffic | Template created | Medium |
-| Experiment programme / 30-60-90 plan | Template created | Consolidation layer |
+| Insights and measurement | Detailed plan ready | Highest |
+| Profile conversion | Detailed plan ready | Highest |
+| Discovery hooks and carousel packaging | Detailed plan ready | Highest |
+| Reels and content repurposing | Detailed plan ready | High |
+| Captions/search/hashtags/CTA | Detailed plan ready | Medium |
+| Topical and evergreen content | Detailed plan ready | High |
+| Sharing/saves/reposts | Detailed plan ready | High |
+| Distribution/collaborations/ecosystem | Detailed plan ready | Medium |
+| Cross-platform/external traffic | Detailed plan ready | Medium |
+| Experiment programme / 30-60-90 plan | Detailed operating plan ready | Consolidation layer |
+
+## Next execution step
+
+Begin **Queue 0 — foundation** from the experiment programme:
+
+1. Instagram Insights capability audit.
+2. Profile baseline / recommendation eligibility audit.
+3. Experiment metadata convention.
+
+No production change should occur until the relevant workstream's approval gates are satisfied.
