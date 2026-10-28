@@ -1,6 +1,11 @@
 ---
 title: "EirePolitic Instagram Growth: Insights and Measurement"
+summary: "Detailed plan for creating the analytics feedback loop needed to measure audience acquisition and content performance."
 description: "Detailed plan for creating the analytics feedback loop needed to measure audience acquisition and content performance."
+section: notes
+doc_type: note
+status: active
+updated: 2026-10-27
 group: "Notes"
 order: 61
 ---
