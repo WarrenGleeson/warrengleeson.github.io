@@ -1,6 +1,11 @@
 ---
 title: "EirePolitic Instagram Audience-Growth Programme"
+summary: "Master plan for investigating, testing, and systematising audience growth for the EirePolitic Instagram account."
 description: "Master plan for investigating, testing, and systematising audience growth for the EirePolitic Instagram account."
+section: notes
+doc_type: note
+status: active
+updated: 2026-10-27
 group: "Notes"
 order: 60
 ---
