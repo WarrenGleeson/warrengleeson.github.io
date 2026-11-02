@@ -15,25 +15,23 @@
     <link rel="stylesheet" href="{{ '/assets/css/accessibility.css?v=' | append: site.github.build_revision | relative_url }}" />
     {% if page.url == '/projects/data/irish-politics-data-model/' %}<link rel="stylesheet" href="{{ '/assets/css/data-model.css?v=' | append: site.github.build_revision | relative_url }}" />{% endif %}
   </head>
-  <body>
+  <body class="{% if page.presentation == 'editorial' %}presentation-editorial{% elsif page.collection == 'docs' or page.url contains '/docs/' %}presentation-technical{% endif %}">
     <a class="skip-link" href="#content">Skip to content</a>
     <header class="site-header" role="banner">
       <div class="site-header-inner">
-        <a class="site-brand" href="{{ '/' | relative_url }}" aria-label="Eire Politic home">
-          <span class="site-logo"><img src="{{ '/assets/brand/logo.png' | relative_url }}" alt="" /></span>
-          <span><strong>{{ site.title }}</strong><small>Technical knowledge base</small></span>
+        <a class="site-brand" href="{{ '/' | relative_url }}" aria-label="Warren Gleeson home">
+          <span><strong>Warren Gleeson</strong><small>Data Engineer &amp; Analyst</small></span>
         </a>
         <nav class="primary-nav" aria-label="Primary">
           <a{% if page.url == '/' %} class="active" aria-current="page"{% endif %} href="{{ '/' | relative_url }}">Home</a>
-          <a{% if page.url contains '/docs/' or page.collection == 'docs' %} class="active" aria-current="page"{% endif %} href="{{ '/docs/' | relative_url }}">Documentation</a>
-          <a{% if page.url == '/search/' %} class="active" aria-current="page"{% endif %} href="{{ '/search/' | relative_url }}">Search</a>
-          <a{% if page.url == '/articles/' %} class="active" aria-current="page"{% endif %} href="{{ '/articles/' | relative_url }}">Articles</a>
-          <a{% if page.url == '/content/' %} class="active" aria-current="page"{% endif %} href="{{ '/content/' | relative_url }}">Content</a>
+          <a{% if page.url contains '/portfolio/' %} class="active" aria-current="page"{% endif %} href="{{ '/portfolio/' | relative_url }}">Portfolio</a>
+          <a{% if page.url contains '/docs/' or page.collection == 'docs' or page.url == '/search/' %} class="active" aria-current="page"{% endif %} href="{{ '/docs/' | relative_url }}">Documentation</a>
+          <a{% if page.url contains '/cv/' %} class="active" aria-current="page"{% endif %} href="{{ '/cv/' | relative_url }}">CV</a>
         </nav>
       </div>
     </header>
     <main id="content" class="site-main{% if page.wide == true %} site-main-wide{% endif %}" role="main">{{ content }}</main>
-    <footer class="site-footer"><div class="site-footer-inner"><span>{{ site.title }}</span>{% if site.github.repository_url %}<a href="{{ site.github.repository_url }}">View source on GitHub</a>{% endif %}</div></footer>
+    <footer class="site-footer"><div class="site-footer-inner"><span>Warren Gleeson</span>{% if site.github.repository_url %}<a href="{{ site.github.repository_url }}">View source on GitHub</a>{% endif %}</div></footer>
     <script src="{{ '/assets/js/site.js?v=' | append: site.github.build_revision | relative_url }}" defer></script>
     {% if page.url == '/projects/data/irish-politics-data-model/' %}<script src="{{ '/assets/js/data-model.js?v=' | append: site.github.build_revision | relative_url }}" defer></script>{% endif %}
   </body>
