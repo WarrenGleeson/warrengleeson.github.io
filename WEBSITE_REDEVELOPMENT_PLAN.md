@@ -1,6 +1,6 @@
 # Website Redevelopment Plan
 
-Status: Planning approved; implementation not yet approved
+Status: Stage 1 approved for implementation
 
 Repository: `warrengleeson.github.io`
 
@@ -35,6 +35,31 @@ No separate About page is required; personal/professional introduction belongs o
 - Portfolio pages: spacious, visual, narrative-led, with large screenshots/diagrams and short text sections.
 - Technical documentation: denser, classic documentation layout with persistent left navigation and documentation-only search.
 - Eirepolitic branding must remain contained within Eirepolitic portfolio pages and must not define the general site visual identity.
+
+## Approved Stage 1 Wireframes
+
+### Home
+
+- Global Warren Gleeson header with Portfolio, Documentation, and CV navigation.
+- Hero with professional photo placeholder, name, title, short builder-focused introduction, and primary links.
+- Featured Eirepolitic project block.
+- Selected-work area for future case studies/articles.
+- Minimal footer/contact links.
+
+### Portfolio
+
+- Spacious portfolio landing page.
+- Prominent featured Eirepolitic card.
+- Smaller project/article cards below.
+- No empty "coming soon" cards.
+- Lightweight tags only; no filtering initially.
+
+### Documentation
+
+- Preserve the classic documentation layout.
+- Persistent left navigation, central document content, right-side on-page navigation where useful.
+- Documentation-only search.
+- Future repository-first navigation without requiring immediate URL changes.
 
 ## Homepage
 
@@ -206,9 +231,9 @@ Diagrams should be decided case by case. Architecture/data-flow diagrams should 
 
 ## Proposed Implementation Stages
 
-No implementation stage begins without approval of this plan.
-
 ### Stage 1 — Foundation and information architecture
+
+Approved for implementation.
 
 - Establish the new top-level navigation and page structure.
 - Preserve existing documentation behavior while separating portfolio and documentation presentation modes.
@@ -216,7 +241,7 @@ No implementation stage begins without approval of this plan.
 - Add placeholder routes/pages only; avoid major public content rewrites.
 - Run existing repository/site checks.
 
-Approval gate: confirm navigation, homepage wireframe, portfolio grid, and documentation layout before proceeding.
+Approved wireframes: Home, Portfolio, and Documentation as documented above.
 
 ### Stage 2 — Homepage and portfolio framework
 
