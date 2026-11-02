@@ -12,7 +12,12 @@ Temporary development reference for screenshots required by the portfolio redesi
 | Screenshot filename | What to capture |
 |---|---|
 | `warren-profile-photo.jpg` | Professional head-and-shoulders portrait for the homepage hero. Neutral background preferred; leave enough space around the subject for responsive cropping. |
-| `eirepolitic-system-overview.png` | Placeholder replacement for the Eirepolitic flagship overview. Capture or provide a suitable system-level visual only if a screenshot is more useful than a rendered architecture diagram. |
-| `eirepolitic-project-card.png` | Representative visual for the Eirepolitic portfolio/homepage card. This can be a finished published output or another immediately recognisable project result. |
+| `eirepolitic-project-card.png` | Representative visual for the Eirepolitic homepage/portfolio card. Prefer a finished published output or a clean composite that is immediately recognisable at card size. |
+| `eirepolitic-content-factory-review.png` | The conversational content-review workflow showing a real generated Eirepolitic slide being reviewed or iterated. Include enough of the interface to make the review loop understandable, but exclude secrets, tokens, private identifiers, or irrelevant chat history. |
+| `eirepolitic-render-preview.png` | A browser review page or contact sheet showing the real repository-rendered Instagram slides before publication. Capture the finished visual clearly enough to demonstrate the deterministic content-factory output. |
+| `eirepolitic-schedule-inventory.png` | The schedule-inventory or publication-control view showing upcoming scheduled posts and their state. Use a clean example with no sensitive identifiers or credentials. |
+| `eirepolitic-published-post.png` | A real Eirepolitic Instagram post/carousel as published on the account. Prefer an example that demonstrates the final visual quality and corresponds to a pipeline-generated asset. |
 
-Additional screenshot requirements will be added as the flagship and deep-dive pages are designed.
+Architecture and data-model visuals are currently intended to be rendered directly on the site rather than captured as screenshots.
+
+Additional screenshot requirements will be added as the deep-dive pages are designed.
