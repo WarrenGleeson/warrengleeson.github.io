@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: Screenshot Capture List
 permalink: /articles/screenshot-capture-list/
 presentation: technical
