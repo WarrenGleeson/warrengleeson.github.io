@@ -1,0 +1,16 @@
+---
+layout: default
+---
+<article class="case-study-shell">
+  <header class="case-study-hero">
+    {% if page.kicker %}<p class="editorial-kicker">{{ page.kicker }}</p>{% endif %}
+    <h1>{{ page.title }}</h1>
+    {% if page.summary %}<p class="case-study-summary">{{ page.summary }}</p>{% endif %}
+    {% if page.tags %}
+      <div class="case-study-tags" aria-label="Case study tags">
+        {% for tag in page.tags %}<span>{{ tag }}</span>{% endfor %}
+      </div>
+    {% endif %}
+  </header>
+  <div class="case-study-body">{{ content }}</div>
+</article>
