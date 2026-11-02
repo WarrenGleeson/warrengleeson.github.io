@@ -1,6 +1,6 @@
-title: Eire Politic
+title: Warren Gleeson
 theme: jekyll-theme-cayman
-description: Technical documentation for Eire Politic repositories, systems, data, infrastructure, and High Director-assisted development
+description: Portfolio and technical documentation for Warren Gleeson, Data Engineer & Analyst
 
 collections:
   docs:
@@ -16,6 +16,6 @@ defaults:
       visibility: public
 
 header_pages:
+  - portfolio/index.md
   - docs/index.md
-  - articles.md
-  - content.md
+  - cv/index.md
