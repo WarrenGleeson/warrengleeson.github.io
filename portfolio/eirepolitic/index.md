@@ -100,6 +100,7 @@ tags:
     <div>
       <p>The metrics layer sits between canonical data and presentation. It handles details such as event-date party and constituency attribution, eligible populations, denominators, reliability thresholds and completed-period rules.</p>
       <p>That means a metric such as voting participation, party focus on an issue, or speeches per debate day carries both a public explanation and a precise technical definition. The system also explicitly avoids unsupported interpretations—for example, a missing recorded vote is not treated as proof that a TD was physically absent.</p>
+      <p><a href="{{ '/portfolio/eirepolitic/political-metrics/' | relative_url }}"><strong>Read the political-metrics deep dive →</strong></a></p>
     </div>
     <div class="metric-example-list">
       <span>Speech activity</span><span>Issue emphasis</span><span>Voting participation</span><span>Party voting unity</span><span>Parliamentary questions</span><span>Constituency measures</span>
@@ -114,6 +115,7 @@ tags:
     <div>
       <p>The Instagram content factory renders publication-ready slides from structured project inputs rather than designing every post manually. The render path includes deterministic layouts, reusable house-style assets, QA checks, previews and review artifacts.</p>
       <p>I interact with that system conversationally when iterating on designs: a render is generated through the real repository workflow, I review the exact output in a browser-friendly preview, then request specific changes and rerender. The production asset remains the repository-generated output rather than an ad-hoc image created in chat.</p>
+      <p><a href="{{ '/portfolio/eirepolitic/content-factory/' | relative_url }}"><strong>Read the content-factory deep dive →</strong></a></p>
     </div>
     <div class="editorial-placeholder screenshot-slot"><strong>Screenshot needed</strong><span>Content-factory review / iteration example</span></div>
   </div>
@@ -127,6 +129,7 @@ tags:
       <p>Once a render is reviewed, the publishing workflow promotes the exact approved assets, records the publication request and approval fingerprint, and either publishes immediately or creates a one-time schedule.</p>
       <p>DynamoDB is the authoritative publication ledger. EventBridge Scheduler mirrors upcoming execution jobs. A Lambda reloads the approved request and immutable assets from AWS before contacting Meta, while durable execution state prevents duplicate publication across retries.</p>
       <p>The complete path was proven against the real Instagram Professional account with successful immediate and scheduled canary publications in September 2026.</p>
+      <p><a href="{{ '/portfolio/eirepolitic/automated-publishing/' | relative_url }}"><strong>Read the automated-publishing deep dive →</strong></a></p>
     </div>
     <div class="publishing-stack" aria-label="Instagram publishing architecture">
       <div><strong>Reviewed render</strong><span>exact artifact</span></div>
