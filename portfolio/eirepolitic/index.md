@@ -87,6 +87,7 @@ tags:
     <div>
       <p>One of the heavier enrichment components classifies parliamentary speeches into a controlled issue taxonomy. The current classifier design reuses existing labels where the underlying speech has not changed, migrates historical labels only when a safe match can be proven, skips very short text, and sends only genuinely new or changed speeches for model classification.</p>
       <p>The newer unified classifier is implemented and integrated into the candidate workflow, with explicit validation and historical-backfill gates before full production use. That separation is intentional: expensive or model-driven processing should be testable without quietly changing production data.</p>
+      <p><a href="{{ '/portfolio/eirepolitic/issue-classification/' | relative_url }}"><strong>Read the issue-classification deep dive →</strong></a></p>
     </div>
     <div class="eirepolitic-tech-note"><strong>Tools in context</strong><span>OpenAI Responses API · structured outputs · text hashes · controlled taxonomy · candidate batches</span></div>
   </div>
