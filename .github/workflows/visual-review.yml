@@ -2,12 +2,6 @@ name: Visual review screenshots
 
 on:
   workflow_dispatch:
-    inputs:
-      source_ref:
-        description: Branch, tag, or commit to render
-        required: true
-        default: main
-        type: string
 
 permissions:
   contents: write
@@ -24,7 +18,6 @@ jobs:
       - name: Check out source revision
         uses: actions/checkout@v4
         with:
-          ref: ${{ inputs.source_ref }}
           fetch-depth: 0
 
       - name: Configure Pages
@@ -63,11 +56,11 @@ jobs:
 
       - name: Capture Eirepolitic screenshots
         env:
-          SOURCE_REF: ${{ inputs.source_ref }}
+          SOURCE_REF: ${{ github.ref_name }}
           SOURCE_SHA: ${{ github.sha }}
         run: |
           mkdir -p visual-review/latest/eirepolitic
-          cat > /tmp/capture-visual-review.mjs <<'EOF'
+          cat > capture-visual-review.mjs <<'EOF'
           import { chromium } from '@playwright/test';
           import fs from 'node:fs';
 
@@ -123,26 +116,23 @@ jobs:
 
           fs.writeFileSync(
             'visual-review/latest/README.md',
-            `# Visual review output\n\nSource ref: \`${process.env.SOURCE_REF}\`\n\nWorkflow commit context: \`${process.env.SOURCE_SHA}\`\n\nGenerated screenshots are under \`visual-review/latest/eirepolitic/\`.\n`
+            `# Visual review output\n\nSource ref: \`${process.env.SOURCE_REF}\`\n\nSource commit: \`${process.env.SOURCE_SHA}\`\n\nGenerated screenshots are under \`visual-review/latest/eirepolitic/\`.\n`
           );
           EOF
-          node /tmp/capture-visual-review.mjs
+          node capture-visual-review.mjs
+          rm capture-visual-review.mjs
 
       - name: Publish screenshots to visual-review branch
         env:
-          SOURCE_REF: ${{ inputs.source_ref }}
+          SOURCE_REF: ${{ github.ref_name }}
         run: |
           cp -R visual-review /tmp/visual-review-output
-          git fetch origin visual-review || true
-          if git show-ref --verify --quiet refs/remotes/origin/visual-review; then
-            git switch --force-create visual-review origin/visual-review
-          else
-            git switch --orphan visual-review
-            git rm -rf .
-          fi
-          rm -rf visual-review
-          cp -R /tmp/visual-review-output ./visual-review
-          git add visual-review
+          git fetch origin visual-review
+          git switch --force-create visual-review origin/visual-review
+          rm -rf visual-review/latest
+          mkdir -p visual-review
+          cp -R /tmp/visual-review-output/latest ./visual-review/latest
+          git add visual-review/latest
           if git diff --cached --quiet; then
             echo "No screenshot changes to commit."
             exit 0
