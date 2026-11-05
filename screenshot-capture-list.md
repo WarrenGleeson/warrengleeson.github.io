@@ -19,8 +19,9 @@ Temporary development reference for portfolio imagery. This page is intentionall
 | `eirepolitic-schedule-inventory.png` | Publishing schedule/control view. | Captured and integrated |
 | `eirepolitic-published-instagram.png` | Real Eirepolitic output after Instagram publication. | Captured and integrated |
 | `eirepolitic-data-model-docs.png` | Data-model documentation showing output tables grouped by category. | Captured and integrated |
-| `eirepolitic-metrics-example.png` | Real political-metrics output. | Captured and integrated |
+| `eirepolitic-metrics-example.png` | Polling visual (“Six Months of Polling”) used as Sources & Ingestion evidence. | Captured and integrated |
+| `eirepolitic-parliamentary-metric.png` | Genuine parliamentary political-metrics output for the metrics deep dive, if a suitable real example is selected. | Pending |
 
-No source-data screenshot is required for the current first visual pass.
+No additional source-data screenshot is required for the current flagship visual pass.
 
 Keep this page until the next full site review confirms the images and crops are working well. It can then be removed.
