@@ -73,7 +73,7 @@ tags:
   </div>
   <div class="ep-evidence-split">
     <div class="ep-tech-strip"><strong>Tools in context</strong><span>APIs · Python · GitHub Actions · source hashes · manifests · candidate validation</span></div>
-    <a class="ep-image-card" href="{{ '/assets/images/portfolio/eirepolitic-metrics-example.png' | relative_url }}">
+    <a class="ep-image-card ep-source-evidence" href="{{ '/assets/images/portfolio/eirepolitic-metrics-example.png' | relative_url }}">
       <img src="{{ '/assets/images/portfolio/eirepolitic-metrics-example.png' | relative_url }}" alt="Example polling output generated from an ingested polling source" loading="lazy" />
       <span>Polling is a separate source stream handled alongside parliamentary data. View full image ↗</span>
     </a>
@@ -88,11 +88,8 @@ tags:
   </div>
   <div class="ep-model-flow" aria-label="Simplified canonical data model">
     <div><span>Source</span><strong>Raw records</strong><small>debates · members · votes · bills · questions</small></div>
-    <b>→</b>
     <div><span>Silver</span><strong>Normalized facts</strong><small>stable identifiers and relationships</small></div>
-    <b>→</b>
     <div><span>Gold</span><strong>Enrichment</strong><small>context · labels · derived datasets</small></div>
-    <b>→</b>
     <div><span>Consumer</span><strong>Outputs</strong><small>metrics · visuals · compatibility data</small></div>
   </div>
   <a class="ep-image-card ep-image-card-wide" href="{{ '/assets/images/portfolio/eirepolitic-data-model-docs.png' | relative_url }}">
@@ -114,13 +111,9 @@ tags:
   </div>
   <div class="ep-decision-flow" role="img" aria-label="Speech classification decision flow">
     <div><strong>Unchanged?</strong><span>Reuse label</span></div>
-    <i>→</i>
     <div><strong>Safe legacy match?</strong><span>Migrate label</span></div>
-    <i>→</i>
     <div><strong>Very short text?</strong><span>Rule-based NONE</span></div>
-    <i>→</i>
     <div><strong>Still pending?</strong><span>Model classification</span></div>
-    <i>→</i>
     <div><strong>Candidate</strong><span>Validate before promotion</span></div>
   </div>
   <div class="ep-inline-cta">
@@ -134,6 +127,11 @@ tags:
     <p class="editorial-kicker">05 · Analysis &amp; political metrics</p>
     <h2>Make analytical definitions reusable and explainable.</h2>
     <p>The metrics layer resolves historical context, eligible populations, denominators, reliability thresholds and completed-period rules before producing a public-facing number.</p>
+  </div>
+  <div class="ep-metrics-principle">
+    <span>Metric contract</span>
+    <strong>Define the comparison before calculating the value.</strong>
+    <p>Historical attribution, denominator rules and reliability thresholds are part of the metric definition, not cleanup applied after the result.</p>
   </div>
   <div class="ep-metric-contracts">
     <div><strong>Historical attribution</strong><span>Party and constituency as they were on the event date.</span></div>
@@ -154,7 +152,7 @@ tags:
     <p>The content factory turns structured project inputs into publication-ready visuals. The production asset always comes from the repository renderer; conversation is used to operate and improve that system, not to replace it.</p>
   </div>
   <div class="ep-sequence-grid">
-    <article>
+    <article class="ep-sequence-primary">
       <span class="ep-sequence-number">01</span>
       <h3>Render</h3>
       <a class="ep-image-card" href="{{ '/assets/images/portfolio/eirepolitic-render-preview.png' | relative_url }}">
@@ -197,15 +195,10 @@ tags:
     </div>
   </div>
   <div class="ep-publish-flow" role="img" aria-label="Instagram publishing architecture">
-    <div><strong>Reviewed render</strong><span>exact artifact</span></div>
-    <i>→</i>
-    <div><strong>S3 + DynamoDB</strong><span>assets + approval ledger</span></div>
-    <i>→</i>
-    <div><strong>EventBridge</strong><span>scheduled execution</span></div>
-    <i>→</i>
-    <div><strong>Lambda</strong><span>idempotent worker</span></div>
-    <i>→</i>
-    <div><strong>Instagram</strong><span>published result</span></div>
+    <div><strong>Reviewed render</strong><span>exact approved artifact</span></div>
+    <div><strong>Control plane</strong><span>S3 assets · DynamoDB ledger · EventBridge schedule</span></div>
+    <div><strong>Execution</strong><span>Lambda worker with idempotent publication handling</span></div>
+    <div><strong>Public result</strong><span>published Instagram content</span></div>
   </div>
   <div class="ep-publish-proof">
     <a class="ep-image-card" href="{{ '/assets/images/portfolio/eirepolitic-schedule-inventory.png' | relative_url }}">
@@ -241,7 +234,10 @@ tags:
     <h2>Choose the level of detail.</h2>
   </div>
   <div class="ep-next-grid">
-    <a href="{{ '/portfolio/eirepolitic/issue-classification/' | relative_url }}"><strong>Portfolio deep dives</strong><span>Explore classification, political metrics, the Content Factory and automated publishing.</span></a>
-    <a href="https://github.com/warrengleeson/eirepolitic-data-pipeline"><strong>Technical documentation</strong><span>Go to the canonical repository for implementation detail and operational documentation.</span></a>
+    <a href="{{ '/portfolio/eirepolitic/issue-classification/' | relative_url }}"><strong>Issue classification</strong><span>Controlled taxonomy, deterministic reuse and bounded model inference.</span></a>
+    <a href="{{ '/portfolio/eirepolitic/political-metrics/' | relative_url }}"><strong>Political metrics</strong><span>Historical attribution, denominators and reusable metric contracts.</span></a>
+    <a href="{{ '/portfolio/eirepolitic/content-factory/' | relative_url }}"><strong>Content Factory</strong><span>Repository rendering, browser review and iterative design workflow.</span></a>
+    <a href="{{ '/portfolio/eirepolitic/automated-publishing/' | relative_url }}"><strong>Automated publishing</strong><span>Approval, scheduling, idempotent execution and publication state.</span></a>
+    <a class="ep-next-docs" href="https://github.com/warrengleeson/eirepolitic-data-pipeline"><strong>Technical documentation</strong><span>Go to the canonical repository for implementation detail and operational documentation.</span></a>
   </div>
 </section>
