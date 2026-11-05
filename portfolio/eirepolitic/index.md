@@ -78,6 +78,10 @@ tags:
       <div><strong>Consumer outputs</strong><span>metrics · visuals · compatibility datasets</span></div>
     </div>
   </div>
+  <figure class="case-study-inline-image">
+    <img src="{{ '/assets/images/portfolio/eirepolitic-data-model-docs.png' | relative_url }}" alt="Eirepolitic data model documentation showing output tables grouped by category" loading="lazy" />
+    <figcaption>Canonical data-model documentation showing the output tables grouped by their downstream role.</figcaption>
+  </figure>
 </section>
 
 <section class="case-study-section">
@@ -117,7 +121,10 @@ tags:
       <p>I interact with that system conversationally when iterating on designs: a render is generated through the real repository workflow, I review the exact output in a browser-friendly preview, then request specific changes and rerender. The production asset remains the repository-generated output rather than an ad-hoc image created in chat.</p>
       <p><a href="{{ '/portfolio/eirepolitic/content-factory/' | relative_url }}"><strong>Read the content-factory deep dive →</strong></a></p>
     </div>
-    <div class="editorial-placeholder screenshot-slot"><strong>Screenshot needed</strong><span>Content-factory review / iteration example</span></div>
+    <figure class="case-study-inline-image compact-image">
+      <img src="{{ '/assets/images/portfolio/eirepolitic-render-preview.png' | relative_url }}" alt="Preview of generated Eirepolitic visual content before publication" loading="lazy" />
+      <figcaption>Repository-generated content presented for review before approval and publishing.</figcaption>
+    </figure>
   </div>
 </section>
 

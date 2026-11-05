@@ -15,22 +15,7 @@ layout: default
   <div class="case-study-body">
     {{ content }}
 
-    {% if page.url == '/portfolio/eirepolitic/' %}
-    <section class="case-study-section case-study-visuals" aria-labelledby="flagship-visuals-title">
-      <p class="editorial-kicker">Visual examples</p>
-      <h2 id="flagship-visuals-title">From data model to finished content</h2>
-      <div class="case-study-image-grid">
-        <figure>
-          <img src="{{ '/assets/images/portfolio/eirepolitic-data-model-docs.png' | relative_url }}" alt="Eirepolitic data model documentation showing output tables grouped by category" loading="lazy" />
-          <figcaption>Canonical data model documentation showing the structured output tables that downstream analysis relies on.</figcaption>
-        </figure>
-        <figure>
-          <img src="{{ '/assets/images/portfolio/eirepolitic-render-preview.png' | relative_url }}" alt="Preview of generated Eirepolitic visual content before publication" loading="lazy" />
-          <figcaption>Repository-generated visual content presented for review before approval and publishing.</figcaption>
-        </figure>
-      </div>
-    </section>
-    {% elsif page.url == '/portfolio/eirepolitic/political-metrics/' %}
+    {% if page.url == '/portfolio/eirepolitic/political-metrics/' %}
     <section class="case-study-section case-study-visuals" aria-labelledby="metrics-visuals-title">
       <p class="editorial-kicker">Example output</p>
       <h2 id="metrics-visuals-title">A metric carried through to a public-facing result</h2>
