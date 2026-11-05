@@ -43,72 +43,92 @@ jobs:
 
       - name: Start local site server
         run: |
-          python3 -m http.server 4173 --directory _site > /tmp/eirepolitic-visual-review-server.log 2>&1 &
-          echo $! > /tmp/eirepolitic-visual-review-server.pid
+          python3 -m http.server 4173 --directory _site > /tmp/visual-review-server.log 2>&1 &
+          echo $! > /tmp/visual-review-server.pid
           for i in {1..30}; do
-            if curl --fail --silent http://127.0.0.1:4173/portfolio/eirepolitic/ >/dev/null; then
+            if curl --fail --silent http://127.0.0.1:4173/ >/dev/null; then
               exit 0
             fi
             sleep 1
           done
-          cat /tmp/eirepolitic-visual-review-server.log
+          cat /tmp/visual-review-server.log
           exit 1
 
-      - name: Capture Eirepolitic screenshots
+      - name: Capture visual review screenshots
         env:
           SOURCE_REF: ${{ github.ref_name }}
           SOURCE_SHA: ${{ github.sha }}
         run: |
-          mkdir -p visual-review/latest/eirepolitic
+          mkdir -p visual-review/latest/homepage visual-review/latest/eirepolitic
           cat > capture-visual-review.mjs <<'EOF'
           import { chromium } from '@playwright/test';
           import fs from 'node:fs';
 
           const base = 'http://127.0.0.1:4173';
-          const output = 'visual-review/latest/eirepolitic';
-          const pagePath = '/portfolio/eirepolitic/';
           const viewports = [
             { name: 'desktop-1440', width: 1440, height: 1000 },
             { name: 'compact-1024', width: 1024, height: 900 },
             { name: 'mobile-390', width: 390, height: 844 },
           ];
-          const sections = [
-            ['opening', '.ep-opening'],
-            ['outcome', '.ep-outcome-strip'],
-            ['why-built', '.ep-story-intro'],
-            ['sources-ingestion', '.ep-stage-sources'],
-            ['canonical-model', '.ep-stage-model'],
-            ['classification', '.ep-stage-classifier'],
-            ['political-metrics', '.ep-stage-metrics'],
-            ['content-factory', '.ep-stage-factory'],
-            ['publishing', '.ep-stage-publishing'],
-            ['capability-summary', '.ep-summary'],
-            ['continue-exploring', '.ep-next-steps'],
+
+          const targets = [
+            {
+              name: 'homepage',
+              path: '/',
+              output: 'visual-review/latest/homepage',
+              sections: [
+                ['hero', '.home-hero'],
+                ['featured-project', '.home-featured-project'],
+                ['work-on', '.home-work-grid'],
+                ['selected-work', '.home-selected-work'],
+                ['contact', '.home-contact'],
+              ],
+            },
+            {
+              name: 'eirepolitic',
+              path: '/portfolio/eirepolitic/',
+              output: 'visual-review/latest/eirepolitic',
+              sections: [
+                ['opening', '.ep-opening'],
+                ['outcome', '.ep-outcome-strip'],
+                ['why-built', '.ep-story-intro'],
+                ['sources-ingestion', '.ep-stage-sources'],
+                ['canonical-model', '.ep-stage-model'],
+                ['classification', '.ep-stage-classifier'],
+                ['political-metrics', '.ep-stage-metrics'],
+                ['content-factory', '.ep-stage-factory'],
+                ['publishing', '.ep-stage-publishing'],
+                ['capability-summary', '.ep-summary'],
+                ['continue-exploring', '.ep-next-steps'],
+              ],
+            },
           ];
 
           const browser = await chromium.launch({ headless: true });
           try {
-            for (const viewport of viewports) {
-              const context = await browser.newContext({
-                viewport: { width: viewport.width, height: viewport.height },
-                deviceScaleFactor: 1,
-              });
-              const page = await context.newPage();
-              await page.goto(base + pagePath, { waitUntil: 'networkidle' });
-              await page.screenshot({
-                path: `${output}/${viewport.name}-full.png`,
-                fullPage: true,
-              });
+            for (const target of targets) {
+              for (const viewport of viewports) {
+                const context = await browser.newContext({
+                  viewport: { width: viewport.width, height: viewport.height },
+                  deviceScaleFactor: 1,
+                });
+                const page = await context.newPage();
+                await page.goto(base + target.path, { waitUntil: 'networkidle' });
+                await page.screenshot({
+                  path: `${target.output}/${viewport.name}-full.png`,
+                  fullPage: true,
+                });
 
-              if (viewport.name === 'desktop-1440') {
-                for (const [name, selector] of sections) {
-                  const locator = page.locator(selector).first();
-                  if (await locator.count()) {
-                    await locator.screenshot({ path: `${output}/section-${name}.png` });
+                if (viewport.name === 'desktop-1440') {
+                  for (const [name, selector] of target.sections) {
+                    const locator = page.locator(selector).first();
+                    if (await locator.count()) {
+                      await locator.screenshot({ path: `${target.output}/section-${name}.png` });
+                    }
                   }
                 }
+                await context.close();
               }
-              await context.close();
             }
           } finally {
             await browser.close();
@@ -116,7 +136,7 @@ jobs:
 
           fs.writeFileSync(
             'visual-review/latest/README.md',
-            `# Visual review output\n\nSource ref: \`${process.env.SOURCE_REF}\`\n\nSource commit: \`${process.env.SOURCE_SHA}\`\n\nGenerated screenshots are under \`visual-review/latest/eirepolitic/\`.\n`
+            `# Visual review output\n\nSource ref: \`${process.env.SOURCE_REF}\`\n\nSource commit: \`${process.env.SOURCE_SHA}\`\n\nGenerated screenshots are under \`visual-review/latest/homepage/\` and \`visual-review/latest/eirepolitic/\`.\n`
           );
           EOF
           node capture-visual-review.mjs
