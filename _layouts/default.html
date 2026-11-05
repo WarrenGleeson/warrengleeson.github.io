@@ -12,7 +12,10 @@
     <link rel="stylesheet" href="{{ '/assets/css/site.css?v=' | append: site.github.build_revision | relative_url }}" />
     <link rel="stylesheet" href="{{ '/assets/css/portfolio.css?v=' | append: site.github.build_revision | relative_url }}" />
     <link rel="stylesheet" href="{{ '/assets/css/portfolio-images.css?v=' | append: site.github.build_revision | relative_url }}" />
-    {% if page.url contains '/portfolio/eirepolitic/' %}<link rel="stylesheet" href="{{ '/assets/css/eirepolitic.css?v=' | append: site.github.build_revision | relative_url }}" />{% endif %}
+    {% if page.url contains '/portfolio/eirepolitic/' %}
+      <link rel="stylesheet" href="{{ '/assets/css/eirepolitic.css?v=' | append: site.github.build_revision | relative_url }}" />
+      <link rel="stylesheet" href="{{ '/assets/css/eirepolitic-deepdives.css?v=' | append: site.github.build_revision | relative_url }}" />
+    {% endif %}
     <link rel="stylesheet" href="{{ '/assets/css/docs-organization.css?v=' | append: site.github.build_revision | relative_url }}" />
     <link rel="stylesheet" href="{{ '/assets/css/search.css?v=' | append: site.github.build_revision | relative_url }}" />
     <link rel="stylesheet" href="{{ '/assets/css/indexes.css?v=' | append: site.github.build_revision | relative_url }}" />
