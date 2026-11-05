@@ -15,18 +15,7 @@ layout: default
   <div class="case-study-body">
     {{ content }}
 
-    {% if page.url == '/portfolio/eirepolitic/political-metrics/' %}
-    <section class="case-study-section case-study-visuals" aria-labelledby="metrics-visuals-title">
-      <p class="editorial-kicker">Example output</p>
-      <h2 id="metrics-visuals-title">A metric carried through to a public-facing result</h2>
-      <div class="case-study-image-grid case-study-image-grid-single">
-        <figure>
-          <img src="{{ '/assets/images/portfolio/eirepolitic-metrics-example.png' | relative_url }}" alt="Example Eirepolitic political metrics output" loading="lazy" />
-          <figcaption>A real analytical output produced from the political metrics layer.</figcaption>
-        </figure>
-      </div>
-    </section>
-    {% elsif page.url == '/portfolio/eirepolitic/content-factory/' %}
+    {% if page.url == '/portfolio/eirepolitic/content-factory/' %}
     <section class="case-study-section case-study-visuals" aria-labelledby="factory-visuals-title">
       <p class="editorial-kicker">Workflow in practice</p>
       <h2 id="factory-visuals-title">Render, review, iterate</h2>
