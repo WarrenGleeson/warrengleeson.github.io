@@ -7,7 +7,7 @@ presentation: editorial
 <section class="portfolio-home-hero">
   <div>
     <p class="editorial-kicker">Warren Gleeson</p>
-    <h1>Data Engineer &amp; Analyst</h1>
+    <h1>Data Specialist</h1>
     <p>I build end-to-end data systems that turn complex source data into reliable datasets, analysis, visual outputs, and automated workflows.</p>
     <div class="home-actions">
       <a class="button-primary" href="{{ '/portfolio/' | relative_url }}">View my work</a>
@@ -37,6 +37,36 @@ presentation: editorial
     </div>
     <div class="editorial-placeholder editorial-placeholder-wide">Eirepolitic system visual placeholder</div>
   </a>
+</section>
+
+<section class="editorial-section" aria-labelledby="work-heading">
+  <div class="section-heading-row">
+    <div>
+      <p class="editorial-kicker">What I work on</p>
+      <h2 id="work-heading">From raw data to usable systems</h2>
+    </div>
+  </div>
+
+  <div class="home-focus-grid">
+    <a href="{{ '/portfolio/eirepolitic/political-metrics/' | relative_url }}" class="home-focus-card">
+      <span>01</span>
+      <h3>Reliable data foundations</h3>
+      <p>Ingestion, validation, canonical data models, historical context, and careful joins that make downstream analysis dependable.</p>
+      <strong>See the data &amp; metrics work →</strong>
+    </a>
+    <a href="{{ '/portfolio/eirepolitic/issue-classification/' | relative_url }}" class="home-focus-card">
+      <span>02</span>
+      <h3>Analysis &amp; enrichment</h3>
+      <p>Turning structured records into useful analytical datasets, bounded classifications, and explainable metrics without losing provenance.</p>
+      <strong>See the classification work →</strong>
+    </a>
+    <a href="{{ '/portfolio/eirepolitic/automated-publishing/' | relative_url }}" class="home-focus-card">
+      <span>03</span>
+      <h3>Automation &amp; delivery</h3>
+      <p>Building workflows that take approved outputs through rendering, review, scheduling, cloud execution, and controlled publication.</p>
+      <strong>See the automation work →</strong>
+    </a>
+  </div>
 </section>
 
 <section class="editorial-section" aria-labelledby="selected-work-heading">
