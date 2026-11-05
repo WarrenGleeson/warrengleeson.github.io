@@ -1,8 +1,19 @@
 <nav class="docs-nav" aria-label="Documentation">
   <details class="docs-nav-mobile" open>
-    <summary>Documentation sections</summary>
+    <summary>Documentation navigation</summary>
     <div class="docs-nav-list">
-      <a class="docs-nav-home{% if page.url == '/docs/' %} active{% endif %}" href="{{ '/docs/' | relative_url }}">All documentation</a>
+      <a class="docs-nav-home{% if page.url == '/docs/' %} active{% endif %}" href="{{ '/docs/' | relative_url }}">Documentation home</a>
+      <a{% if page.url == '/search/' %} class="active" aria-current="page"{% endif %} href="{{ '/search/' | relative_url }}">Search documentation</a>
+
+      <span class="docs-nav-heading">Projects</span>
+      {% assign projects = site.data.docs_projects | sort: 'order' %}
+      {% for project in projects %}
+        <a href="{{ project.overview_url | relative_url }}"{% if page.repository == project.id or page.url == project.overview_url %} class="active" aria-current="page"{% endif %}>
+          {{ project.title }}
+        </a>
+      {% endfor %}
+
+      <span class="docs-nav-heading">Reference</span>
       <a{% if page.url == '/docs/indexes/' %} class="active" aria-current="page"{% endif %} href="{{ '/docs/indexes/' | relative_url }}">Indexes</a>
       {% assign sections = site.data.docs_sections | sort: 'order' %}
       {% for section in sections %}
