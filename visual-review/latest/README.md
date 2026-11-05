@@ -2,6 +2,6 @@
 
 Source ref: `tooling/homepage-visual-review`
 
-Source commit: `49a6fd40ce5d29d8ec371269ebe861bb0702785b`
+Source commit: `15231934af9201dbfd38f99e434f444bf1374c78`
 
 Generated screenshots are under `visual-review/latest/homepage/` and `visual-review/latest/eirepolitic/`.
