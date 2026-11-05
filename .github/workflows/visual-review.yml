@@ -127,17 +127,12 @@ jobs:
           SOURCE_REF: ${{ github.ref_name }}
         run: |
           cp -R visual-review /tmp/visual-review-output
-          git fetch origin visual-review || true
-          if git show-ref --verify --quiet refs/remotes/origin/visual-review; then
-            git switch --force-create visual-review origin/visual-review
-          else
-            git switch --orphan visual-review
-            git rm -rf . || true
-            git clean -fdx
-          fi
-          rm -rf visual-review
-          cp -R /tmp/visual-review-output ./visual-review
-          git add visual-review
+          git fetch origin visual-review
+          git switch --force-create visual-review origin/visual-review
+          rm -rf visual-review/latest
+          mkdir -p visual-review
+          cp -R /tmp/visual-review-output/latest ./visual-review/latest
+          git add visual-review/latest
           if git diff --cached --quiet; then
             echo "No screenshot changes to commit."
             exit 0
