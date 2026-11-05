@@ -132,7 +132,8 @@ jobs:
             git switch --force-create visual-review origin/visual-review
           else
             git switch --orphan visual-review
-            git rm -rf .
+            git rm -rf . || true
+            git clean -fdx
           fi
           rm -rf visual-review
           cp -R /tmp/visual-review-output ./visual-review
