@@ -34,6 +34,11 @@ tags:
   </div>
 </section>
 
+<figure class="case-study-inline-image case-study-lead-image">
+  <img src="{{ '/assets/images/portfolio/eirepolitic-project-card.png' | relative_url }}" alt="Representative Eirepolitic visual output" />
+  <figcaption>A representative Eirepolitic output showing the kind of finished content produced from the underlying data pipeline.</figcaption>
+</figure>
+
 <section class="case-study-section case-study-two-column">
   <div>
     <p class="editorial-kicker">Why I built it</p>
@@ -110,6 +115,10 @@ tags:
       <span>Speech activity</span><span>Issue emphasis</span><span>Voting participation</span><span>Party voting unity</span><span>Parliamentary questions</span><span>Constituency measures</span>
     </div>
   </div>
+  <figure class="case-study-inline-image">
+    <img src="{{ '/assets/images/portfolio/eirepolitic-metrics-example.png' | relative_url }}" alt="Example Eirepolitic political metrics output" loading="lazy" />
+    <figcaption>A real analytical result produced from the political-metrics layer.</figcaption>
+  </figure>
 </section>
 
 <section class="case-study-section">
@@ -124,6 +133,16 @@ tags:
     <figure class="case-study-inline-image compact-image">
       <img src="{{ '/assets/images/portfolio/eirepolitic-render-preview.png' | relative_url }}" alt="Preview of generated Eirepolitic visual content before publication" loading="lazy" />
       <figcaption>Repository-generated content presented for review before approval and publishing.</figcaption>
+    </figure>
+  </div>
+  <div class="case-study-image-grid case-study-section-image-grid">
+    <figure>
+      <img src="{{ '/assets/images/portfolio/eirepolitic-content-review.png' | relative_url }}" alt="Eirepolitic browser-based content review page" loading="lazy" />
+      <figcaption>The browser-based review surface showing the real rendered carousel assets.</figcaption>
+    </figure>
+    <figure>
+      <img src="{{ '/assets/images/portfolio/eirepolitic-chat-iteration.png' | relative_url }}" alt="Conversational iteration of an Eirepolitic visual design" loading="lazy" />
+      <figcaption>Natural-language design feedback translated into a repository change and rerender.</figcaption>
     </figure>
   </div>
 </section>
@@ -149,6 +168,16 @@ tags:
       <b>↓</b>
       <div><strong>Meta / Instagram</strong><span>published media</span></div>
     </div>
+  </div>
+  <div class="case-study-image-grid case-study-section-image-grid">
+    <figure>
+      <img src="{{ '/assets/images/portfolio/eirepolitic-schedule-inventory.png' | relative_url }}" alt="Eirepolitic publishing schedule inventory" loading="lazy" />
+      <figcaption>The scheduling and publication-control view used to inspect upcoming posts and execution state.</figcaption>
+    </figure>
+    <figure>
+      <img src="{{ '/assets/images/portfolio/eirepolitic-published-instagram.png' | relative_url }}" alt="Eirepolitic content published on Instagram" loading="lazy" />
+      <figcaption>A real pipeline-generated Eirepolitic output after publication to Instagram.</figcaption>
+    </figure>
   </div>
 </section>
 
