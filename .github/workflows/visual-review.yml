@@ -73,7 +73,6 @@ jobs:
 
           const targets = [
             {
-              name: 'homepage',
               path: '/',
               output: 'visual-review/latest/homepage',
               sections: [
@@ -85,7 +84,6 @@ jobs:
               ],
             },
             {
-              name: 'eirepolitic',
               path: '/portfolio/eirepolitic/',
               output: 'visual-review/latest/eirepolitic',
               sections: [
@@ -148,7 +146,9 @@ jobs:
         run: |
           cp -R visual-review /tmp/visual-review-output
           git fetch origin visual-review
-          git switch --force-create visual-review origin/visual-review
+          rm -rf /tmp/visual-review-branch
+          git worktree add --force -B visual-review /tmp/visual-review-branch origin/visual-review
+          cd /tmp/visual-review-branch
           rm -rf visual-review/latest
           mkdir -p visual-review
           cp -R /tmp/visual-review-output/latest ./visual-review/latest
