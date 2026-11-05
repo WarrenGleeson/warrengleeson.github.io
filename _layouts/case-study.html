@@ -12,5 +12,69 @@ layout: default
       </div>
     {% endif %}
   </header>
-  <div class="case-study-body">{{ content }}</div>
+  <div class="case-study-body">
+    {{ content }}
+
+    {% if page.url == '/portfolio/eirepolitic/' %}
+    <section class="case-study-section case-study-visuals" aria-labelledby="flagship-visuals-title">
+      <p class="editorial-kicker">Visual examples</p>
+      <h2 id="flagship-visuals-title">From data model to finished content</h2>
+      <div class="case-study-image-grid">
+        <figure>
+          <img src="{{ '/assets/images/portfolio/eirepolitic-data-model-docs.png' | relative_url }}" alt="Eirepolitic data model documentation showing output tables grouped by category" loading="lazy" />
+          <figcaption>Canonical data model documentation showing the structured output tables that downstream analysis relies on.</figcaption>
+        </figure>
+        <figure>
+          <img src="{{ '/assets/images/portfolio/eirepolitic-render-preview.png' | relative_url }}" alt="Preview of generated Eirepolitic visual content before publication" loading="lazy" />
+          <figcaption>Repository-generated visual content presented for review before approval and publishing.</figcaption>
+        </figure>
+      </div>
+    </section>
+    {% elsif page.url == '/portfolio/eirepolitic/political-metrics/' %}
+    <section class="case-study-section case-study-visuals" aria-labelledby="metrics-visuals-title">
+      <p class="editorial-kicker">Example output</p>
+      <h2 id="metrics-visuals-title">A metric carried through to a public-facing result</h2>
+      <div class="case-study-image-grid case-study-image-grid-single">
+        <figure>
+          <img src="{{ '/assets/images/portfolio/eirepolitic-metrics-example.png' | relative_url }}" alt="Example Eirepolitic political metrics output" loading="lazy" />
+          <figcaption>A real analytical output produced from the political metrics layer.</figcaption>
+        </figure>
+      </div>
+    </section>
+    {% elsif page.url == '/portfolio/eirepolitic/content-factory/' %}
+    <section class="case-study-section case-study-visuals" aria-labelledby="factory-visuals-title">
+      <p class="editorial-kicker">Workflow in practice</p>
+      <h2 id="factory-visuals-title">Render, review, iterate</h2>
+      <div class="case-study-image-grid">
+        <figure>
+          <img src="{{ '/assets/images/portfolio/eirepolitic-content-review.png' | relative_url }}" alt="Eirepolitic browser-based content review page" loading="lazy" />
+          <figcaption>The browser-based review surface showing the real rendered carousel assets.</figcaption>
+        </figure>
+        <figure>
+          <img src="{{ '/assets/images/portfolio/eirepolitic-chat-iteration.png' | relative_url }}" alt="Conversational iteration of an Eirepolitic visual design" loading="lazy" />
+          <figcaption>Natural-language design feedback translated into a repository change and rerender.</figcaption>
+        </figure>
+        <figure class="case-study-image-wide">
+          <img src="{{ '/assets/images/portfolio/eirepolitic-render-preview.png' | relative_url }}" alt="Final Eirepolitic render preview before publishing" loading="lazy" />
+          <figcaption>The resulting repository-rendered output ready for review and approval.</figcaption>
+        </figure>
+      </div>
+    </section>
+    {% elsif page.url == '/portfolio/eirepolitic/automated-publishing/' %}
+    <section class="case-study-section case-study-visuals" aria-labelledby="publishing-visuals-title">
+      <p class="editorial-kicker">Operational proof</p>
+      <h2 id="publishing-visuals-title">Scheduled state to published result</h2>
+      <div class="case-study-image-grid">
+        <figure>
+          <img src="{{ '/assets/images/portfolio/eirepolitic-schedule-inventory.png' | relative_url }}" alt="Eirepolitic publishing schedule inventory" loading="lazy" />
+          <figcaption>The publishing-control view used to inspect upcoming scheduled work and state.</figcaption>
+        </figure>
+        <figure>
+          <img src="{{ '/assets/images/portfolio/eirepolitic-published-instagram.png' | relative_url }}" alt="Eirepolitic content published on Instagram" loading="lazy" />
+          <figcaption>A real pipeline-generated Eirepolitic output after publication to Instagram.</figcaption>
+        </figure>
+      </div>
+    </section>
+    {% endif %}
+  </div>
 </article>
