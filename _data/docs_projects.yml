@@ -1,0 +1,13 @@
+- id: eirepolitic-data-pipeline
+  title: Eirepolitic Data Pipeline
+  description: End-to-end Irish political data platform, analytics, content generation, and publishing systems.
+  overview_url: /projects/repositories/eirepolitic-data-pipeline/
+  source_url: https://github.com/warrengleeson/eirepolitic-data-pipeline
+  order: 10
+
+- id: warrengleeson-github-io
+  title: Website & Documentation Platform
+  description: GitHub Pages presentation layer for portfolio content and selected canonical repository documentation.
+  overview_url: /projects/repositories/warrengleeson-github-io/
+  source_url: https://github.com/warrengleeson/warrengleeson.github.io
+  order: 20
