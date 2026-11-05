@@ -1,7 +1,7 @@
 # Visual review output
 
-Source ref: `fix/visual-review-playwright-resolution`
+Source ref: `tooling/homepage-visual-review`
 
-Source commit: `53e90992a76f09b00f05c4b042e38a15befda276`
+Source commit: `49a6fd40ce5d29d8ec371269ebe861bb0702785b`
 
-Generated screenshots are under `visual-review/latest/eirepolitic/`.
+Generated screenshots are under `visual-review/latest/homepage/` and `visual-review/latest/eirepolitic/`.
