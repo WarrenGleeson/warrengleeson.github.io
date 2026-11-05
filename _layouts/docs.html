@@ -9,9 +9,10 @@ layout: default
 
   <article class="docs-content">
     {% assign current_section = site.data.docs_sections | where: 'id', page.section | first %}
+    {% assign current_project = site.data.docs_projects | where: 'id', page.repository | first %}
     <nav class="docs-breadcrumb" aria-label="Breadcrumb">
       <a href="{{ '/docs/' | relative_url }}">Documentation</a>
-      {% if current_section %}<span aria-hidden="true">/</span><a href="{{ '/docs/' | append: current_section.id | append: '/' | relative_url }}">{{ current_section.title }}</a>{% endif %}
+      {% if current_project %}<span aria-hidden="true">/</span><a href="{{ current_project.overview_url | relative_url }}">{{ current_project.title }}</a>{% elsif current_section %}<span aria-hidden="true">/</span><a href="{{ '/docs/' | append: current_section.id | append: '/' | relative_url }}">{{ current_section.title }}</a>{% endif %}
       {% if page.collection == 'docs' %}<span aria-hidden="true">/</span><span aria-current="page">{{ page.title }}</span>{% endif %}
     </nav>
 
@@ -25,7 +26,8 @@ layout: default
 
     {% if page.collection == 'docs' %}
     <dl class="docs-metadata">
-      {% if page.repository %}<div><dt>Repository</dt><dd><code>{{ page.repository }}</code></dd></div>{% endif %}
+      {% if page.repository %}<div><dt>Repository</dt><dd>{% if current_project %}<a href="{{ current_project.overview_url | relative_url }}"><code>{{ page.repository }}</code></a>{% else %}<code>{{ page.repository }}</code>{% endif %}</dd></div>{% endif %}
+      {% if current_project %}<div><dt>Canonical source</dt><dd><a href="{{ current_project.source_url }}">GitHub repository</a></dd></div>{% endif %}
       {% if page.doc_type %}<div><dt>Type</dt><dd>{{ page.doc_type }}</dd></div>{% endif %}
       {% if page.updated %}<div><dt>Updated</dt><dd>{{ page.updated | date: '%Y-%m-%d' }}</dd></div>{% endif %}
       {% if page.last_verified %}<div><dt>Verified</dt><dd>{{ page.last_verified | date: '%Y-%m-%d' }}</dd></div>{% endif %}
