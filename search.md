@@ -5,9 +5,9 @@ permalink: /search/
 ---
 
 <section class="search-page">
-  <p class="home-eyebrow">Knowledge base</p>
+  <p class="home-eyebrow">Documentation</p>
   <h1>Search documentation</h1>
-  <p class="search-intro">Search titles, summaries, repositories, technologies, tags, and document text.</p>
+  <p class="search-intro">Search published technical documentation by title, summary, repository, technology, tag, or document text.</p>
 
   <form class="search-form" role="search" onsubmit="return false;">
     <label for="search-input">Search terms</label>
