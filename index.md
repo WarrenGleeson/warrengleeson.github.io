@@ -14,9 +14,9 @@ presentation: editorial
       <a class="button-secondary" href="{{ '/cv/' | relative_url }}">View CV</a>
     </div>
   </div>
-  <div class="profile-photo-placeholder" role="img" aria-label="Professional portrait placeholder">
-    Professional photo placeholder
-  </div>
+  <figure class="profile-photo-frame">
+    <img src="{{ '/assets/images/portfolio/warren-profile-photo.jpg' | relative_url }}" alt="Warren Gleeson" />
+  </figure>
 </section>
 
 <section class="editorial-section" aria-labelledby="featured-project-heading">
@@ -35,7 +35,9 @@ presentation: editorial
       <p>A complete system spanning public data ingestion, canonical data modelling, classification, analysis, visual generation, review, scheduling, and automated publishing.</p>
       <span>View case study →</span>
     </div>
-    <div class="editorial-placeholder editorial-placeholder-wide">Eirepolitic system visual placeholder</div>
+    <figure class="project-image-frame project-image-featured">
+      <img src="{{ '/assets/images/portfolio/eirepolitic-project-card.png' | relative_url }}" alt="Representative Eirepolitic project output" />
+    </figure>
   </a>
 </section>
 
@@ -80,7 +82,9 @@ presentation: editorial
 
   <div class="portfolio-card-grid">
     <a class="portfolio-card" href="{{ '/portfolio/eirepolitic/' | relative_url }}">
-      <div class="editorial-placeholder">Project image placeholder</div>
+      <figure class="project-image-frame project-image-card">
+        <img src="{{ '/assets/images/portfolio/eirepolitic-project-card.png' | relative_url }}" alt="Eirepolitic project output" />
+      </figure>
       <p class="project-label">Featured project</p>
       <h3>Eirepolitic Data Pipeline</h3>
       <p>Data engineering, analytics, content generation and automated publishing.</p>

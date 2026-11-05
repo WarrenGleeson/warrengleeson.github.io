@@ -19,7 +19,9 @@ presentation: editorial
         <div class="tag-row"><span>Data Engineering</span><span>Analytics</span><span>Automation</span></div>
         <span>Explore project →</span>
       </div>
-      <div class="editorial-placeholder editorial-placeholder-wide">Flagship project visual placeholder</div>
+      <figure class="project-image-frame project-image-featured">
+        <img src="{{ '/assets/images/portfolio/eirepolitic-project-card.png' | relative_url }}" alt="Representative Eirepolitic project output" />
+      </figure>
     </a>
   </section>
 </div>
