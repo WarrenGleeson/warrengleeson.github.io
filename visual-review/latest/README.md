@@ -1,7 +1,5 @@
 # Visual review output
 
-Source ref: `polish/homepage-featured-flow`
+Source ref: `polish/homepage-featured-image`
 
-Source commit: `3964ba6e7593f254ccebff9a591b84d5c3f892f1`
-
-Generated screenshots are under `visual-review/latest/homepage/` and `visual-review/latest/eirepolitic/`.
+Source commit: `2e6202aeaed01bf3bffc83ebb678233ba0e7330e`
