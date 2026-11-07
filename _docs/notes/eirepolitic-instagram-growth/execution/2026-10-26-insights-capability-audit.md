@@ -1,6 +1,11 @@
 ---
 title: "EirePolitic Instagram Growth: Insights Capability Audit — 2026-10-26"
+summary: "Live read-only capability audit of the production Instagram credential, plus the 2026-11-07 successful temporary-token Insights validation."
 description: "Live read-only capability audit of the production Instagram credential before implementing Insights ingestion."
+section: notes
+doc_type: note
+status: active
+updated: 2026-11-07
 group: "Notes"
 order: 71
 ---
@@ -135,28 +140,46 @@ Meta also documents `pages_show_list` as part of the Facebook Login permission d
 
 If the Page role was granted through Business Manager, Meta documentation may also require `ads_management` and `ads_read`; verify the live account/app relationship before requesting these because they should not be added unnecessarily.
 
+## 2026-11-07 follow-up validation
+
+A temporary Graph API Explorer user token was successfully authorised through the existing Meta app after `instagram_manage_insights` was added as a test-ready permission.
+
+Validation results:
+
+- the authenticated Facebook account is an Administrator of the Meta app;
+- `instagram_manage_insights` appears in the temporary token's scopes in Access Token Debugger;
+- `/me/accounts?fields=id,name,instagram_business_account{id,username}` resolves the linked EirePolitic Instagram professional account;
+- an Instagram account Insights request using the linked Instagram account ID returned data successfully;
+- the production publishing credential was not changed or rotated.
+
+The earlier browser authorization failure was isolated to stale/broken Facebook web-session state in the normal browser profile. The same authorization flow completed successfully in an Incognito session.
+
+### Consequence
+
+The app/account relationship and `instagram_manage_insights` permission are now proven capable of reading Insights. The remaining production task is credential strategy: obtain a durable credential with the required Insights scope while preserving the known-good publishing path and validating publishing health before any production cutover.
+
 ## Architectural consequence
 
 **Do not create the analytics DynamoDB table, collector Lambda, backfill process, or dashboard yet.**
 
-The correct next step is to repair/extend the Meta app authorisation and then rerun this same read-only capability audit.
+The correct next step is to establish the production-safe credential path and rerun the same read-only capability audit using that credential.
 
-Once the Insights permission works, the audit must be rerun to discover the exact metric matrix supported by this account/API version. Only then should the storage schema be finalised.
+Once the durable credential works, the audit must be rerun to discover the exact metric matrix supported by this account/API version. Only then should the storage schema be finalised.
 
 ## Required next action
 
-The Meta app/token needs to be re-authorised with `instagram_manage_insights` for the existing Facebook Login path, while preserving the working publishing permissions and credential architecture.
+Establish a durable Meta credential carrying `instagram_manage_insights` for the existing Facebook Login path, while preserving the working publishing permissions and credential architecture.
 
 Do not:
 
 - migrate to Instagram Login merely for this task;
-- rotate the publishing token unless the re-authorisation flow requires a replacement token;
+- replace the current production publishing token until the replacement credential is validated;
 - remove existing publishing permissions;
 - change the Instagram professional account/Page linkage;
 - create a second Meta app unless the existing app cannot support Insights permission;
 - paste any token into chat or GitHub.
 
-## Validation after re-authorisation
+## Validation after durable credential creation
 
 Rerun the audit branch and require:
 
@@ -176,8 +199,8 @@ Only after those checks pass should Workstream 01 move to analytics-storage desi
 | Insights repository/runtime audit | Complete |
 | Basic account capability | Pass |
 | Media enumeration | Pass |
-| Account Insights capability | Blocked — Meta permission |
-| Media Insights capability | Blocked — Meta permission |
+| Temporary-token account Insights capability | Pass — 2026-11-07 |
+| Production credential Insights capability | Pending durable credential update/validation |
 | Analytics schema implementation | Not started — correctly blocked |
 | Profile baseline audit | Pending |
 | Experiment metadata convention | Pending |
