@@ -35,8 +35,42 @@ presentation: editorial
       <p>A complete system spanning public data ingestion, canonical data modelling, classification, analysis, visual generation, review, scheduling, and automated publishing.</p>
       <span>View case study →</span>
     </div>
-    <figure class="project-image-frame project-image-featured">
-      <img src="{{ '/assets/images/portfolio/eirepolitic-project-card.png' | relative_url }}" alt="Representative Eirepolitic project output" />
+    <figure class="featured-system-flow" aria-label="Eirepolitic end-to-end system flow">
+      <div class="featured-flow-node">
+        <span>01</span>
+        <strong>Sources</strong>
+        <small>Parliamentary data<br>Polling sources</small>
+      </div>
+      <div class="featured-flow-node">
+        <span>02</span>
+        <strong>Process</strong>
+        <small>Python<br>validation</small>
+      </div>
+      <div class="featured-flow-node">
+        <span>03</span>
+        <strong>Model</strong>
+        <small>Canonical data<br>stored outputs</small>
+      </div>
+      <div class="featured-flow-node">
+        <span>04</span>
+        <strong>Enrich</strong>
+        <small>Classification<br>context</small>
+      </div>
+      <div class="featured-flow-node">
+        <span>05</span>
+        <strong>Analyse</strong>
+        <small>Metrics<br>research</small>
+      </div>
+      <div class="featured-flow-node">
+        <span>06</span>
+        <strong>Create</strong>
+        <small>Render<br>review</small>
+      </div>
+      <div class="featured-flow-node">
+        <span>07</span>
+        <strong>Publish</strong>
+        <small>Schedule<br>delivery</small>
+      </div>
     </figure>
   </a>
 </section>
