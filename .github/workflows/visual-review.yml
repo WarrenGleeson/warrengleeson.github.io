@@ -6,137 +6,86 @@ on:
 permissions:
   contents: write
 
-concurrency:
-  group: visual-review
-  cancel-in-progress: true
-
 jobs:
   capture:
     runs-on: ubuntu-latest
-
     steps:
       - name: Check out source revision
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
       - name: Configure Pages
-        id: pages
         uses: actions/configure-pages@v5
-
       - name: Build Jekyll site
         uses: actions/jekyll-build-pages@v1
         with:
           source: ./
           destination: ./_site
-
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
           node-version: '22'
-
       - name: Install Playwright
         run: |
           npm init -y >/dev/null 2>&1
           npm install --save-dev @playwright/test
           npx playwright install --with-deps chromium
-
       - name: Start local site server
         run: |
-          python3 -m http.server 4173 --directory _site > /tmp/eirepolitic-visual-review-server.log 2>&1 &
-          echo $! > /tmp/eirepolitic-visual-review-server.pid
+          python3 -m http.server 4173 --directory _site >/tmp/visual-review-server.log 2>&1 &
           for i in {1..30}; do
-            if curl --fail --silent http://127.0.0.1:4173/portfolio/eirepolitic/ >/dev/null; then
-              exit 0
-            fi
+            if curl --fail --silent http://127.0.0.1:4173/ >/dev/null; then exit 0; fi
             sleep 1
           done
-          cat /tmp/eirepolitic-visual-review-server.log
+          cat /tmp/visual-review-server.log
           exit 1
-
-      - name: Capture Eirepolitic screenshots
+      - name: Capture homepage screenshots
         env:
           SOURCE_REF: ${{ github.ref_name }}
           SOURCE_SHA: ${{ github.sha }}
         run: |
-          mkdir -p visual-review/latest/eirepolitic
+          mkdir -p visual-review/latest/homepage
           cat > capture-visual-review.mjs <<'EOF'
           import { chromium } from '@playwright/test';
           import fs from 'node:fs';
-
-          const base = 'http://127.0.0.1:4173';
-          const output = 'visual-review/latest/eirepolitic';
-          const pagePath = '/portfolio/eirepolitic/';
+          const browser = await chromium.launch({ headless: true });
           const viewports = [
             { name: 'desktop-1440', width: 1440, height: 1000 },
             { name: 'compact-1024', width: 1024, height: 900 },
             { name: 'mobile-390', width: 390, height: 844 },
           ];
-          const sections = [
-            ['opening', '.ep-opening'],
-            ['outcome', '.ep-outcome-strip'],
-            ['why-built', '.ep-story-intro'],
-            ['sources-ingestion', '.ep-stage-sources'],
-            ['canonical-model', '.ep-stage-model'],
-            ['classification', '.ep-stage-classifier'],
-            ['political-metrics', '.ep-stage-metrics'],
-            ['content-factory', '.ep-stage-factory'],
-            ['publishing', '.ep-stage-publishing'],
-            ['capability-summary', '.ep-summary'],
-            ['continue-exploring', '.ep-next-steps'],
-          ];
-
-          const browser = await chromium.launch({ headless: true });
           try {
             for (const viewport of viewports) {
-              const context = await browser.newContext({
-                viewport: { width: viewport.width, height: viewport.height },
-                deviceScaleFactor: 1,
-              });
+              const context = await browser.newContext({ viewport: { width: viewport.width, height: viewport.height }, deviceScaleFactor: 1 });
               const page = await context.newPage();
-              await page.goto(base + pagePath, { waitUntil: 'networkidle' });
-              await page.screenshot({
-                path: `${output}/${viewport.name}-full.png`,
-                fullPage: true,
-              });
-
+              await page.goto('http://127.0.0.1:4173/', { waitUntil: 'networkidle' });
+              await page.screenshot({ path: `visual-review/latest/homepage/${viewport.name}-full.png`, fullPage: true });
               if (viewport.name === 'desktop-1440') {
-                for (const [name, selector] of sections) {
-                  const locator = page.locator(selector).first();
-                  if (await locator.count()) {
-                    await locator.screenshot({ path: `${output}/section-${name}.png` });
-                  }
-                }
+                await page.locator('.featured-project-card').first().screenshot({ path: 'visual-review/latest/homepage/section-featured-project.png' });
               }
               await context.close();
             }
           } finally {
             await browser.close();
           }
-
-          fs.writeFileSync(
-            'visual-review/latest/README.md',
-            `# Visual review output\n\nSource ref: \`${process.env.SOURCE_REF}\`\n\nSource commit: \`${process.env.SOURCE_SHA}\`\n\nGenerated screenshots are under \`visual-review/latest/eirepolitic/\`.\n`
-          );
+          fs.writeFileSync('visual-review/latest/README.md', `# Visual review output\n\nSource ref: \`${process.env.SOURCE_REF}\`\n\nSource commit: \`${process.env.SOURCE_SHA}\`\n`);
           EOF
           node capture-visual-review.mjs
           rm capture-visual-review.mjs
-
       - name: Publish screenshots to visual-review branch
         env:
           SOURCE_REF: ${{ github.ref_name }}
         run: |
           cp -R visual-review /tmp/visual-review-output
           git fetch origin visual-review
-          git switch --force-create visual-review origin/visual-review
+          rm -rf /tmp/visual-review-branch
+          git worktree add --force -B visual-review /tmp/visual-review-branch origin/visual-review
+          cd /tmp/visual-review-branch
           rm -rf visual-review/latest
           mkdir -p visual-review
           cp -R /tmp/visual-review-output/latest ./visual-review/latest
           git add visual-review/latest
-          if git diff --cached --quiet; then
-            echo "No screenshot changes to commit."
-            exit 0
-          fi
+          if git diff --cached --quiet; then exit 0; fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit -m "Update visual review screenshots for ${SOURCE_REF}"
