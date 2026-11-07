@@ -36,7 +36,7 @@ presentation: editorial
       <span>View case study →</span>
     </div>
     <figure class="project-image-frame project-image-featured">
-      <img src="{{ '/assets/images/portfolio/eirepolitic-project-card.png' | relative_url }}" alt="Representative Eirepolitic project output" />
+      <img src="{{ '/assets/images/portfolio/eirepolitic-homepage-flow.png' | relative_url }}" alt="Eirepolitic end-to-end political data, analysis and publishing system flow" />
     </figure>
   </a>
 </section>
