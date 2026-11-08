@@ -1,5 +1,5 @@
 # Visual review output
 
-Source ref: `polish/homepage-featured-image`
+Source ref: `polish/homepage-formatting-pass`
 
-Source commit: `2e6202aeaed01bf3bffc83ebb678233ba0e7330e`
+Source commit: `cea4fdff74e473ea6d61f3d15c8c7c2bb96c8dc0`
