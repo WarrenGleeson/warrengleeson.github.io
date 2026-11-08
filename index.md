@@ -82,8 +82,8 @@ presentation: editorial
 
   <div class="portfolio-card-grid">
     <a class="portfolio-card" href="{{ '/portfolio/eirepolitic/' | relative_url }}">
-      <figure class="project-image-frame project-image-card">
-        <img src="{{ '/assets/images/portfolio/eirepolitic-project-card.png' | relative_url }}" alt="Eirepolitic project output" />
+      <figure class="project-image-frame project-image-card project-image-card-contain">
+        <img src="{{ '/assets/images/portfolio/eirepolitic-homepage-flow.png' | relative_url }}" alt="Eirepolitic end-to-end political data, analysis and publishing system flow" />
       </figure>
       <p class="project-label">Featured project</p>
       <h3>Eirepolitic Data Pipeline</h3>
