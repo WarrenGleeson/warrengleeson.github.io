@@ -1,5 +1,5 @@
 # Visual review output
 
-Source ref: `polish/homepage-formatting-pass`
+Source ref: `tooling/eirepolitic-current-review`
 
-Source commit: `cea4fdff74e473ea6d61f3d15c8c7c2bb96c8dc0`
+Source commit: `f78d2b39460ed1f0a36872d7f44a37926e23e5f7`
