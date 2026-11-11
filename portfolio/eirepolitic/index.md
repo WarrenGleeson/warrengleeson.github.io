@@ -17,26 +17,21 @@ tags:
     <h2>From public political data to reviewed, scheduled content.</h2>
     <p>I built Eirepolitic as one connected system rather than a collection of isolated scripts. It collects political data, validates and restructures it into a stable model, enriches it, calculates reusable metrics, turns selected outputs into visual content, and can publish approved content automatically.</p>
   </div>
-  <div class="ep-system-map" role="img" aria-label="Eirepolitic end-to-end system flow">
-    <div class="ep-system-node"><span>01</span><strong>Sources</strong><small>Oireachtas API<br>Polling sources</small></div>
-    <div class="ep-system-node"><span>02</span><strong>Process</strong><small>Python<br>validation</small></div>
-    <div class="ep-system-node"><span>03</span><strong>Store</strong><small>S3<br>canonical model</small></div>
-    <div class="ep-system-node"><span>04</span><strong>Enrich</strong><small>classification<br>context</small></div>
-    <div class="ep-system-node"><span>05</span><strong>Analyse</strong><small>metrics<br>research</small></div>
-    <div class="ep-system-node"><span>06</span><strong>Create</strong><small>rendering<br>review</small></div>
-    <div class="ep-system-node"><span>07</span><strong>Publish</strong><small>AWS<br>Meta</small></div>
-  </div>
+  <a class="ep-system-visual" href="{{ '/assets/images/portfolio/eirepolitic-homepage-flow.png' | relative_url }}">
+    <img src="{{ '/assets/images/portfolio/eirepolitic-homepage-flow.png' | relative_url }}" alt="Eirepolitic end-to-end political data, analysis and publishing system flow" />
+    <span>View full system flow ↗</span>
+  </a>
 </section>
 
 <section class="ep-outcome-strip">
-  <div>
+  <div class="ep-outcome-copy">
     <p class="editorial-kicker">The outcome</p>
     <h2>One pipeline, visible all the way to the public result.</h2>
     <p>The technical work is designed to stay traceable from source records through to the content that a reader eventually sees.</p>
   </div>
-  <a class="ep-image-card ep-image-card-result" href="{{ '/assets/images/portfolio/eirepolitic-project-card.png' | relative_url }}">
+  <a class="ep-outcome-proof" href="{{ '/assets/images/portfolio/eirepolitic-project-card.png' | relative_url }}">
     <img src="{{ '/assets/images/portfolio/eirepolitic-project-card.png' | relative_url }}" alt="Representative Eirepolitic visual output" />
-    <span>View full image ↗</span>
+    <span>Representative public output ↗</span>
   </a>
 </section>
 
@@ -57,25 +52,19 @@ tags:
     <h2>Start with traceable data, then validate it before use.</h2>
     <p>The main parliamentary source is Oireachtas data, covering members, debates, speeches, divisions, legislation and parliamentary questions. Separate ingestion work supports polling data, including the Irish Polling Indicator source.</p>
   </div>
-  <div class="ep-stage-grid">
-    <div class="ep-process-card">
-      <strong>Acquire</strong>
-      <span>APIs and source datasets are captured with version and provenance information.</span>
-    </div>
-    <div class="ep-process-card">
-      <strong>Validate</strong>
-      <span>Schemas, keys, dates, duplicate conditions and historical ranges are checked before promotion.</span>
-    </div>
-    <div class="ep-process-card">
-      <strong>Candidate build</strong>
-      <span>New data versions can be tested before becoming the promoted production view.</span>
-    </div>
+  <div class="ep-process-list" aria-label="Source ingestion process">
+    <div><span>01</span><strong>Acquire</strong><p>APIs and source datasets are captured with version and provenance information.</p></div>
+    <div><span>02</span><strong>Validate</strong><p>Schemas, keys, dates, duplicate conditions and historical ranges are checked before promotion.</p></div>
+    <div><span>03</span><strong>Candidate build</strong><p>New data versions can be tested before becoming the promoted production view.</p></div>
   </div>
-  <div class="ep-evidence-split">
-    <div class="ep-tech-strip"><strong>Tools in context</strong><span>APIs · Python · GitHub Actions · source hashes · manifests · candidate validation</span></div>
-    <a class="ep-image-card ep-source-evidence" href="{{ '/assets/images/portfolio/eirepolitic-metrics-example.png' | relative_url }}">
+  <div class="ep-source-evidence-row">
+    <div class="ep-context-note">
+      <span>Tools in context</span>
+      <strong>APIs · Python · GitHub Actions · source hashes · manifests · candidate validation</strong>
+    </div>
+    <a class="ep-image-evidence ep-image-evidence-compact" href="{{ '/assets/images/portfolio/eirepolitic-metrics-example.png' | relative_url }}">
       <img src="{{ '/assets/images/portfolio/eirepolitic-metrics-example.png' | relative_url }}" alt="Example polling output generated from an ingested polling source" loading="lazy" />
-      <span>Polling is a separate source stream handled alongside parliamentary data. View full image ↗</span>
+      <span>Polling is a separate source stream. View full image ↗</span>
     </a>
   </div>
 </section>
@@ -86,13 +75,13 @@ tags:
     <h2>Turn source records into one stable analytical model.</h2>
     <p>The processed Oireachtas layer is organized into validated silver and gold datasets, plus compatibility outputs for existing consumers. Immutable batches preserve auditability while a promoted pointer gives downstream systems a stable production view.</p>
   </div>
-  <div class="ep-model-flow" aria-label="Simplified canonical data model">
+  <div class="ep-model-line" aria-label="Simplified canonical data model">
     <div><span>Source</span><strong>Raw records</strong><small>debates · members · votes · bills · questions</small></div>
     <div><span>Silver</span><strong>Normalized facts</strong><small>stable identifiers and relationships</small></div>
     <div><span>Gold</span><strong>Enrichment</strong><small>context · labels · derived datasets</small></div>
     <div><span>Consumer</span><strong>Outputs</strong><small>metrics · visuals · compatibility data</small></div>
   </div>
-  <a class="ep-image-card ep-image-card-wide" href="{{ '/assets/images/portfolio/eirepolitic-data-model-docs.png' | relative_url }}">
+  <a class="ep-image-evidence ep-image-evidence-wide" href="{{ '/assets/images/portfolio/eirepolitic-data-model-docs.png' | relative_url }}">
     <img src="{{ '/assets/images/portfolio/eirepolitic-data-model-docs.png' | relative_url }}" alt="Eirepolitic data model documentation showing output tables grouped by category" loading="lazy" />
     <span>Canonical output tables grouped by downstream role. View full-size documentation ↗</span>
   </a>
@@ -109,17 +98,14 @@ tags:
       <p>Existing labels are reused where the underlying speech is unchanged, historical labels are migrated only when a safe match can be proven, and short text is handled deterministically.</p>
     </div>
   </div>
-  <div class="ep-decision-flow" role="img" aria-label="Speech classification decision flow">
-    <div><strong>Unchanged?</strong><span>Reuse label</span></div>
-    <div><strong>Safe legacy match?</strong><span>Migrate label</span></div>
-    <div><strong>Very short text?</strong><span>Rule-based NONE</span></div>
-    <div><strong>Still pending?</strong><span>Model classification</span></div>
-    <div><strong>Candidate</strong><span>Validate before promotion</span></div>
+  <div class="ep-decision-path" aria-label="Speech classification decision flow">
+    <div><span>01</span><strong>Reuse when unchanged</strong><small>Text hashes preserve deterministic reuse.</small></div>
+    <div><span>02</span><strong>Migrate only safe legacy matches</strong><small>Historical labels move forward only when identity can be proven.</small></div>
+    <div><span>03</span><strong>Handle trivial cases deterministically</strong><small>Very short text can resolve to rule-based NONE.</small></div>
+    <div class="ep-decision-model"><span>04</span><strong>Use model inference last</strong><small>Only unresolved speeches reach bounded classification.</small></div>
+    <div><span>05</span><strong>Validate the candidate</strong><small>Structured outputs are checked before promotion.</small></div>
   </div>
-  <div class="ep-inline-cta">
-    <div><strong>Applied language models, bounded by deterministic controls.</strong><span>Structured outputs · text hashes · controlled taxonomy · candidate batches</span></div>
-    <a href="{{ '/portfolio/eirepolitic/issue-classification/' | relative_url }}">Explore the classification deep dive →</a>
-  </div>
+  <p class="ep-stage-link"><a href="{{ '/portfolio/eirepolitic/issue-classification/' | relative_url }}">Explore the classification deep dive →</a></p>
 </section>
 
 <section class="ep-stage ep-stage-metrics">
@@ -133,16 +119,13 @@ tags:
     <strong>Define the comparison before calculating the value.</strong>
     <p>Historical attribution, denominator rules and reliability thresholds are part of the metric definition, not cleanup applied after the result.</p>
   </div>
-  <div class="ep-metric-contracts">
-    <div><strong>Historical attribution</strong><span>Party and constituency as they were on the event date.</span></div>
-    <div><strong>Explicit denominators</strong><span>Eligible events and populations defined as part of the metric.</span></div>
-    <div><strong>Reliability rules</strong><span>Small or ambiguous samples can be withheld from comparison.</span></div>
-    <div><strong>Conservative claims</strong><span>A missing recorded vote is not labelled physical absence.</span></div>
-  </div>
-  <div class="ep-inline-cta">
-    <div><strong>Examples</strong><span>Speech activity · issue emphasis · voting participation · party unity · parliamentary questions</span></div>
-    <a href="{{ '/portfolio/eirepolitic/political-metrics/' | relative_url }}">Explore the political-metrics deep dive →</a>
-  </div>
+  <ol class="ep-principle-list">
+    <li><strong>Historical attribution</strong><span>Party and constituency as they were on the event date.</span></li>
+    <li><strong>Explicit denominators</strong><span>Eligible events and populations defined as part of the metric.</span></li>
+    <li><strong>Reliability rules</strong><span>Small or ambiguous samples can be withheld from comparison.</span></li>
+    <li><strong>Conservative claims</strong><span>A missing recorded vote is not labelled physical absence.</span></li>
+  </ol>
+  <div class="ep-metrics-footer"><span>Examples: speech activity · issue emphasis · voting participation · party unity · parliamentary questions</span><a href="{{ '/portfolio/eirepolitic/political-metrics/' | relative_url }}">Explore the political-metrics deep dive →</a></div>
 </section>
 
 <section class="ep-stage ep-stage-factory">
@@ -177,10 +160,7 @@ tags:
       </a>
     </article>
   </div>
-  <div class="ep-inline-cta">
-    <div><strong>Human in the loop, production system in the repository.</strong><span>Deterministic layouts · QA · browser review · conversational iteration</span></div>
-    <a href="{{ '/portfolio/eirepolitic/content-factory/' | relative_url }}">Explore the Content Factory deep dive →</a>
-  </div>
+  <p class="ep-stage-link"><a href="{{ '/portfolio/eirepolitic/content-factory/' | relative_url }}">Explore the Content Factory deep dive →</a></p>
 </section>
 
 <section class="ep-stage ep-stage-publishing">
@@ -194,26 +174,22 @@ tags:
       <p>DynamoDB remains the authoritative publication ledger while EventBridge Scheduler and Lambda handle future execution. Durable provider state prevents duplicate publication across retries.</p>
     </div>
   </div>
-  <div class="ep-publish-flow" role="img" aria-label="Instagram publishing architecture">
-    <div><strong>Reviewed render</strong><span>exact approved artifact</span></div>
-    <div><strong>Control plane</strong><span>S3 assets · DynamoDB ledger · EventBridge schedule</span></div>
-    <div><strong>Execution</strong><span>Lambda worker with idempotent publication handling</span></div>
-    <div><strong>Public result</strong><span>published Instagram content</span></div>
+  <div class="ep-publish-line" aria-label="Instagram publishing architecture">
+    <div><span>01</span><strong>Approved</strong><small>Exact reviewed artifact and approval fingerprint</small></div>
+    <div><span>02</span><strong>Scheduled / executed</strong><small>S3 · DynamoDB · EventBridge Scheduler · Lambda</small></div>
+    <div><span>03</span><strong>Published</strong><small>Durable provider state and public delivery</small></div>
   </div>
   <div class="ep-publish-proof">
-    <a class="ep-image-card" href="{{ '/assets/images/portfolio/eirepolitic-schedule-inventory.png' | relative_url }}">
+    <a class="ep-image-evidence ep-image-evidence-compact" href="{{ '/assets/images/portfolio/eirepolitic-schedule-inventory.png' | relative_url }}">
       <img src="{{ '/assets/images/portfolio/eirepolitic-schedule-inventory.png' | relative_url }}" alt="Eirepolitic publishing schedule inventory" loading="lazy" />
-      <span>Operational state: schedule inventory ↗</span>
+      <span>Operational evidence: schedule inventory ↗</span>
     </a>
-    <a class="ep-image-card ep-image-card-result" href="{{ '/assets/images/portfolio/eirepolitic-published-instagram.png' | relative_url }}">
+    <a class="ep-image-evidence ep-publish-result" href="{{ '/assets/images/portfolio/eirepolitic-published-instagram.png' | relative_url }}">
       <img src="{{ '/assets/images/portfolio/eirepolitic-published-instagram.png' | relative_url }}" alt="Eirepolitic content published on Instagram" loading="lazy" />
       <span>Public result: pipeline-generated Instagram output ↗</span>
     </a>
   </div>
-  <div class="ep-inline-cta">
-    <div><strong>Production-proven execution path.</strong><span>Immediate and scheduled canaries completed against the real account in September 2026.</span></div>
-    <a href="{{ '/portfolio/eirepolitic/automated-publishing/' | relative_url }}">Explore the automated-publishing deep dive →</a>
-  </div>
+  <div class="ep-publishing-footer"><span>Immediate and scheduled canaries completed against the real account in September 2026.</span><a href="{{ '/portfolio/eirepolitic/automated-publishing/' | relative_url }}">Explore the automated-publishing deep dive →</a></div>
 </section>
 
 <section class="ep-summary">
@@ -233,11 +209,11 @@ tags:
     <p class="editorial-kicker">Continue exploring</p>
     <h2>Choose the level of detail.</h2>
   </div>
-  <div class="ep-next-grid">
+  <div class="ep-link-list">
     <a href="{{ '/portfolio/eirepolitic/issue-classification/' | relative_url }}"><strong>Issue classification</strong><span>Controlled taxonomy, deterministic reuse and bounded model inference.</span></a>
     <a href="{{ '/portfolio/eirepolitic/political-metrics/' | relative_url }}"><strong>Political metrics</strong><span>Historical attribution, denominators and reusable metric contracts.</span></a>
     <a href="{{ '/portfolio/eirepolitic/content-factory/' | relative_url }}"><strong>Content Factory</strong><span>Repository rendering, browser review and iterative design workflow.</span></a>
     <a href="{{ '/portfolio/eirepolitic/automated-publishing/' | relative_url }}"><strong>Automated publishing</strong><span>Approval, scheduling, idempotent execution and publication state.</span></a>
-    <a class="ep-next-docs" href="https://github.com/warrengleeson/eirepolitic-data-pipeline"><strong>Technical documentation</strong><span>Go to the canonical repository for implementation detail and operational documentation.</span></a>
+    <a class="ep-next-docs" href="https://github.com/warrengleeson/eirepolitic-data-pipeline"><strong>Technical documentation</strong><span>Canonical implementation detail and operational documentation in the source repository.</span></a>
   </div>
 </section>
