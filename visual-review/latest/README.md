@@ -1,5 +1,5 @@
 # Visual review output
 
-Source ref: `polish/eirepolitic-composition-pass`
+Source ref: `tooling/postmerge-eirepolitic-review`
 
-Source commit: `ebee1e7e68f4b7d71ffb6a5ce03883e41aa968fa`
+Source commit: `1537f7173ebf74e857e9f7b55c8d0f2274ee6972`
