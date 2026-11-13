@@ -1,5 +1,5 @@
 # Visual review output
 
-Source ref: `tooling/postmerge-eirepolitic-review`
+Source ref: `polish/eirepolitic-second-pass`
 
-Source commit: `1537f7173ebf74e857e9f7b55c8d0f2274ee6972`
+Source commit: `9e3ef76700de539654d6769b54633fe7aaf255c0`
