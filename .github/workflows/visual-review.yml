@@ -6,10 +6,6 @@ on:
 permissions:
   contents: write
 
-concurrency:
-  group: visual-review
-  cancel-in-progress: true
-
 jobs:
   capture:
     runs-on: ubuntu-latest
@@ -21,7 +17,6 @@ jobs:
           fetch-depth: 0
 
       - name: Configure Pages
-        id: pages
         uses: actions/configure-pages@v5
 
       - name: Build Jekyll site
@@ -43,15 +38,14 @@ jobs:
 
       - name: Start local site server
         run: |
-          python3 -m http.server 4173 --directory _site > /tmp/eirepolitic-visual-review-server.log 2>&1 &
-          echo $! > /tmp/eirepolitic-visual-review-server.pid
+          python3 -m http.server 4173 --directory _site > /tmp/visual-review-server.log 2>&1 &
           for i in {1..30}; do
             if curl --fail --silent http://127.0.0.1:4173/portfolio/eirepolitic/ >/dev/null; then
               exit 0
             fi
             sleep 1
           done
-          cat /tmp/eirepolitic-visual-review-server.log
+          cat /tmp/visual-review-server.log
           exit 1
 
       - name: Capture Eirepolitic screenshots
@@ -66,7 +60,6 @@ jobs:
 
           const base = 'http://127.0.0.1:4173';
           const output = 'visual-review/latest/eirepolitic';
-          const pagePath = '/portfolio/eirepolitic/';
           const viewports = [
             { name: 'desktop-1440', width: 1440, height: 1000 },
             { name: 'compact-1024', width: 1024, height: 900 },
@@ -89,17 +82,10 @@ jobs:
           const browser = await chromium.launch({ headless: true });
           try {
             for (const viewport of viewports) {
-              const context = await browser.newContext({
-                viewport: { width: viewport.width, height: viewport.height },
-                deviceScaleFactor: 1,
-              });
+              const context = await browser.newContext({ viewport: { width: viewport.width, height: viewport.height }, deviceScaleFactor: 1 });
               const page = await context.newPage();
-              await page.goto(base + pagePath, { waitUntil: 'networkidle' });
-              await page.screenshot({
-                path: `${output}/${viewport.name}-full.png`,
-                fullPage: true,
-              });
-
+              await page.goto(base + '/portfolio/eirepolitic/', { waitUntil: 'networkidle' });
+              await page.screenshot({ path: `${output}/${viewport.name}-full.png`, fullPage: true });
               if (viewport.name === 'desktop-1440') {
                 for (const [name, selector] of sections) {
                   const locator = page.locator(selector).first();
@@ -114,10 +100,7 @@ jobs:
             await browser.close();
           }
 
-          fs.writeFileSync(
-            'visual-review/latest/README.md',
-            `# Visual review output\n\nSource ref: \`${process.env.SOURCE_REF}\`\n\nSource commit: \`${process.env.SOURCE_SHA}\`\n\nGenerated screenshots are under \`visual-review/latest/eirepolitic/\`.\n`
-          );
+          fs.writeFileSync('visual-review/latest/README.md', `# Visual review output\n\nSource ref: \`${process.env.SOURCE_REF}\`\n\nSource commit: \`${process.env.SOURCE_SHA}\`\n`);
           EOF
           node capture-visual-review.mjs
           rm capture-visual-review.mjs
@@ -128,15 +111,14 @@ jobs:
         run: |
           cp -R visual-review /tmp/visual-review-output
           git fetch origin visual-review
-          git switch --force-create visual-review origin/visual-review
+          rm -rf /tmp/visual-review-branch
+          git worktree add --force -B visual-review /tmp/visual-review-branch origin/visual-review
+          cd /tmp/visual-review-branch
           rm -rf visual-review/latest
           mkdir -p visual-review
           cp -R /tmp/visual-review-output/latest ./visual-review/latest
           git add visual-review/latest
-          if git diff --cached --quiet; then
-            echo "No screenshot changes to commit."
-            exit 0
-          fi
+          if git diff --cached --quiet; then exit 0; fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit -m "Update visual review screenshots for ${SOURCE_REF}"
