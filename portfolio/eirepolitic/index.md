@@ -81,10 +81,11 @@ tags:
     <div><span>Gold</span><strong>Enrichment</strong><small>context · labels · derived datasets</small></div>
     <div><span>Consumer</span><strong>Outputs</strong><small>metrics · visuals · compatibility data</small></div>
   </div>
-  <a class="ep-image-evidence ep-image-evidence-wide" href="{{ '/assets/images/portfolio/eirepolitic-data-model-docs.png' | relative_url }}">
-    <img src="{{ '/assets/images/portfolio/eirepolitic-data-model-docs.png' | relative_url }}" alt="Eirepolitic data model documentation showing output tables grouped by category" loading="lazy" />
-    <span>Canonical output tables grouped by downstream role. View full-size documentation ↗</span>
+  <a class="ep-image-evidence ep-image-evidence-wide" href="{{ '/assets/images/portfolio/eirepolitic-canonical-data-model.png' | relative_url }}">
+    <img src="{{ '/assets/images/portfolio/eirepolitic-canonical-data-model.png' | relative_url }}" alt="Eirepolitic canonical data model showing source records converging into normalized Silver facts, Gold enrichment and downstream outputs" loading="lazy" />
+    <span>Canonical data model: source records → Silver → Gold → downstream outputs. View full graphic ↗</span>
   </a>
+  <p class="ep-stage-link"><a href="{{ '/assets/images/portfolio/eirepolitic-data-model-docs.png' | relative_url }}">View the detailed output-table documentation ↗</a></p>
 </section>
 
 <section class="ep-stage ep-stage-classifier">
