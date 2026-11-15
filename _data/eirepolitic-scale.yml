@@ -1,0 +1,33 @@
+updated: 2026-11-15
+snapshot_note: Verified repository-backed snapshot; values are intentionally conservative and are not presented as live counters.
+metrics:
+  - label: Parliamentary questions
+    value: "117,042"
+    note: Rows in the validated Oireachtas acceptance output
+    source_repo: eirepolitic-data-pipeline
+    source_path: docs/oireachtas_validation/fixes_acceptance/acceptance.md
+  - label: Classified speeches
+    value: "47,275"
+    note: Speeches covered by the validated classifier handoff
+    source_repo: eirepolitic-data-pipeline
+    source_path: docs/oireachtas_final_handoff_readiness_summary.md
+  - label: Debate-section rows
+    value: "5,008"
+    note: Candidate debate sections covered by the validated acceptance check
+    source_repo: eirepolitic-data-pipeline
+    source_path: docs/oireachtas_validation/fixes_acceptance/acceptance.md
+  - label: Bill versions
+    value: "508"
+    note: Rows in the validated bill-version output
+    source_repo: eirepolitic-data-pipeline
+    source_path: docs/oireachtas_validation/fixes_acceptance/acceptance.md
+  - label: Validated tables
+    value: "32"
+    note: Tables included in the accepted Oireachtas validation set
+    source_repo: eirepolitic-data-pipeline
+    source_path: docs/oireachtas_validation/fixes_acceptance/acceptance.md
+  - label: Member profiles
+    value: "174"
+    note: Member records covered by the validated handoff snapshot
+    source_repo: eirepolitic-data-pipeline
+    source_path: docs/oireachtas_final_handoff_readiness_summary.md
