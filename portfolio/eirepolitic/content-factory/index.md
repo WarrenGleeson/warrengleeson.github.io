@@ -4,148 +4,129 @@ title: Turning Data Into Repeatable Visual Content
 permalink: /portfolio/eirepolitic/content-factory/
 presentation: editorial
 kicker: Eirepolitic deep dive
-summary: A deterministic Instagram content factory that turns validated data into reviewable visual assets, supports iterative design feedback, and keeps publication separate from rendering.
-tags:
-  - Automation
-  - Data Visualisation
-  - Content Systems
+summary: The implementation behind project adapters, deterministic rendering, review-state tracking, QA, and reusable design feedback.
 ---
 
-<section class="case-study-section case-study-two-column">
-  <div>
-    <p class="editorial-kicker">The problem</p>
-    <h2>Good social graphics should not depend on rebuilding the design by hand every time.</h2>
-  </div>
-  <div>
-    <p>Eirepolitic needed a way to turn structured political data into consistent Instagram carousels without manually recreating every chart, title, label, colour and layout for each post.</p>
-    <p>The content factory treats visual production as a reproducible pipeline: data enters through a defined project adapter, a deterministic renderer builds the slides, QA checks the output, and the exact generated assets are presented for human review before anything can become publishable.</p>
-  </div>
+<a class="deep-dive-back" href="{{ '/portfolio/eirepolitic/' | relative_url }}">← Back to the Eirepolitic flagship case study</a>
+
+<section class="deep-dive-intro">
+  <p class="editorial-kicker">What this page adds</p>
+  <h2>The content factory is less about “making graphics” than turning design into a repeatable build system.</h2>
+  <p>The flagship shows the Render → Review → Iterate workflow and the real outputs. This page focuses on what makes that workflow reusable: project adapters, deterministic render inputs, item/slide review state, QA gates, and the way repeated visual feedback becomes configuration or renderer code rather than one-off manual edits.</p>
 </section>
 
 <section class="case-study-section">
-  <p class="editorial-kicker">The workflow</p>
-  <h2>Separate data, rendering, review and publishing.</h2>
-  <div class="classification-flow" role="img" aria-label="Content factory workflow">
-    <div><strong>Validated data</strong><span>Oireachtas or polling datasets</span></div>
-    <b>→</b>
-    <div><strong>Project adapter</strong><span>resolve period and content inputs</span></div>
-    <b>→</b>
-    <div><strong>Renderer</strong><span>build repeatable slides</span></div>
-    <b>→</b>
-    <div><strong>QA</strong><span>check content and layout rules</span></div>
-    <b>→</b>
-    <div><strong>Human review</strong><span>approve or request changes</span></div>
+  <div class="deep-dive-section-heading">
+    <p class="editorial-kicker">1 · Project adapters</p>
+    <h2>Each recurring content series owns its own data logic.</h2>
   </div>
-</section>
-
-<section class="case-study-section case-study-two-column">
-  <div>
-    <p class="editorial-kicker">1 · Project-specific adapters</p>
-    <h2>Each content series owns its data logic.</h2>
-  </div>
-  <div>
-    <p>The factory does not assume every post has the same data shape. Each recurring series can define its own adapter, manifest and QA rules while still using the same rendering and review infrastructure.</p>
-    <p>That keeps domain logic close to the project that needs it. A polling carousel can resolve its latest polling period differently from a monthly parliamentary issue profile without forcing both into one oversized generic schema.</p>
-  </div>
-</section>
-
-<section class="case-study-section">
-  <p class="editorial-kicker">2 · Deterministic rendering</p>
-  <h2>The same input should produce the same visual result.</h2>
-  <div class="case-study-two-column compact-gap">
+  <div class="deep-dive-two-column">
     <div>
-      <p>The current factory uses repository-controlled Python renderers, layout definitions, palettes and reusable visual primitives. Text, charts, labels and party assets are placed by code rather than by an external design session that cannot be reproduced later.</p>
-      <p>This makes design changes versionable. If a label is too small or a chart needs more spacing, the change can be made to a renderer parameter or project configuration, committed, and rerun against the same data.</p>
+      <p>The factory does not force polling, parliamentary metrics and future content types into one universal input schema. Each series can define how it resolves periods, selects datasets, builds content inputs and applies project-specific QA.</p>
+      <p>The shared factory then handles the common mechanics: rendering, artifact packaging, review, approval state and handoff. This keeps domain logic close to the project without duplicating the whole workflow.</p>
     </div>
-    <div class="eirepolitic-tech-note"><strong>Tools in context</strong><span>Python · project YAML · renderer modules · layout definitions · reusable visual primitives</span></div>
+    <div class="deep-dive-rule-list">
+      <div><strong>Project adapter</strong><span>Resolve period, source datasets and content inputs.</span></div>
+      <div><strong>Project manifest</strong><span>Declare expected outputs and project-level settings.</span></div>
+      <div><strong>Shared factory</strong><span>Render, package, review and track state consistently.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="deep-dive-visual-pair" aria-label="Suggested content-factory visuals">
+  <div class="deep-dive-visual-placeholder">
+    <span class="deep-dive-visual-number">Visual 01</span>
+    <strong>Project adapter + manifest screenshot</strong>
+    <p>Show a real project configuration beside the small adapter entry point that resolves a period and builds render inputs.</p>
+    <small>Best source: cropped YAML/config plus the corresponding adapter function. Emphasise separation between project data logic and shared rendering infrastructure.</small>
+  </div>
+  <div class="deep-dive-visual-placeholder">
+    <span class="deep-dive-visual-number">Visual 02</span>
+    <strong>Review-state / artifact anatomy diagram</strong>
+    <p>Show one factory run containing generated slides, contact sheet, review metadata and explicit item/slide approval state.</p>
+    <small>Best source: purpose-built diagram using actual artifact names, or a browser/Actions capture where the review-state files are visible.</small>
   </div>
 </section>
 
 <section class="case-study-section">
-  <p class="editorial-kicker">3 · Review artifacts</p>
-  <h2>Review the real output, not a description of it.</h2>
-  <div class="case-study-two-column compact-gap">
+  <div class="deep-dive-section-heading">
+    <p class="editorial-kicker">2 · Deterministic rendering</p>
+    <h2>Design choices live in versioned inputs and code.</h2>
+  </div>
+  <div class="deep-dive-two-column">
     <div>
-      <p>Render workflows build a self-contained review page with the generated slides, contact sheets and downloadable assets. The review URL points at the actual output from that run, so design decisions are based on the same images that can later be promoted for publishing.</p>
-      <p>Review state is tracked at both item and slide level. A run cannot be marked ready for posting unless every required item and slide is explicitly approved.</p>
+      <p>Repository-controlled Python renderers, layout definitions, palettes and reusable primitives determine the output. Given the same project inputs and renderer version, the workflow can reproduce the same visual rather than depending on a design session that only existed once.</p>
+      <p>That also makes visual changes reviewable. A spacing, label-size or chart-layout adjustment can be represented as a small code/configuration change and rerun against the same data.</p>
     </div>
-    <div class="editorial-placeholder screenshot-slot"><strong>Screenshot needed</strong><span>Real browser-based review page showing generated carousel slides</span></div>
+    <div class="deep-dive-emphasis">
+      <span>Design as code</span>
+      <strong>Python · project YAML · renderer modules · layout definitions · reusable visual primitives</strong>
+    </div>
   </div>
 </section>
 
 <section class="case-study-section">
-  <p class="editorial-kicker">4 · Conversational iteration</p>
-  <h2>Use natural-language feedback without letting the chat become the production system.</h2>
-  <div class="case-study-two-column compact-gap">
+  <div class="deep-dive-section-heading">
+    <p class="editorial-kicker">3 · Review state</p>
+    <h2>“Looks good” becomes explicit state, not an informal memory.</h2>
+  </div>
+  <div class="deep-dive-two-column">
     <div>
-      <p>I can review a render in chat and describe the problem in ordinary language—for example, that a slide feels crowded or that labels need more emphasis. The feedback is translated into a concrete renderer or project-setting change, the repository is updated, and the real render workflow is run again.</p>
-      <p>The important boundary is that the chat does not manufacture the final production image. It helps operate and iterate the coded rendering system. The final asset is still produced by the repository workflow and remains reproducible.</p>
+      <p>A factory run produces the real slides plus supporting review artifacts. Approval is tracked at item and slide level, so a run cannot become ready for posting simply because someone reviewed one representative image.</p>
+      <p>The review URL therefore points to the exact candidate assets, while the associated state records which items were approved, rejected or sent back for changes.</p>
     </div>
-    <div class="editorial-placeholder screenshot-slot"><strong>Screenshot needed</strong><span>Conversational design iteration showing feedback followed by a rerendered result</span></div>
-  </div>
-</section>
-
-<section class="case-study-section">
-  <p class="editorial-kicker">5 · Design feedback becomes reusable</p>
-  <h2>Fix the system, not just one screenshot.</h2>
-  <div class="cost-control-grid">
-    <div><strong>Feedback</strong><span>“Labels too small” or “slide too crowded.”</span></div>
-    <div><strong>Interpretation</strong><span>Map the comment to a known visual control or layout decision.</span></div>
-    <div><strong>Technical change</strong><span>Update project configuration or renderer code in a small commit.</span></div>
-    <div><strong>Rerender</strong><span>Run the same project and period again for comparison.</span></div>
-  </div>
-  <p>When a recurring feedback pattern appears more than once, it can be parameterised instead of becoming a collection of one-off fixes.</p>
-</section>
-
-<section class="case-study-section">
-  <p class="editorial-kicker">6 · QA before review</p>
-  <h2>Visual generation still has data-quality rules.</h2>
-  <div class="case-study-two-column compact-gap">
-    <div>
-      <p>The factory can check more than whether an image file exists. Project-specific QA can validate required content, data readiness and known layout constraints before a run is presented for approval.</p>
-      <p>If QA fails, the workflow reports the failed check rather than silently retrying or loosening the rule. That keeps visual output tied to the same reliability principles as the upstream data pipeline.</p>
-    </div>
-    <div class="model-stack">
-      <div><strong>Input readiness</strong><span>validated source data</span></div>
-      <div><strong>Render checks</strong><span>required outputs and project-specific assertions</span></div>
-      <div><strong>Review page</strong><span>human inspection of actual assets</span></div>
-      <div><strong>Approval state</strong><span>explicit approved / changes requested / rejected state</span></div>
+    <div class="deep-dive-sequence deep-dive-sequence-vertical">
+      <div><span>01</span><strong>Generated candidate</strong><small>Exact slides produced by the repository renderer.</small></div>
+      <div><span>02</span><strong>Review artifact</strong><small>Browser page, contact sheet and downloadable outputs.</small></div>
+      <div><span>03</span><strong>Explicit decisions</strong><small>Approved / changes requested / rejected at required granularity.</small></div>
+      <div><span>04</span><strong>Ready state</strong><small>Available only when all required review conditions pass.</small></div>
     </div>
   </div>
 </section>
 
 <section class="case-study-section">
-  <p class="editorial-kicker">7 · Publishing is deliberately separate</p>
-  <h2>The factory can finish a post without being allowed to publish it.</h2>
-  <div class="case-study-two-column compact-gap">
-    <div>
-      <p>The content factory enforces a hard boundary: rendering and review do not directly publish to Instagram. Factory outputs retain publishing-disabled state even after they are marked ready for posting.</p>
-      <p>Only the separate publishing system can take the exact approved artifact, promote immutable assets, record the approval fingerprint, and execute an immediate or scheduled publication.</p>
-    </div>
-    <div class="eirepolitic-tech-note"><strong>Safety boundary</strong><span>Factory: render + review · Publishing system: approval fingerprint + AWS execution + Meta</span></div>
+  <div class="deep-dive-section-heading">
+    <p class="editorial-kicker">4 · Feedback loop</p>
+    <h2>The durable result of feedback is a repository change.</h2>
+  </div>
+  <div class="deep-dive-feedback-flow">
+    <div><span>01</span><strong>Observe</strong><p>“Labels are too small” or “this slide is too crowded.”</p></div>
+    <div><span>02</span><strong>Map</strong><p>Identify the renderer parameter, project setting or layout rule responsible.</p></div>
+    <div><span>03</span><strong>Change</strong><p>Commit a small code/config update rather than editing one image manually.</p></div>
+    <div><span>04</span><strong>Rerender</strong><p>Run the same project and period again for a direct comparison.</p></div>
+  </div>
+  <p>When the same kind of feedback appears repeatedly, it can become a reusable parameter or layout rule. That is the point where design feedback improves the system rather than only the current post.</p>
+</section>
+
+<section class="deep-dive-visual-single">
+  <div class="deep-dive-visual-placeholder">
+    <span class="deep-dive-visual-number">Visual 03</span>
+    <strong>Before / after renderer change</strong>
+    <p>Pair two real renders from the same project and period with the small config or renderer diff that produced the improvement.</p>
+    <small>Best source: one concrete feedback iteration where the data stayed constant and only the visual system changed.</small>
   </div>
 </section>
 
 <section class="case-study-section">
-  <p class="editorial-kicker">What this demonstrates</p>
-  <h2>A visual workflow can be engineered like a data product.</h2>
-  <div class="capability-grid">
-    <div><strong>Reproducibility</strong><span>repository-controlled layouts, inputs and render code</span></div>
-    <div><strong>Extensibility</strong><span>project adapters and reusable rendering primitives</span></div>
-    <div><strong>Human-in-the-loop design</strong><span>real output reviewed before approval</span></div>
-    <div><strong>Operational feedback loops</strong><span>natural-language feedback translated into versioned technical changes</span></div>
-    <div><strong>Quality control</strong><span>QA and explicit item/slide review state</span></div>
-    <div><strong>Separation of concerns</strong><span>rendering cannot bypass publishing approval</span></div>
+  <div class="deep-dive-section-heading">
+    <p class="editorial-kicker">5 · QA before human review</p>
+    <h2>Rendering can fail for data reasons as well as visual ones.</h2>
+  </div>
+  <div class="deep-dive-rule-list deep-dive-rule-list-wide">
+    <div><strong>Input readiness</strong><span>Required validated source data and project inputs must exist.</span></div>
+    <div><strong>Output completeness</strong><span>Every expected slide/artifact must be produced.</span></div>
+    <div><strong>Project assertions</strong><span>Known content or layout constraints can fail the run before approval.</span></div>
+    <div><strong>No silent loosening</strong><span>A failed check is reported rather than retried with weaker rules.</span></div>
   </div>
 </section>
 
 <section class="case-study-section technical-links-section">
-  <p class="editorial-kicker">Go deeper</p>
-  <h2>Canonical technical documentation</h2>
+  <p class="editorial-kicker">Implementation detail</p>
+  <h2>Canonical technical sources</h2>
   <div class="technical-link-grid">
-    <a href="https://github.com/warrengleeson/eirepolitic-data-pipeline/blob/main/director/README.md"><strong>Eirepolitic Director</strong><span>Current operational entry point for content generation and publishing capabilities</span></a>
+    <a href="https://github.com/warrengleeson/eirepolitic-data-pipeline/blob/main/director/README.md"><strong>Eirepolitic Director</strong><span>Operational entry point for content generation and publishing capabilities</span></a>
     <a href="https://github.com/warrengleeson/eirepolitic-data-pipeline/blob/main/director/workflows_v1.md"><strong>Content workflows</strong><span>Existing-series, new-post, feedback-loop and data-capability procedures</span></a>
     <a href="https://github.com/warrengleeson/eirepolitic-data-pipeline/blob/main/director/capabilities.yml"><strong>Factory capabilities</strong><span>Rendering, review, preview hosting, data resolution and factory boundaries</span></a>
-    <a href="{{ '/portfolio/eirepolitic/' | relative_url }}"><strong>Back to Eirepolitic</strong><span>Return to the end-to-end project case study</span></a>
   </div>
+  <a class="deep-dive-return" href="{{ '/portfolio/eirepolitic/' | relative_url }}">Return to the Eirepolitic flagship →</a>
 </section>
