@@ -84,7 +84,17 @@ summary: An end-to-end political data, analysis and automated publishing platfor
     <img src="{{ '/assets/images/portfolio/eirepolitic-canonical-data-model.png' | relative_url }}" alt="Eirepolitic canonical data model showing source records converging into normalized Silver facts, Gold enrichment and downstream outputs" loading="lazy" />
     <span>Canonical data model: source records → Silver → Gold → downstream outputs. View full graphic ↗</span>
   </a>
-  <p class="ep-stage-link"><a href="{{ '/assets/images/portfolio/eirepolitic-data-model-docs.png' | relative_url }}">View the detailed output-table documentation ↗</a></p>
+  <div class="ep-supporting-evidence">
+    <div>
+      <span class="ep-sequence-number">Supporting evidence</span>
+      <h3>The detailed output-table map is useful once the higher-level model is clear.</h3>
+      <p>This documentation view groups the real canonical outputs by role. It is intentionally secondary to the simplified model above, but it shows the breadth of tables behind the Silver, Gold and compatibility layers without sending the reader to a standalone image.</p>
+    </div>
+    <a class="ep-image-evidence" href="{{ '/assets/images/portfolio/eirepolitic-data-model-docs.png' | relative_url }}">
+      <img src="{{ '/assets/images/portfolio/eirepolitic-data-model-docs.png' | relative_url }}" alt="Detailed Eirepolitic output-table documentation grouped by canonical data role" loading="lazy" />
+      <span>Detailed output-table documentation. View full image ↗</span>
+    </a>
+  </div>
 </section>
 
 <section class="ep-stage ep-stage-scale">
@@ -120,7 +130,9 @@ summary: An end-to-end political data, analysis and automated publishing platfor
     <div class="ep-decision-model"><span>04</span><strong>Use model inference last</strong><small>Only unresolved speeches reach bounded classification.</small></div>
     <div><span>05</span><strong>Validate the candidate</strong><small>Structured outputs are checked before promotion.</small></div>
   </div>
-  <p class="ep-stage-link"><a href="{{ '/portfolio/eirepolitic/issue-classification/' | relative_url }}">Explore the classification deep dive →</a></p>
+  <a class="ep-deep-dive-cta" href="{{ '/portfolio/eirepolitic/issue-classification/' | relative_url }}">
+    <span>Deep dive page</span><strong>Issue classification</strong><small>See the reuse contract, safe historical migration, bounded inference and candidate-safety mechanics.</small><b>Open deep dive →</b>
+  </a>
 </section>
 
 <section class="ep-stage ep-stage-metrics">
@@ -140,7 +152,10 @@ summary: An end-to-end political data, analysis and automated publishing platfor
     <li><strong>Reliability rules</strong><span>Small or ambiguous samples can be withheld from comparison.</span></li>
     <li><strong>Conservative claims</strong><span>A missing recorded vote is not labelled physical absence.</span></li>
   </ol>
-  <div class="ep-metrics-footer"><span>Examples: speech activity · issue emphasis · voting participation · party unity · parliamentary questions</span><a href="{{ '/portfolio/eirepolitic/political-metrics/' | relative_url }}">Explore the political-metrics deep dive →</a></div>
+  <div class="ep-metrics-footer"><span>Examples: speech activity · issue emphasis · voting participation · party unity · parliamentary questions</span></div>
+  <a class="ep-deep-dive-cta" href="{{ '/portfolio/eirepolitic/political-metrics/' | relative_url }}">
+    <span>Deep dive page</span><strong>Political metrics</strong><small>See the historical joins, certified legislation bridge, denominator contracts and reliability/materialisation rules.</small><b>Open deep dive →</b>
+  </a>
 </section>
 
 <section class="ep-stage ep-stage-factory">
@@ -186,7 +201,9 @@ summary: An end-to-end political data, analysis and automated publishing platfor
     </a>
   </article>
 
-  <p class="ep-stage-link"><a href="{{ '/portfolio/eirepolitic/content-factory/' | relative_url }}">Explore the Content Factory deep dive →</a></p>
+  <a class="ep-deep-dive-cta" href="{{ '/portfolio/eirepolitic/content-factory/' | relative_url }}">
+    <span>Deep dive page</span><strong>Content Factory</strong><small>See the project adapters, deterministic renderer, review-state model, QA gates and reusable design-feedback loop.</small><b>Open deep dive →</b>
+  </a>
 </section>
 
 <section class="ep-stage ep-stage-publishing">
@@ -226,7 +243,10 @@ summary: An end-to-end political data, analysis and automated publishing platfor
     </a>
   </article>
 
-  <div class="ep-publishing-footer"><span>Immediate and scheduled canaries completed against the real account in September 2026.</span><a href="{{ '/portfolio/eirepolitic/automated-publishing/' | relative_url }}">Explore the automated-publishing deep dive →</a></div>
+  <div class="ep-publishing-footer"><span>Immediate and scheduled canaries completed against the real account in September 2026.</span></div>
+  <a class="ep-deep-dive-cta" href="{{ '/portfolio/eirepolitic/automated-publishing/' | relative_url }}">
+    <span>Deep dive page</span><strong>Automated publishing</strong><small>See immutable handoff, approval fingerprints, durable state, scheduler payloads, idempotency and runtime secrets.</small><b>Open deep dive →</b>
+  </a>
 </section>
 
 <section class="ep-summary">
@@ -244,13 +264,14 @@ summary: An end-to-end political data, analysis and automated publishing platfor
 <section class="ep-next-steps">
   <div>
     <p class="editorial-kicker">Continue exploring</p>
-    <h2>Choose the level of detail.</h2>
+    <h2>Four technical deep dives.</h2>
+    <p>Each page focuses on implementation detail that is deliberately omitted from the flagship overview.</p>
   </div>
-  <div class="ep-link-list">
-    <a href="{{ '/portfolio/eirepolitic/issue-classification/' | relative_url }}"><strong>Issue classification</strong><span>Controlled taxonomy, deterministic reuse and bounded model inference.</span></a>
-    <a href="{{ '/portfolio/eirepolitic/political-metrics/' | relative_url }}"><strong>Political metrics</strong><span>Historical attribution, denominators and reusable metric contracts.</span></a>
-    <a href="{{ '/portfolio/eirepolitic/content-factory/' | relative_url }}"><strong>Content Factory</strong><span>Repository rendering, browser review and iterative design workflow.</span></a>
-    <a href="{{ '/portfolio/eirepolitic/automated-publishing/' | relative_url }}"><strong>Automated publishing</strong><span>Approval, scheduling, idempotent execution and publication state.</span></a>
+  <div class="ep-link-list ep-deep-dive-directory">
+    <a href="{{ '/portfolio/eirepolitic/issue-classification/' | relative_url }}"><strong>Issue classification</strong><span>Reuse contracts, safe migration, bounded inference and candidate safety.</span></a>
+    <a href="{{ '/portfolio/eirepolitic/political-metrics/' | relative_url }}"><strong>Political metrics</strong><span>Historical joins, certified relationships, denominators and reliability.</span></a>
+    <a href="{{ '/portfolio/eirepolitic/content-factory/' | relative_url }}"><strong>Content Factory</strong><span>Adapters, deterministic rendering, review state, QA and feedback loops.</span></a>
+    <a href="{{ '/portfolio/eirepolitic/automated-publishing/' | relative_url }}"><strong>Automated publishing</strong><span>Approval fingerprints, durable state, scheduling and idempotent execution.</span></a>
     <a class="ep-next-docs" href="https://github.com/warrengleeson/eirepolitic-data-pipeline"><strong>Technical documentation</strong><span>Canonical implementation detail and operational documentation in the source repository.</span></a>
   </div>
 </section>
