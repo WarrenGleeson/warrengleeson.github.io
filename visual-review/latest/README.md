@@ -1,5 +1,5 @@
 # Visual review output
 
-Source ref: `polish/eirepolitic-structure-pass`
+Source ref: `feature/eirepolitic-scale-snapshot`
 
-Source commit: `387918fab130569a6253c0242b0ac5189b35f2d7`
+Source commit: `8a06280016d91f5b23d977d46aabc04f922506ca`
