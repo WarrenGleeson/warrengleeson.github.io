@@ -1,5 +1,5 @@
 # Visual review output
 
-Source ref: `polish/eirepolitic-second-pass`
+Source ref: `polish/eirepolitic-structure-pass`
 
-Source commit: `42f7902871049d4c12eb39127b8b8888e9804c49`
+Source commit: `387918fab130569a6253c0242b0ac5189b35f2d7`
