@@ -5,10 +5,6 @@ permalink: /portfolio/eirepolitic/
 presentation: editorial
 kicker: Featured project
 summary: An end-to-end political data, analysis and automated publishing platform.
-tags:
-  - Data Engineering
-  - Analytics
-  - Automation
 ---
 
 <section class="ep-opening">
@@ -27,11 +23,12 @@ tags:
   <div class="ep-outcome-copy">
     <p class="editorial-kicker">The outcome</p>
     <h2>One pipeline, visible all the way to the public result.</h2>
-    <p>The technical work is designed to stay traceable from source records through to the content that a reader eventually sees.</p>
+    <p>The technical work is designed to stay traceable from source records through to the content that a reader eventually sees. The representative output shown here is not a separate design exercise: it is the end of the same governed workflow that starts with source data.</p>
+    <p>The source record, historical context, analytical definition, rendered asset and approval state all remain connected. That traceability is what makes the public-facing result useful as evidence of the underlying engineering rather than just a finished graphic.</p>
   </div>
   <a class="ep-outcome-proof" href="{{ '/assets/images/portfolio/eirepolitic-project-card.png' | relative_url }}">
     <img src="{{ '/assets/images/portfolio/eirepolitic-project-card.png' | relative_url }}" alt="Representative Eirepolitic visual output" />
-    <span>Representative public output ↗</span>
+    <span>Representative public output produced from the governed pipeline ↗</span>
   </a>
 </section>
 
@@ -47,24 +44,26 @@ tags:
 </section>
 
 <section class="ep-stage ep-stage-sources">
-  <div class="ep-stage-heading">
-    <p class="editorial-kicker">01–02 · Sources &amp; ingestion</p>
-    <h2>Start with traceable data, then validate it before use.</h2>
-    <p>The main parliamentary source is Oireachtas data, covering members, debates, speeches, divisions, legislation and parliamentary questions. Separate ingestion work supports polling data, including the Irish Polling Indicator source.</p>
-  </div>
-  <div class="ep-process-list" aria-label="Source ingestion process">
-    <div><span>01</span><strong>Acquire</strong><p>APIs and source datasets are captured with version and provenance information.</p></div>
-    <div><span>02</span><strong>Validate</strong><p>Schemas, keys, dates, duplicate conditions and historical ranges are checked before promotion.</p></div>
-    <div><span>03</span><strong>Candidate build</strong><p>New data versions can be tested before becoming the promoted production view.</p></div>
-  </div>
-  <div class="ep-source-evidence-row">
-    <div class="ep-context-note">
-      <span>Tools in context</span>
-      <strong>APIs · Python · GitHub Actions · source hashes · manifests · candidate validation</strong>
+  <div class="ep-source-layout">
+    <div class="ep-source-copy">
+      <div class="ep-stage-heading">
+        <p class="editorial-kicker">01–02 · Sources &amp; ingestion</p>
+        <h2>Start with traceable data, then validate it before use.</h2>
+        <p>The main parliamentary source is Oireachtas data, covering members, debates, speeches, divisions, legislation and parliamentary questions. Separate ingestion work supports polling data, including the Irish Polling Indicator source.</p>
+      </div>
+      <div class="ep-process-list" aria-label="Source ingestion process">
+        <div><span>01</span><strong>Acquire</strong><p>APIs and source datasets are captured with version and provenance information.</p></div>
+        <div><span>02</span><strong>Validate</strong><p>Schemas, keys, dates, duplicate conditions and historical ranges are checked before promotion.</p></div>
+        <div><span>03</span><strong>Candidate build</strong><p>New data versions can be tested before becoming the promoted production view.</p></div>
+      </div>
+      <div class="ep-context-note">
+        <span>Tools in context</span>
+        <strong>APIs · Python · GitHub Actions · source hashes · manifests · candidate validation</strong>
+      </div>
     </div>
-    <a class="ep-image-evidence ep-image-evidence-compact" href="{{ '/assets/images/portfolio/eirepolitic-metrics-example.png' | relative_url }}">
+    <a class="ep-image-evidence ep-source-proof" href="{{ '/assets/images/portfolio/eirepolitic-metrics-example.png' | relative_url }}">
       <img src="{{ '/assets/images/portfolio/eirepolitic-metrics-example.png' | relative_url }}" alt="Example polling output generated from an ingested polling source" loading="lazy" />
-      <span>Polling is a separate source stream. View full image ↗</span>
+      <span>Polling is a separate source stream. This six-month polling view is an example of a downstream visual built from that independently ingested source. View full image ↗</span>
     </a>
   </div>
 </section>
@@ -89,15 +88,10 @@ tags:
 </section>
 
 <section class="ep-stage ep-stage-classifier">
-  <div class="ep-story-split">
-    <div>
-      <p class="editorial-kicker">04 · Classification &amp; enrichment</p>
-      <h2>Add meaning without losing provenance.</h2>
-    </div>
-    <div class="ep-prose">
-      <p>Parliamentary speeches are classified into a controlled issue taxonomy, but model inference is deliberately the final option rather than the default.</p>
-      <p>Existing labels are reused where the underlying speech is unchanged, historical labels are migrated only when a safe match can be proven, and short text is handled deterministically.</p>
-    </div>
+  <div class="ep-stage-heading ep-stage-heading-wide">
+    <p class="editorial-kicker">04 · Classification &amp; enrichment</p>
+    <h2>Add meaning without losing provenance.</h2>
+    <p>Parliamentary speeches are classified into a controlled issue taxonomy, but model inference is deliberately the final option rather than the default. Existing labels are reused where the underlying speech is unchanged, historical labels are migrated only when a safe match can be proven, and short text is handled deterministically.</p>
   </div>
   <div class="ep-decision-path" aria-label="Speech classification decision flow">
     <div><span>01</span><strong>Reuse when unchanged</strong><small>Text hashes preserve deterministic reuse.</small></div>
@@ -110,7 +104,7 @@ tags:
 </section>
 
 <section class="ep-stage ep-stage-metrics">
-  <div class="ep-stage-heading">
+  <div class="ep-stage-heading ep-stage-heading-wide">
     <p class="editorial-kicker">05 · Analysis &amp; political metrics</p>
     <h2>Make analytical definitions reusable and explainable.</h2>
     <p>The metrics layer resolves historical context, eligible populations, denominators, reliability thresholds and completed-period rules before producing a public-facing number.</p>
@@ -135,61 +129,83 @@ tags:
     <h2>Render, review, iterate.</h2>
     <p>The content factory turns structured project inputs into publication-ready visuals. The production asset always comes from the repository renderer; conversation is used to operate and improve that system, not to replace it.</p>
   </div>
-  <div class="ep-sequence-grid">
-    <article class="ep-sequence-primary">
-      <span class="ep-sequence-number">01</span>
-      <h3>Render</h3>
-      <a class="ep-image-card" href="{{ '/assets/images/portfolio/eirepolitic-render-preview.png' | relative_url }}">
-        <img src="{{ '/assets/images/portfolio/eirepolitic-render-preview.png' | relative_url }}" alt="Preview of generated Eirepolitic visual content" loading="lazy" />
-        <span>Repository-generated output ↗</span>
-      </a>
-    </article>
-    <article>
-      <span class="ep-sequence-number">02</span>
-      <h3>Review</h3>
-      <a class="ep-image-card" href="{{ '/assets/images/portfolio/eirepolitic-content-review.png' | relative_url }}">
-        <img src="{{ '/assets/images/portfolio/eirepolitic-content-review.png' | relative_url }}" alt="Eirepolitic browser-based content review page" loading="lazy" />
-        <span>Review the exact rendered assets ↗</span>
-      </a>
-    </article>
-    <article>
-      <span class="ep-sequence-number">03</span>
-      <h3>Iterate</h3>
-      <a class="ep-image-card" href="{{ '/assets/images/portfolio/eirepolitic-chat-iteration.png' | relative_url }}">
-        <img src="{{ '/assets/images/portfolio/eirepolitic-chat-iteration.png' | relative_url }}" alt="Conversational iteration of an Eirepolitic visual design" loading="lazy" />
-        <span>Feedback becomes a versioned change ↗</span>
-      </a>
-    </article>
-  </div>
+
+  <article class="ep-evidence-story">
+    <div class="ep-evidence-copy">
+      <span class="ep-sequence-number">01 · Render</span>
+      <h3>Generate the exact publication asset from versioned project inputs.</h3>
+      <p>The renderer turns structured content and approved design rules into the image that is actually intended for publication. This preview is evidence of the real repository-generated output rather than a mock-up created separately for the portfolio.</p>
+    </div>
+    <a class="ep-image-card ep-image-card-full" href="{{ '/assets/images/portfolio/eirepolitic-render-preview.png' | relative_url }}">
+      <img src="{{ '/assets/images/portfolio/eirepolitic-render-preview.png' | relative_url }}" alt="Preview of generated Eirepolitic visual content" loading="lazy" />
+      <span>Repository-generated output. View the full image ↗</span>
+    </a>
+  </article>
+
+  <article class="ep-evidence-story">
+    <div class="ep-evidence-copy">
+      <span class="ep-sequence-number">02 · Review</span>
+      <h3>Inspect the exact rendered assets before anything is approved.</h3>
+      <p>The browser review surface makes the generated output easy to inspect as a set rather than treating publication as a blind automation step. The point is to review the real candidate assets that the publishing workflow will later promote.</p>
+    </div>
+    <a class="ep-image-card ep-image-card-full" href="{{ '/assets/images/portfolio/eirepolitic-content-review.png' | relative_url }}">
+      <img src="{{ '/assets/images/portfolio/eirepolitic-content-review.png' | relative_url }}" alt="Eirepolitic browser-based content review page" loading="lazy" />
+      <span>Browser-based review of the generated candidate assets. View full image ↗</span>
+    </a>
+  </article>
+
+  <article class="ep-evidence-story">
+    <div class="ep-evidence-copy">
+      <span class="ep-sequence-number">03 · Iterate</span>
+      <h3>Turn review feedback into a reproducible, versioned change.</h3>
+      <p>Conversation is used to describe the required adjustment and operate the repository workflow. The durable result remains a code or configuration change in the project, so the next render can be reproduced rather than depending on a one-off manual edit.</p>
+    </div>
+    <a class="ep-image-card ep-image-card-full" href="{{ '/assets/images/portfolio/eirepolitic-chat-iteration.png' | relative_url }}">
+      <img src="{{ '/assets/images/portfolio/eirepolitic-chat-iteration.png' | relative_url }}" alt="Conversational iteration of an Eirepolitic visual design" loading="lazy" />
+      <span>Feedback and iteration captured as part of the development workflow. View full image ↗</span>
+    </a>
+  </article>
+
   <p class="ep-stage-link"><a href="{{ '/portfolio/eirepolitic/content-factory/' | relative_url }}">Explore the Content Factory deep dive →</a></p>
 </section>
 
 <section class="ep-stage ep-stage-publishing">
-  <div class="ep-story-split">
-    <div>
-      <p class="editorial-kicker">07 · Scheduling &amp; publishing</p>
-      <h2>Separate content approval from publication execution.</h2>
-    </div>
-    <div class="ep-prose">
-      <p>Once a render is reviewed, the publishing workflow promotes the exact approved assets, records an approval fingerprint, and either publishes immediately or creates a one-time schedule.</p>
-      <p>DynamoDB remains the authoritative publication ledger while EventBridge Scheduler and Lambda handle future execution. Durable provider state prevents duplicate publication across retries.</p>
-    </div>
+  <div class="ep-stage-heading ep-stage-heading-wide">
+    <p class="editorial-kicker">07 · Scheduling &amp; publishing</p>
+    <h2>Separate content approval from publication execution.</h2>
+    <p>Once a render is reviewed, the publishing workflow promotes the exact approved assets, records an approval fingerprint, and either publishes immediately or creates a one-time schedule. DynamoDB remains the authoritative publication ledger while EventBridge Scheduler and Lambda handle future execution. Durable provider state prevents duplicate publication across retries.</p>
   </div>
+
+  <div class="ep-publish-schedule-row">
+    <div class="ep-evidence-copy">
+      <span class="ep-sequence-number">Operational schedule</span>
+      <h3>The publication inventory is part of the control plane, not an afterthought.</h3>
+      <p>This schedule view shows the operational state used to manage future publication. Approved content can be assigned a one-time execution time while the publication ledger keeps the durable state required for retries and duplicate protection.</p>
+    </div>
+    <a class="ep-image-evidence ep-schedule-proof" href="{{ '/assets/images/portfolio/eirepolitic-schedule-inventory.png' | relative_url }}">
+      <img src="{{ '/assets/images/portfolio/eirepolitic-schedule-inventory.png' | relative_url }}" alt="Eirepolitic publishing schedule inventory" loading="lazy" />
+      <span>Publishing schedule inventory. View full image ↗</span>
+    </a>
+  </div>
+
   <div class="ep-publish-line" aria-label="Instagram publishing architecture">
     <div><span>01</span><strong>Approved</strong><small>Exact reviewed artifact and approval fingerprint</small></div>
     <div><span>02</span><strong>Scheduled / executed</strong><small>S3 · DynamoDB · EventBridge Scheduler · Lambda</small></div>
     <div><span>03</span><strong>Published</strong><small>Durable provider state and public delivery</small></div>
   </div>
-  <div class="ep-publish-proof">
-    <a class="ep-image-evidence ep-image-evidence-compact" href="{{ '/assets/images/portfolio/eirepolitic-schedule-inventory.png' | relative_url }}">
-      <img src="{{ '/assets/images/portfolio/eirepolitic-schedule-inventory.png' | relative_url }}" alt="Eirepolitic publishing schedule inventory" loading="lazy" />
-      <span>Operational evidence: schedule inventory ↗</span>
-    </a>
+
+  <article class="ep-evidence-story ep-published-story">
+    <div class="ep-evidence-copy">
+      <span class="ep-sequence-number">Public result</span>
+      <h3>The final post is the visible endpoint of the same controlled workflow.</h3>
+      <p>The published result shown here is the artifact that passed through rendering, review, approval and execution. Keeping the publication state alongside the approved asset makes the public output traceable to the exact candidate that was reviewed.</p>
+    </div>
     <a class="ep-image-evidence ep-publish-result" href="{{ '/assets/images/portfolio/eirepolitic-published-instagram.png' | relative_url }}">
       <img src="{{ '/assets/images/portfolio/eirepolitic-published-instagram.png' | relative_url }}" alt="Eirepolitic content published on Instagram" loading="lazy" />
-      <span>Public result: pipeline-generated Instagram output ↗</span>
+      <span>Pipeline-generated content published to Instagram. View full image ↗</span>
     </a>
-  </div>
+  </article>
+
   <div class="ep-publishing-footer"><span>Immediate and scheduled canaries completed against the real account in September 2026.</span><a href="{{ '/portfolio/eirepolitic/automated-publishing/' | relative_url }}">Explore the automated-publishing deep dive →</a></div>
 </section>
 
