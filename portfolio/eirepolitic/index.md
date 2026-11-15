@@ -87,6 +87,26 @@ summary: An end-to-end political data, analysis and automated publishing platfor
   <p class="ep-stage-link"><a href="{{ '/assets/images/portfolio/eirepolitic-data-model-docs.png' | relative_url }}">View the detailed output-table documentation ↗</a></p>
 </section>
 
+<section class="ep-stage ep-stage-scale">
+  <div class="ep-scale-heading">
+    <div class="ep-stage-heading ep-stage-heading-wide">
+      <p class="editorial-kicker">Scale of the system</p>
+      <h2>Large enough that the engineering has to be repeatable.</h2>
+      <p>These figures are a conservative snapshot of repository-backed project evidence rather than live counters. They show the scale of the data, processing and publication workflow without summing derived tables into an inflated “total rows” figure.</p>
+    </div>
+    <p class="ep-scale-updated">Snapshot updated {{ site.data.eirepolitic-scale.updated | date: "%B %Y" }}</p>
+  </div>
+  <div class="ep-scale-grid">
+    {% for metric in site.data.eirepolitic-scale.metrics %}
+    <div class="ep-scale-metric">
+      <strong>{{ metric.value }}</strong>
+      <span>{{ metric.label }}</span>
+      <small>{{ metric.note }}</small>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
 <section class="ep-stage ep-stage-classifier">
   <div class="ep-stage-heading ep-stage-heading-wide">
     <p class="editorial-kicker">04 · Classification &amp; enrichment</p>
