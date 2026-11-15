@@ -11,6 +11,11 @@ metrics:
     note: Speeches covered by the validated classifier handoff
     source_repo: eirepolitic-data-pipeline
     source_path: docs/oireachtas_final_handoff_readiness_summary.md
+  - label: Debate-section rows
+    value: "5,008"
+    note: Candidate debate sections covered by the validated acceptance check
+    source_repo: eirepolitic-data-pipeline
+    source_path: docs/oireachtas_validation/fixes_acceptance/acceptance.md
   - label: Bill versions
     value: "508"
     note: Rows in the validated bill-version output
@@ -26,8 +31,3 @@ metrics:
     note: Member records covered by the validated handoff snapshot
     source_repo: eirepolitic-data-pipeline
     source_path: docs/oireachtas_final_handoff_readiness_summary.md
-  - label: Completed post packages
-    value: "4"
-    note: Completed publication packages currently tracked in Git
-    source_repo: eirepolitic-data-pipeline
-    source_path: docs/instagram/completed_post_archive.md
