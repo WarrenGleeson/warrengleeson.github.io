@@ -220,6 +220,7 @@ No automated validator currently detects these issues.
 
 ## Related documentation
 
+- [Overlord Publication Process](../systems/overlord-publication-process.md)
 - [Overlord Versioned Task, Project, and Meeting Templates](../notes/overlord-versioned-task-project-meeting-templates.md)
 - [Overlord Documentation Workstream Plan](../high-director/overlord-documentation-workstream-plan.md)
 - [Repository Scan: Overlord](../high-director/repository-scan-overlord.md)
