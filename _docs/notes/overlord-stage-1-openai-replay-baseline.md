@@ -5,8 +5,8 @@ section: notes
 doc_type: note
 status: active
 created: 2026-09-01
-updated: 2026-09-01
-last_verified: 2026-09-01
+updated: 2026-11-17
+last_verified: 2026-11-17
 owner: High Director
 order: 155
 permalink: /projects/notes/overlord-stage-1-openai-replay-baseline/
@@ -44,7 +44,7 @@ Production deployed:        no
 
 Stage 0B and Stage 1 answer different questions. Stage 0B is transport/integration evidence for the benchmark gateway/provider path. Stage 1 is capability evidence under a frozen task/evaluator envelope. Neither automatically changes production routing.
 
-Production remains on deployed release `953580c06d064f44c98dd73c3c59affc35579218` with Developer provider `openai`, model `gpt-5.6-luna`, image `overlord-developer:1.18.16`, and disposable local Docker execution. Benchmark/main and documentation advancement do not authorize a production deployment.
+The current snapshot reports production release `b049dac6be756cd8c30f5f3b0bb76ff61f9d24f5`, with Developer provider `openai`, model `gpt-5.6-luna`, image `overlord-developer:1.18.16`, and disposable local Docker execution. The Stage 1 benchmark record is historical evidence and does not authorize production routing. Evidence: `/context/overlord-live-snapshot/snapshot/summary.txt`, `settings.env`, and `docker.txt`.
 
 ## Frozen Stage 1 envelope
 

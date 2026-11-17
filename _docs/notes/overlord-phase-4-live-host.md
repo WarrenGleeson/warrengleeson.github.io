@@ -5,8 +5,8 @@ section: notes
 doc_type: note
 status: active
 created: 2026-08-19
-updated: 2026-08-31
-last_verified: 2026-08-31
+updated: 2026-11-17
+last_verified: 2026-11-17
 owner: High Director
 order: 152
 permalink: /projects/notes/overlord-phase-4-live-host/
@@ -22,7 +22,7 @@ tags:
 
 ## Current state
 
-> **Evidence boundary:** This is an operational record reported by the Overlord documentation workstream. The current site checkout does not provide the host, deployment, cloud, GitHub, or runtime evidence needed to verify these claims independently. See [Overlord Evidence Gaps and Blind Spots](overlord-blind-spots.md).
+> **Evidence boundary:** This operational record was rechecked against `/context/overlord` and the sanitized snapshot `/context/overlord-live-snapshot`, captured `2026-11-17T20:28:47Z`. Historical acceptance details below remain historical unless the current snapshot or source confirms them.
 
 The always-on Overlord MVP is running on one DigitalOcean host. The hardening/infrastructure foundation is integrated and production-accepted. Post-acceptance repository housekeeping, six-case offline replay verification, the fail-closed Stage 0 replay preflight, and the benchmark-only one-request provider gateway are complete.
 
@@ -36,11 +36,11 @@ Droplet class:              Basic / Regular SSD
 size:                       2 vCPU / 4 GiB RAM / 80 GiB SSD
 base price:                 $24/month
 initial source release:     562ee774a56b89eda8c1f913abf6adf0981f9b13
-current deployed release:   953580c06d064f44c98dd73c3c59affc35579218
-current repository main:    9706196c0e2627ddc9ecf36bb370204a38dd12f7
+current deployed release:   b049dac6be756cd8c30f5f3b0bb76ff61f9d24f5
+current repository main:    b049dac6be756cd8c30f5f3b0bb76ff61f9d24f5
 ```
 
-`main` is intentionally ahead of the deployed release by repository operations, replay/benchmark infrastructure, and GitHub-hosted benchmark workflows that are not wired into the production Developer execution path. Production runtime/application behavior remains on `953580c06d064f44c98dd73c3c59affc35579218`; no production restart or deployment was required merely for repository SHA symmetry.
+The current snapshot reports the deployed release and source checkout at the same SHA. Evidence: `/context/overlord-live-snapshot/snapshot/summary.txt`. Earlier SHA comparisons in this page are historical records and are not current drift evidence.
 
 Canonical architecture remains intentionally single-host:
 
@@ -98,11 +98,8 @@ bounded Developer execution
 -> PR creation
 -> exact-head check observation
 -> fail-closed merge evaluation
--> awaiting owner approval
--> exact owner approval
--> approval preflight BEFORE stable DBOS merge workflow creation
--> in-workflow approval recheck
--> fresh merge evaluation
+    -> fresh exact-head/check merge evaluation
+    -> automatic durable merge workflow
 -> GitHubBroker exact-head gate
 -> squash merge
 -> repository_delivery reconciliation
@@ -128,7 +125,11 @@ Task = validation
 Task.completed_at = null
 ```
 
-Final completion happens only after verified repository delivery.
+Final completion happens only after verified repository delivery. Routine per-task owner approval is not required by the implementation; owner decisions remain for blocked work and protected special cases. Evidence: `/context/overlord/src/overlord/application/work_request_dispatch.py` and `/context/overlord/src/overlord/adapters/workflow/dbos_developer_github_publication.py`.
+
+The separate owner-approval acceptance workflow is a deliberate control/acceptance scenario, not the routine dispatcher path: `/context/overlord/deploy/accept-production-manager-delivery-approval.py`.
+
+Current snapshot evidence: the service is active, the deployed SHA is `b049dac6be756cd8c30f5f3b0bb76ff61f9d24f5`, PostgreSQL is healthy on loopback, and Caddy exposes the configured reverse proxy. Sources: `/context/overlord-live-snapshot/snapshot/service.txt`, `summary.txt`, `docker.txt`, `network.txt`, and `settings.env`.
 
 ## Hardening and infrastructure foundation
 
@@ -139,7 +140,7 @@ The integrated hardening streams remain:
 - model-neutral six-case replay harness through PR #85; and
 - operational hygiene/observability through PR #82 plus integration PR #86.
 
-The combined production release reached `953580c06d064f44c98dd73c3c59affc35579218`, with final production deploy #22 / `33356627581` and read-only operations/retention acceptance #2 / `33356648604` both successful.
+The historical combined production release reached `953580c06d064f44c98dd73c3c59affc35579218`, with final production deploy #22 / `33356627581` and read-only operations/retention acceptance #2 / `33356648604` both successful. The current deployed release is the newer snapshot SHA stated above.
 
 Historical evidence PR #61 remains open and unmerged. Failed-safe evidence PR #77 remains open and unmerged. Neither is a cleanup target.
 
@@ -359,7 +360,7 @@ The next meaningful decision is the comparative benchmark roster and spend envel
 
 Recommended order:
 
-1. keep production on `953580c06d064f44c98dd73c3c59affc35579218`; repository `main` is ahead only by non-production benchmark/operations tooling;
+1. retain the current deployed release reported by the live snapshot; the older `953580c06d064f44c98dd73c3c59affc35579218` recommendation is historical;
 2. define the Stage 1 comparison roster and a bounded spend envelope;
 3. first compare models on Easy-1 using the same gateway and deterministic validator;
 4. only expand to all six frozen cases after each candidate proves complete accounting and bounded execution;
@@ -371,8 +372,8 @@ Do not change production model routing from Stage 0 alone. Do not enable the leg
 ## Verification record
 
 - Last verified: `2026-08-31`.
-- Current deployed production release: `953580c06d064f44c98dd73c3c59affc35579218`.
-- Current repository `main`: `9706196c0e2627ddc9ecf36bb370204a38dd12f7`.
+- Current deployed production release: `b049dac6be756cd8c30f5f3b0bb76ff61f9d24f5` (live snapshot).
+- Current repository/source checkout evidence: `b049dac6be756cd8c30f5f3b0bb76ff61f9d24f5` (live snapshot).
 - Repository `main` is ahead of production by benchmark/operations tooling not wired into the production Developer execution path; no additional production deployment is required.
 - Final production deploy: #22 / `33356627581` / success.
 - Final production read-only operations/retention acceptance: #2 / `33356648604` / success.

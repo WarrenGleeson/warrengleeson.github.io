@@ -1,6 +1,6 @@
 ---
 title: Overlord Repository and Control-Plane System
-summary: Current documentation record for Overlord's application, durable workflow, developer execution, GitHub delivery, and single-host deployment boundaries, with unresolved evidence gaps called out explicitly.
+summary: Audited documentation record for Overlord's application, durable workflow, local-container Developer execution, GitHub delivery, and single-host deployment boundaries.
 section: repositories
 doc_type: repository
 status: active
@@ -12,13 +12,13 @@ repository: Overlord
 
 # Overlord Repository and Control-Plane System
 
-> **Evidence boundary:** This checkout contains the documentation site, not a separate Overlord source checkout or live deployment. The current architecture below is therefore a documented claim supported by related site records, not an independently verified inspection of Overlord source or runtime. See [Overlord Evidence Gaps and Blind Spots](../notes/overlord-blind-spots.md).
+> **Evidence boundary:** This page was audited against `/context/overlord` at commit `b049dac6be756cd8c30f5f3b0bb76ff61f9d24f5` and `/context/overlord-live-snapshot` captured at `2026-11-17T20:28:47Z`. Claims without source or snapshot evidence remain marked as unverifiable.
 
 ## Purpose
 
-The current Overlord documentation records describe a control-plane application that plans owner work, runs bounded developer tasks, publishes repository changes, and records durable state. The records describe PostgreSQL-backed application state, DBOS workflow coordination, provider adapters, GitHub delivery through a broker, and a single-host deployment with disposable developer containers.
+Overlord is an owner-controlled control plane that plans work, runs bounded Developer tasks, publishes repository changes, and records durable state. PostgreSQL is canonical application state; DBOS is workflow coordination; Developer execution uses disposable local Docker containers and OpenCode; GitHub mutation is brokered and audited; and production runs as a single host. Evidence: `/context/overlord/docs/architecture.md`, `/context/overlord/docs/production-live-host.md`, `/context/overlord/src/overlord/application/github_broker.py`, `/context/overlord-live-snapshot/snapshot/service.txt`, `docker.txt`, and `database.txt`.
 
-Those implementation and deployment claims are not directly inspectable in this checkout. They must not be upgraded to independently verified facts without the source tree and live evidence listed on the blind-spots page.
+The source and live snapshot establish the implementation and observed deployment state at the cited revisions. They do not establish provider billing, backup/restore readiness, or every historical benchmark result; those remain on the blind-spots page.
 
 ## Repository maturity
 
@@ -42,7 +42,7 @@ The related records describe these boundaries:
 - GitHub mutation is constrained to the GitHub port/broker/adapter path and is durably audited.
 - Production is described as a single host; remote workers and distributed infrastructure remain deferred.
 
-These are documentation-record claims. Source, deployment, CI, cloud, and runtime evidence remain unavailable here.
+Evidence: `/context/overlord/docs/architecture.md`, `/context/overlord/docs/security-boundaries.md`, `/context/overlord/docs/production-live-host.md`, `/context/overlord-live-snapshot/snapshot/settings.env`, `service.txt`, `network.txt`, and `docker.txt`.
 
 ## Legacy Markdown snapshot
 
@@ -199,12 +199,12 @@ No automated validator in that snapshot detected these issues.
 
 ## Current limitations and open evidence
 
-- The current source and deployment cannot be inspected from this checkout.
+- This site checkout is not the Overlord source repository; current source evidence is mounted separately under `/context/overlord`.
 - The old Markdown/task-record page and template details are historical, not current application authority.
-- Current production health, source drift, rollback readiness, monitoring, backups, and restore tests are not verifiable here.
-- Effective GitHub App, AWS IAM/Secrets Manager, provider, and host permissions are not verifiable here.
+- Monitoring configuration, backup retention, restore testing, rollback readiness, and effective AWS IAM permissions are not established by the available source export and snapshot.
+- Provider-side billing and request totals are not established by the snapshot.
 - Benchmark artifacts, provider billing, and reproducibility of reported runs are not verifiable here.
-- Public API exposure and authentication state are not verifiable here.
+- A public Caddy reverse proxy is visible and owner API authentication is enabled in the snapshot, but an authenticated external request/response and complete ingress policy are not available.
 
 ## Related documentation
 
@@ -217,4 +217,4 @@ No automated validator in that snapshot detected these issues.
 
 ## Continuation
 
-Maintain this page as the current site-level summary of the documented Overlord boundaries, while keeping independently unverifiable claims explicitly marked. Update it from the Overlord source repository and live operational evidence when those become available; do not restore the old Markdown-only description merely because the source is absent from this checkout.
+Maintain this page as the current site-level summary of the documented Overlord boundaries, while keeping independently unverifiable claims explicitly marked. Update it from the mounted Overlord source and live evidence when those revisions change; do not restore the old Markdown-only description.

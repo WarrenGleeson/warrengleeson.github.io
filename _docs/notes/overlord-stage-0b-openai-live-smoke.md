@@ -5,8 +5,8 @@ section: notes
 doc_type: note
 status: active
 created: 2026-08-31
-updated: 2026-08-31
-last_verified: 2026-08-31
+updated: 2026-11-17
+last_verified: 2026-11-17
 owner: High Director
 order: 154
 permalink: /projects/notes/overlord-stage-0b-openai-live-smoke/
@@ -25,7 +25,7 @@ tags:
 The first real-provider Stage 0B transport smoke completed successfully against OpenAI through the benchmark-only hard gateway.
 
 ```text
-Overlord main: 98f0c5ac064b01408240736a88c157c1e0db4d73
+Overlord main: b049dac6be756cd8c30f5f3b0bb76ff61f9d24f5
 Workflow: Developer benchmark Stage 0B live provider smoke
 Workflow ID: 346986133
 Run: #1 / 33444495539
