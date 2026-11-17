@@ -22,6 +22,8 @@ tags:
 
 ## Current state
 
+> **Evidence boundary:** This is an operational record reported by the Overlord documentation workstream. The current site checkout does not provide the host, deployment, cloud, GitHub, or runtime evidence needed to verify these claims independently. See [Overlord Evidence Gaps and Blind Spots](overlord-blind-spots.md).
+
 The always-on Overlord MVP is running on one DigitalOcean host. The hardening/infrastructure foundation is integrated and production-accepted. Post-acceptance repository housekeeping, six-case offline replay verification, the fail-closed Stage 0 replay preflight, and the benchmark-only one-request provider gateway are complete.
 
 ```text

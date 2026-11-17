@@ -1,30 +1,32 @@
 ---
-title: Overlord Versioned Task, Project, and Meeting Templates
-summary: Source-grounded reference for the three current Overlord v1 Markdown templates, their naming/version convention, identical body structure, relationship to record metadata, and current limitations.
+title: Overlord Legacy Versioned Task, Project, and Meeting Templates
+summary: Historical 2026-08-07 reference for the pre-Phase-0 Overlord v1 Markdown templates; later documentation records describe a replacement application while retaining these fixtures as legacy material.
 section: notes
 doc_type: reference
 status: active
 owner: High Director
 created: 2026-08-07
-updated: 2026-08-07
+updated: 2026-11-17
 repository: Overlord
 ---
 
-# Overlord Versioned Task, Project, and Meeting Templates
+# Overlord Legacy Versioned Task, Project, and Meeting Templates
+
+> **Historical snapshot:** This page records the repository state inspected on 2026-08-07. It is not evidence that these files remain the current Overlord implementation. The current site checkout does not contain the Overlord source tree needed to verify their present status. See [Overlord Evidence Gaps and Blind Spots](overlord-blind-spots.md).
 
 ## Purpose
 
-`Overlord/templates/tasks/` contains three versioned Markdown skeletons intended to represent task, project, and meeting record types.
+The 2026-08-07 Overlord snapshot contained three versioned Markdown skeletons intended to represent task, project, and meeting record types.
 
-Current files:
+Files in that snapshot:
 
 - `templates/tasks/task_v1.md`;
 - `templates/tasks/project_v1.md`;
 - `templates/tasks/meeting_v1.md`.
 
-All three files currently have the same Git blob SHA and the same content. Their filenames distinguish intended template type; their body structure does not.
+All three files had the same Git blob SHA and the same content. Their filenames distinguished intended template type; their body structure did not.
 
-## Current template content
+## Snapshot template content
 
 Each v1 template contains exactly these headings:
 
@@ -42,7 +44,7 @@ Each v1 template contains exactly these headings:
 
 No front matter, placeholder values, instructions, comments, or type-specific sections are present in the template files themselves.
 
-## Naming convention
+## Snapshot naming convention
 
 Observed filenames use:
 
@@ -54,17 +56,17 @@ Current examples:
 - `project_v1.md`;
 - `meeting_v1.md`.
 
-This indicates a versioned-template naming convention with current version `v1`.
+This indicated a versioned-template naming convention with snapshot version `v1`.
 
 No source code defines filename parsing, semantic-version rules, upgrade behavior, or the next permitted version. Treat the naming convention as observed repository structure rather than an enforced specification.
 
-## Current template equivalence
+## Snapshot template equivalence
 
 The three v1 template files are byte-equivalent in the inspected repository and share the same Git blob SHA:
 
 `84736e15c54ee52c00964b58e054255f02e59cc2`
 
-Therefore, as currently implemented:
+Therefore, within that snapshot:
 
 - task records do not receive task-specific body sections from the template;
 - project records do not receive project-specific body sections;
@@ -72,16 +74,16 @@ Therefore, as currently implemented:
 
 The only type distinction is the selected filename and any manually supplied record metadata.
 
-## Relationship to record front matter
+## Snapshot relationship to record front matter
 
-Observed fixture records under `tasks/work/` include fields such as:
+Observed snapshot fixture records under `tasks/work/` included fields such as:
 
 - `template_type: "task"`;
 - `template_version: "v1"`.
 
 This metadata can describe which logical template/version a record is associated with.
 
-However, the template Markdown files do not provide or generate that front matter. There is no verified script that:
+However, the snapshot template Markdown files did not provide or generate that front matter. There was no verified script in the snapshot that:
 
 - chooses a template;
 - injects metadata;
@@ -92,7 +94,7 @@ However, the template Markdown files do not provide or generate that front matte
 
 The relationship is manual/conventional.
 
-## Intended record sections
+## Snapshot intended record sections
 
 ### Overview
 
@@ -114,7 +116,7 @@ Free-form unresolved questions. No automatic resolution/lifecycle behavior exist
 
 Free-form change history. Fixtures demonstrate manually written timestamped creation entries, but the template itself does not specify a changelog line format.
 
-## Template version convention
+## Snapshot version convention
 
 Current evidence supports only these statements:
 
@@ -124,9 +126,9 @@ Current evidence supports only these statements:
 
 It does **not** establish backward compatibility guarantees, migration rules, deprecation policy, immutability, or whether records should be changed when a new template version appears.
 
-## Creating a record manually
+## Snapshot manual-record convention
 
-Based on current repository structure, a manual record can follow this convention:
+Based on the snapshot repository structure, a manual record could follow this convention:
 
 1. choose the intended context directory, such as `tasks/work/` or `tasks/personal/`;
 2. choose a template type/version filename from `templates/tasks/`;
@@ -136,9 +138,9 @@ Based on current repository structure, a manual record can follow this conventio
 6. populate the body sections;
 7. maintain status/timestamps/changelog manually.
 
-These steps describe the current convention, not an automated workflow.
+These steps described the snapshot convention, not an automated workflow.
 
-## Type-specific behavior
+## Snapshot type-specific behavior
 
 There is currently no verified type-specific behavior for `task`, `project`, or `meeting` templates. No source defines project milestones, project child tasks, meeting attendees, meeting agenda/minutes fields, task due dates/priorities, or different lifecycle rules by template type.
 
@@ -162,7 +164,7 @@ If a future `v2` is introduced, its behavior should be documented from the new s
 
 No automated validator currently detects these conditions in `Overlord`.
 
-## Limitations
+## Snapshot limitations
 
 - three logical types but currently identical body templates;
 - no front matter in template files;
@@ -177,6 +179,7 @@ No automated validator currently detects these conditions in `Overlord`.
 ## Related documentation
 
 - [Overlord Repository and Markdown Task-Record System](../repositories/overlord.md)
+- [Overlord Evidence Gaps and Blind Spots](overlord-blind-spots.md)
 - [Overlord Documentation Workstream Plan](../high-director/overlord-documentation-workstream-plan.md)
 - [Repository Scan: Overlord](../high-director/repository-scan-overlord.md)
 
