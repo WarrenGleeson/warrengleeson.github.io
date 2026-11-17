@@ -5,8 +5,8 @@ section: notes
 doc_type: note
 status: active
 created: 2026-08-18
-updated: 2026-08-18
-last_verified: 2026-08-18
+updated: 2026-11-17
+last_verified: 2026-11-17
 owner: High Director
 order: 147
 permalink: /projects/notes/overlord-phase-3-github-app-secrets-manager/
@@ -145,7 +145,7 @@ No private key or hosted credential was provided in chat or committed to either 
 
 ## Remaining Hosted Enablement
 
-The adapter exists and the secret is provisioned, but hosted execution is not enabled until the runtime IAM/configuration boundary is completed.
+The adapter exists and hosted execution is now configured in the live runtime: the snapshot reports the AWS region, App ID/installation identifiers, and GitHub App secret reference. The snapshot does not prove the effective IAM policy; that remains a blind spot. Evidence: `/context/overlord-live-snapshot/snapshot/settings.env`, `/context/overlord-live-snapshot/snapshot/service.txt`, and [the current blind-spots page](overlord-blind-spots.md).
 
 Remaining work is deliberately limited to:
 

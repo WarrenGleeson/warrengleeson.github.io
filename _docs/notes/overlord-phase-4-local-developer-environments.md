@@ -5,8 +5,8 @@ section: notes
 doc_type: note
 status: active
 created: 2026-08-18
-updated: 2026-08-20
-last_verified: 2026-08-20
+updated: 2026-11-17
+last_verified: 2026-11-17
 owner: High Director
 order: 149
 permalink: /projects/notes/overlord-phase-4-local-developer-environments/
@@ -143,6 +143,8 @@ For OpenCode's aggregate session status endpoint, idle sessions may be absent fr
 ## Live acceptance evidence — 2026-08-20
 
 The production path was accepted on `overlord-prod-01` using accepted `Overlord/main` release `caa854725c07814dc095d0350d947f86193ae5e2`.
+
+Current snapshot confirmation: the production host still has the `overlord-developer:1.18.16` image and `local_container` / `opencode` settings, while the currently deployed application release is `b049dac6be756cd8c30f5f3b0bb76ff61f9d24f5`. Evidence: `/context/overlord-live-snapshot/snapshot/docker.txt`, `settings.env`, and `summary.txt`. The 2026-08-20 smoke result below remains a dated acceptance record, not a claim about a new run.
 
 The bounded smoke test used:
 

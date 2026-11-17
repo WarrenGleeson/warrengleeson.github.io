@@ -5,8 +5,8 @@ section: notes
 doc_type: note
 status: active
 created: 2026-08-17
-updated: 2026-08-17
-last_verified: 2026-08-17
+updated: 2026-11-17
+last_verified: 2026-11-17
 owner: High Director
 order: 146
 permalink: /projects/notes/overlord-phase-3-github-audit-persistence/
@@ -25,7 +25,7 @@ tags:
 
 The second Phase 3 source slice is accepted. GitHub lifecycle mutations controlled by `GitHubBroker` now emit correlated durable evidence through the existing canonical PostgreSQL `audit_events` store.
 
-This closes the persistence prerequisite identified by the first Phase 3 slice. A real credentialed GitHub adapter is still not enabled, and OpenCode still receives no GitHub write credentials.
+This closes the persistence prerequisite identified by the first Phase 3 slice. The real credentialed GitHub App adapter is now present in source and configured in the live runtime; OpenCode still receives no GitHub write credentials. Evidence: `/context/overlord/src/overlord/adapters/github/`, `/context/overlord-live-snapshot/snapshot/settings.env`, and `service.txt`.
 
 ## Source Acceptance
 

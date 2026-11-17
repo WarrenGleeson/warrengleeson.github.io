@@ -5,8 +5,8 @@ section: notes
 doc_type: note
 status: active
 created: 2026-08-31
-updated: 2026-08-31
-last_verified: 2026-08-31
+updated: 2026-11-17
+last_verified: 2026-11-17
 owner: High Director
 order: 153
 permalink: /projects/notes/overlord-stage-0b-model-neutral-benchmark-foundation/
@@ -25,15 +25,15 @@ tags:
 Stage 0B is complete as a no-spend benchmark-foundation milestone and the live-provider smoke path is implemented but explicitly unarmed.
 
 ```text
-Overlord repository main: 98f0c5ac064b01408240736a88c157c1e0db4d73
-Production deployed release: 953580c06d064f44c98dd73c3c59affc35579218
+Overlord repository main: b049dac6be756cd8c30f5f3b0bb76ff61f9d24f5
+Production deployed release: b049dac6be756cd8c30f5f3b0bb76ff61f9d24f5
 Production Developer routing changed: no
 Live provider calls in Stage 0B foundation acceptance: 0
 Provider secrets used in Stage 0B foundation acceptance: none
 Stage 0B live-smoke workflow armed: no
 ```
 
-Production remains intentionally on the previously accepted release because Stage 0B changes are benchmark/evaluator infrastructure and are not wired into the production Developer execution path.
+The live snapshot reports the same current source/deployed SHA. Stage 0B remains benchmark/evaluator infrastructure and is not wired into the production Developer execution path. Evidence: `/context/overlord-live-snapshot/snapshot/summary.txt` and `/context/overlord-live-snapshot/snapshot/settings.env`.
 
 ## Integrated foundation
 
