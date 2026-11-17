@@ -1,57 +1,54 @@
 ---
-title: Overlord Repository and Markdown Task-Record System
-summary: Source-grounded documentation for the current Overlord repository as a lightweight Markdown task-record store with work/personal partitions, YAML front matter, observed status conventions, fixture records, and no verified executable or cloud automation layer.
+title: Overlord Repository and Control-Plane System
+summary: Current documentation record for Overlord's application, durable workflow, developer execution, GitHub delivery, and single-host deployment boundaries, with unresolved evidence gaps called out explicitly.
 section: repositories
 doc_type: repository
 status: active
 owner: High Director
 created: 2026-08-07
-updated: 2026-08-07
+updated: 2026-11-17
 repository: Overlord
 ---
 
-# Overlord Repository and Markdown Task-Record System
+# Overlord Repository and Control-Plane System
+
+> **Evidence boundary:** This checkout contains the documentation site, not a separate Overlord source checkout or live deployment. The current architecture below is therefore a documented claim supported by related site records, not an independently verified inspection of Overlord source or runtime. See [Overlord Evidence Gaps and Blind Spots](../notes/overlord-blind-spots.md).
 
 ## Purpose
 
-`Overlord` is currently a lightweight Markdown repository for task records and reusable task/project/meeting skeletons.
+The current Overlord documentation records describe a control-plane application that plans owner work, runs bounded developer tasks, publishes repository changes, and records durable state. The records describe PostgreSQL-backed application state, DBOS workflow coordination, provider adapters, GitHub delivery through a broker, and a single-host deployment with disposable developer containers.
 
-The inspected repository does **not** contain a verified executable application, agent, API, cloud deployment, GitHub Actions workflow, external integration, database, or automation runtime. Its name must not be used to infer any of those capabilities.
+Those implementation and deployment claims are not directly inspectable in this checkout. They must not be upgraded to independently verified facts without the source tree and live evidence listed on the blind-spots page.
 
 ## Repository maturity
 
-The repository is structurally simple and early-stage:
+The documented maturity is beyond the earlier Markdown-only snapshot:
 
-- `README.md` contains only `# Overlord`;
-- `tasks/work/` contains eight `test-task-*` fixture/example records;
-- `tasks/personal/` is currently empty apart from `.gitkeep`;
-- `templates/tasks/` contains three versioned Markdown templates;
-- no code or validation tooling is present.
+- Phase 0 records describe a Python application, domain persistence, provider-neutral planning contracts, and a DBOS durable Manager workflow.
+- Phase 1 records describe a local Manager loop and API boundary.
+- Phase 2 records describe bounded Developer execution, recovery, and benchmark infrastructure.
+- Phase 3 records describe GitHub policy/audit boundaries and a GitHub App plus AWS Secrets Manager adapter.
+- Phase 4 records describe local Docker developer environments and a single DigitalOcean host.
 
-The current repository therefore behaves as a manually maintained Markdown record store rather than an application.
+The earlier Markdown/task-record material is retained below as a dated legacy snapshot. It is not the current implementation authority.
 
-## Repository structure
+## Documented current boundaries
 
-```text
-Overlord/
-├── README.md
-├── tasks/
-│   ├── personal/
-│   │   └── .gitkeep
-│   └── work/
-│       ├── .gitkeep
-│       └── test-task-1.md ... test-task-8.md
-└── templates/
-    └── tasks/
-        ├── .gitkeep
-        ├── task_v1.md
-        ├── project_v1.md
-        └── meeting_v1.md
-```
+The related records describe these boundaries:
 
-The `test-task-*` files are fixture/example data. They are not separate application components or documentation targets.
+- PostgreSQL is canonical application state for work requests, plans, tasks, decisions, agent runs, deliveries, and audit records.
+- DBOS coordinates durable workflows and checkpoints; it is not canonical domain state.
+- Developer execution occurs in disposable local Docker containers through OpenCode and a configured model provider.
+- GitHub mutation is constrained to the GitHub port/broker/adapter path and is durably audited.
+- Production is described as a single host; remote workers and distributed infrastructure remain deferred.
 
-## Work/personal partition
+These are documentation-record claims. Source, deployment, CI, cloud, and runtime evidence remain unavailable here.
+
+## Legacy Markdown snapshot
+
+The 2026-08-07 repository snapshot documented a README, work/personal task directories, eight `test-task-*` fixtures, and three Markdown templates. It also correctly recorded that those files had no verified executable behavior at that time. The snapshot is preserved in [the legacy template reference](../notes/overlord-versioned-task-project-meeting-templates.md), but it must not be used as the current repository description.
+
+## Legacy work/personal partition
 
 Task records are partitioned by directory:
 
@@ -62,11 +59,11 @@ Observed work fixtures also contain front matter `context: "work"`, so directory
 
 No code enforces consistency between directory and `context`; the convention is manual.
 
-## Record format
+## Legacy record format
 
 Observed fixture records use YAML front matter followed by five Markdown sections.
 
-### Front matter
+### Legacy front matter
 
 Observed fields:
 
@@ -83,7 +80,7 @@ Observed fields:
 
 The repository does not contain a formal schema definition or parser that proves these fields are mandatory, typed, unique, or validated.
 
-### Body sections
+### Legacy body sections
 
 Observed records contain:
 
@@ -95,7 +92,7 @@ Observed records contain:
 
 Fixtures typically fill empty-content sections with text such as `No information currently` and add a creation entry under `Changelog`.
 
-## Status/lifecycle conventions
+## Legacy status/lifecycle conventions
 
 Observed fixture statuses include:
 
@@ -115,7 +112,7 @@ These are observed values only. No repository source defines:
 
 Do not describe `active -> done` as an enforced state machine. It is only an observed manual convention.
 
-## Timestamp conventions
+## Legacy timestamp conventions
 
 Fixtures use ISO-8601-like timestamps, but formatting is not fully normalized:
 
@@ -125,7 +122,7 @@ Fixtures use ISO-8601-like timestamps, but formatting is not fully normalized:
 
 No formatter or validator enforces one canonical timestamp representation.
 
-## Slug/filename convention
+## Legacy slug/filename convention
 
 Observed examples align filename and `slug`, such as:
 
@@ -134,7 +131,7 @@ Observed examples align filename and `slug`, such as:
 
 This appears to be a convention rather than an enforced invariant. No code checks filename/slug equivalence or uniqueness.
 
-## Template metadata relationship
+## Legacy template metadata relationship
 
 Fixture records include:
 
@@ -145,7 +142,7 @@ The repository also contains `templates/tasks/task_v1.md`, which establishes a p
 
 However, the current template files contain only Markdown body headings; they do not include front matter, and no generator links a record automatically to a template. Template metadata is therefore manually maintained.
 
-## Manual record lifecycle
+## Legacy manual record lifecycle
 
 Based strictly on repository evidence, the practical lifecycle is manual:
 
@@ -158,23 +155,21 @@ Based strictly on repository evidence, the practical lifecycle is manual:
 
 No repository process automates these steps.
 
-## Fixtures and examples
+## Legacy fixtures and examples
 
-`tasks/work/test-task-1.md` through `test-task-8.md` provide evidence of the current record shape and formatting variability.
+`tasks/work/test-task-1.md` through `test-task-8.md` provided evidence of the snapshot record shape and formatting variability.
 
-They should be treated as examples/fixtures, not production subsystems. Their placeholder content also means they are poor evidence for rich business-process semantics beyond the record format itself.
+They should be treated as legacy examples/fixtures, not current production subsystems. Their placeholder content also means they are poor evidence for rich business-process semantics beyond the record format itself.
 
-## Dependencies
+## Dependencies and verification boundary
 
-There are no verified runtime dependencies, package manifests, executable source files, or build tools in the current tree.
+The related records name Python dependencies, PostgreSQL, DBOS, Docker, OpenCode, provider APIs, GitHub, AWS Secrets Manager, and DigitalOcean. None of those dependencies or their configured versions can be verified from this site checkout. The exact source tree, lockfiles, tests, CI runs, deployment release, host state, effective cloud permissions, provider billing, and current runtime configuration are listed as blind spots rather than inferred.
 
-Markdown and YAML-front-matter interpretation is conceptual/manual unless another external tool consumes these files; no such consumer is verified in this repository.
+## Legacy security and data considerations
 
-## Security and data considerations
+The snapshot repository structure allowed personal-context records under `tasks/personal/`, but that directory was empty in the inspected snapshot.
 
-The repository structure allows personal-context records under `tasks/personal/`, but that directory is currently empty.
-
-Because this is a Git repository, maintainers should treat committed record content as repository data. The current source does not implement:
+Because that snapshot was a Git repository, its committed record content was repository data. The snapshot source did not implement:
 
 - field-level access control;
 - encryption;
@@ -184,9 +179,9 @@ Because this is a Git repository, maintainers should treat committed record cont
 
 Do not infer privacy or access controls from the `personal` directory name.
 
-## Failure modes
+## Legacy failure modes
 
-Because there is no application runtime, current failure modes are primarily data-quality/manual-maintenance issues:
+Within the snapshot, failure modes were primarily data-quality/manual-maintenance issues:
 
 - malformed YAML front matter;
 - missing expected metadata fields;
@@ -200,32 +195,26 @@ Because there is no application runtime, current failure modes are primarily dat
 - formatting drift between records;
 - accidental storage of information unsuitable for the repository's access model.
 
-No automated validator currently detects these issues.
+No automated validator in that snapshot detected these issues.
 
-## Current limitations
+## Current limitations and open evidence
 
-- README provides no operating guidance beyond the repository name;
-- no executable application or agent;
-- no API;
-- no cloud deployment;
-- no GitHub Actions automation;
-- no external integrations;
-- no schema/Markdown validator;
-- no controlled status vocabulary;
-- no automated lifecycle transitions;
-- no record generator;
-- no search/index implementation in the repository;
-- personal/work separation is organizational, not technical access control;
-- fixture formatting demonstrates that conventions can drift manually.
+- The current source and deployment cannot be inspected from this checkout.
+- The old Markdown/task-record page and template details are historical, not current application authority.
+- Current production health, source drift, rollback readiness, monitoring, backups, and restore tests are not verifiable here.
+- Effective GitHub App, AWS IAM/Secrets Manager, provider, and host permissions are not verifiable here.
+- Benchmark artifacts, provider billing, and reproducibility of reported runs are not verifiable here.
+- Public API exposure and authentication state are not verifiable here.
 
 ## Related documentation
 
 - [Overlord Publication Process](../systems/overlord-publication-process.md)
 - [Overlord Versioned Task, Project, and Meeting Templates](../notes/overlord-versioned-task-project-meeting-templates.md)
+- [Overlord Evidence Gaps and Blind Spots](../notes/overlord-blind-spots.md)
 - [Overlord Documentation Workstream Plan](../high-director/overlord-documentation-workstream-plan.md)
 - [Repository Scan: Overlord](../high-director/repository-scan-overlord.md)
 - [Documentation Target Catalogue](/projects/high-director/documentation-target-catalogue/)
 
 ## Continuation
 
-If Overlord gains executable code, automation, schema validation, an API, integrations, or deployment infrastructure, document those capabilities only after they exist in source. Until then, maintain this page as the source-grounded description of a manual Markdown task-record repository.
+Maintain this page as the current site-level summary of the documented Overlord boundaries, while keeping independently unverifiable claims explicitly marked. Update it from the Overlord source repository and live operational evidence when those become available; do not restore the old Markdown-only description merely because the source is absent from this checkout.

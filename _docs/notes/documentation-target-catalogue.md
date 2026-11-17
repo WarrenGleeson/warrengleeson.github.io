@@ -259,9 +259,11 @@ This is the current authoritative implementation relationship behind the `/autod
 
 ### `Overlord`
 
-45. **`Overlord` repository/task-record system** — repository purpose/maturity, Markdown task schema, work/personal organization, lifecycle conventions.
+45. **`Overlord` control-plane repository and runtime** — documented application boundaries, durable Manager/Developer lifecycle, repository delivery, deployment boundary, and evidence status.
 
-46. **Overlord versioned task/project/meeting templates** — current v1 template equivalence, versioning/change rules, intended semantic distinctions only when implementation establishes them.
+46. **Overlord legacy task/project/meeting templates** — historical pre-Phase-0 snapshot, retained fixtures, and explicit limits on what the old Markdown material can establish.
+
+47. **Overlord evidence gaps and blind spots** — source, deployment, cloud, runtime, benchmark, billing, and operational evidence required before current claims can be independently verified.
 
 ## P3 — historical/status-verification documentation initiatives
 
